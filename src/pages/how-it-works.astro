@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import GreenBlock from '../components/GreenBlock.astro';
+---
+<Base title="How it works" current="How it works" description="Real answers. No jargon. No gatekeepers. Designed for the hardest case first.">
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ How it works</div>
+      <h1 class="display hiw-h1">
+        Real answers. <span class="i-accent">No jargon. No gatekeepers.</span>
+      </h1>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      {[
+        {n:'§ 01', t:'Tell us what you need.', b:'Plain question, plain language. Voice note, text, your own dialect — whatever works on your phone, on patchy data, in the moment.'},
+        {n:'§ 02', t:'We deliver the answer.', b:'No paywalls. No jargon. No links to a 40-page PDF. The thing you actually came for, in the moment you came for it.'},
+        {n:'§ 03', t:'You take it from there.', b:"Try it. Tweak it for your land, your classroom, your community. Pass it on. We measure success when you don't need us anymore."},
+      ].map((s) => (
+        <article class="step">
+          <div>
+            <span class="mono accent">{s.n}</span>
+            <h3 class="display step-title">{s.t}</h3>
+          </div>
+          <p class="body-lg step-body">{s.b}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 48px;" />
+      <span class="mono accent">§ 04 · The delivery principles</span>
+      <h2 class="display principles-title">
+        Designed for <span class="i-accent">the hardest case</span> first.
+      </h2>
+
+      <div class="principles">
+        {[
+          ['Phone-first',   'Built to work on a $30 device on patchy data. Loads in under two seconds on 2G.'],
+          ['Your language', 'Not translated — written. Local idioms, local examples, local units of measure.'],
+          ['Offline-ready', 'Save it. Pass it. Read it tomorrow on a bus with no signal.'],
+          ['Peer-to-peer',  'Knowledge moves sideways, not just expert to learner.'],
+        ].map(([t, b]) => (
+          <div class="principle">
+            <h4 class="heading principle-title">{t}</h4>
+            <p class="body principle-body">{b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <GreenBlock cta={{ href: '/waitlist', label: 'Join the waitlist' }}>
+    <h2>If this sounds like something you needed years ago — <em>we'd like to hear from you.</em></h2>
+  </GreenBlock>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .hiw-h1 { font-size: var(--t-h1); max-width: 18ch; }
+
+  .step {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 96px;
+    padding-block: 56px;
+    border-top: 1px solid var(--c-rule);
+  }
+  .step:last-child { border-bottom: 1px solid var(--c-rule); }
+  .step-title { font-size: var(--t-h3); margin-top: 18px; max-width: 14ch; }
+  .step-body  { max-width: 52ch; }
+
+  .principles-title { font-size: var(--t-h2); margin-top: 24px; max-width: 22ch; }
+  .principles {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 48px;
+  }
+  .principle { border-top: 1px solid var(--c-rule); padding-top: 20px; }
+  .principle-title { font-size: var(--t-h4); }
+  .principle-body  { margin-top: 12px; max-width: 44ch; opacity: .85; }
+
+  @media (max-width: 860px) {
+    .step { grid-template-columns: 1fr; gap: 24px; }
+    .principles { grid-template-columns: 1fr; }
+  }
+</style>

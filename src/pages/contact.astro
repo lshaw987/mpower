@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import GreenBlock from '../components/GreenBlock.astro';
+---
+<Base
+  title="Contact"
+  description="Question about MPower, or a partnership that genuinely helps people? Email a human. MPower doesn't sell sponsorships, run ads, or carry affiliate deals."
+>
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ Contact &amp; partnerships · 2026</div>
+      <h1 class="display contact-h1">
+        Get in <span class="i-accent">touch.</span>
+      </h1>
+      <p class="body-lg contact-lede">
+        Question about MPower, a community, or just want to talk to a human? Email us. We read everything.
+      </p>
+      <div class="contact-ctas">
+        <a class="btn btn-primary" href="mailto:kia.ora@mpowerhq.co.nz">kia.ora@mpowerhq.co.nz <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" />
+      <div class="contact-grid">
+        <div>
+          <span class="mono accent">§ 01 · Partnerships</span>
+          <h2 class="heading contact-col-title">Contribution and reach, never selling to the room.</h2>
+        </div>
+        <div class="prose">
+          <p>We work with organisations and people who want their community to be genuinely better at the business and human side of what they do — without it being a sales pitch in disguise.</p>
+          <p>If that's you — a sector body, a network, an expert who actually does the work and wants to contribute — tell us what you've got in mind.</p>
+          <p><strong>MPower doesn't sell sponsorships, run ads, or carry affiliate deals inside the communities.</strong> That's a promise to members, and it's not negotiable. Partnerships are about contribution and reach, never about selling to the room.</p>
+          <p><a class="btn btn-ghost" href="mailto:partnerships@mpowerhq.co.nz">partnerships@mpowerhq.co.nz <span class="arr">→</span></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" />
+      <div class="contact-grid">
+        <div>
+          <span class="mono accent">§ 02 · Press / brand</span>
+          <h2 class="heading contact-col-title">Writing about MPower?</h2>
+        </div>
+        <div class="prose">
+          <p>Email us and we'll send the brand basics and a plain summary of what we do.</p>
+          <p><a href="mailto:kia.ora@mpowerhq.co.nz">kia.ora@mpowerhq.co.nz</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <GreenBlock kicker="§ The promise">
+    <h2>Nobody is ever <em>selling you anything</em> in here.</h2>
+  </GreenBlock>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .contact-h1 { font-size: var(--t-h1); max-width: 14ch; }
+  .contact-lede { margin-top: 32px; max-width: 56ch; opacity: .9; }
+  .contact-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: clamp(36px, 4vw, 56px); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    margin-top: 48px;
+  }
+  .contact-col-title { font-size: var(--t-h4); margin-top: 14px; max-width: 18ch; }
+
+  .prose { max-width: 64ch; }
+  .prose p { margin-top: 16px; opacity: .88; line-height: 1.7; }
+  .prose p:first-child { margin-top: 0; }
+  .prose strong { color: var(--c-mist); font-weight: 600; }
+  .prose a:not(.btn) { color: var(--c-spring); }
+  .prose a:not(.btn):hover { text-decoration: underline; }
+  .prose .btn { margin-top: 24px; }
+
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>

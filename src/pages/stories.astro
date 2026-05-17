@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Hand-coded placeholder stories. When Storyblok is wired in, swap this
+// const for a fetch from the Storyblok content API. The component shape
+// below already matches a 1-to-1 mapping: { slug, vertical, location,
+// title, lede, readMinutes, featured }.
+const stories = [
+  { slug: 'taranaki-coop',   vertical: 'agri', accent: 'var(--c-clay)',   location: 'Taranaki',       title: '"We stopped waiting for someone to come and tell us."', lede: 'How a co-op of twelve dairy farmers built their own monthly soil-test protocol — and why three of them are now teaching it to their neighbours.', readMinutes: 11, featured: true },
+  { slug: 'hone-third',      vertical: 'agri', accent: 'var(--c-clay)',   location: 'Waikato',         title: "Hone's third paddock", lede: "Soil testing without the lab — what worked, what didn't, what they tried in season three.", readMinutes: 6 },
+  { slug: 'maths-marae',     vertical: 'ed',   accent: 'var(--c-indigo)', location: 'Tāmaki Makaurau', title: 'A maths club at the marae', lede: 'When the kids started teaching the adults, something quietly shifted in the whole community.', readMinutes: 8 },
+  { slug: 'kiwifruit-wet',   vertical: 'agri', accent: 'var(--c-clay)',   location: 'Bay of Plenty',   title: 'Kiwifruit in a wet year', lede: 'Patchy data, plain answers — what extension officers wished was always one tap away.', readMinutes: 5 },
+  { slug: 'handmedown-book', vertical: 'ed',   accent: 'var(--c-indigo)', location: 'Northland',       title: 'The hand-me-down notebook', lede: "A teacher's annotated maths book passed through three generations of the same family.", readMinutes: 7 },
+];
+
+const featured = stories.find((s) => s.featured);
+const rest = stories.filter((s) => !s.featured);
+---
+<Base title="Stories" current="Stories" description="Field notes from the people MPower is built for. Real people. Real moments.">
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ Stories · Field notes</div>
+      <h1 class="display stories-h1">
+        Real people. <span class="i-accent">Real moments.</span>
+      </h1>
+      <p class="body-lg stories-lede">
+        We don't believe in saviour-narrative imagery, generic boardrooms, or pity-bait close-ups. These are field notes from the people MPower is built for.
+      </p>
+    </div>
+  </section>
+
+  {featured && (
+    <section class="section-tight">
+      <div class="container">
+        <hr class="rule" style="margin-bottom: 48px;" />
+        <div class="mono" style={`color: ${featured.accent};`}>★ Featured · {featured.vertical} · {featured.location}</div>
+        <h2 class="display feat-title">{featured.title}</h2>
+        <div class="feat-row">
+          <p class="body-lg feat-lede">{featured.lede}</p>
+          <div class="feat-meta">
+            <span class="mono">{featured.readMinutes} min read · 2026</span>
+            <a href={`/stories/${featured.slug}`} class="btn btn-primary">Read the story <span class="arr">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <span class="mono accent">§ 02 · More field notes</span>
+      <div class="story-list">
+        {rest.map((s) => (
+          <a class="story-row" href={`/stories/${s.slug}`}>
+            <span class="mono story-tag" style={`color: ${s.accent};`}>{s.vertical} · {s.location}</span>
+            <div class="story-meat">
+              <h3 class="display story-title">{s.title}</h3>
+              <p class="body story-lede">{s.lede}</p>
+            </div>
+            <span class="mono story-read" style={`color: ${s.accent};`}>{s.readMinutes} min → Read</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .stories-h1 { font-size: var(--t-h1); max-width: 14ch; }
+  .stories-lede { margin-top: 32px; max-width: 60ch; opacity: .9; }
+
+  .feat-title { font-size: var(--t-h2); margin-top: 24px; max-width: 24ch; line-height: 1.0; }
+  .feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px; align-items: center; }
+  .feat-lede { max-width: 48ch; opacity: .9; }
+  .feat-meta { display: flex; gap: 24px; justify-content: flex-end; align-items: center; flex-wrap: wrap; }
+
+  .story-list { margin-top: 32px; }
+  .story-row {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 1fr;
+    gap: 48px;
+    padding-block: 36px;
+    border-top: 1px solid var(--c-rule);
+    align-items: baseline;
+    text-decoration: none; color: inherit;
+    transition: background .15s var(--ease-out);
+  }
+  .story-row:hover { background: rgba(232,238,244,0.02); }
+  .story-row:last-child { border-bottom: 1px solid var(--c-rule); }
+  .story-title { font-size: var(--t-h4); margin-bottom: 10px; }
+  .story-lede { max-width: 52ch; opacity: .82; }
+  .story-read { text-align: right; }
+
+  @media (max-width: 860px) {
+    .feat-row { grid-template-columns: 1fr; }
+    .feat-meta { justify-content: flex-start; }
+    .story-row { grid-template-columns: 1fr; gap: 8px; }
+    .story-read { text-align: left; }
+  }
+</style>

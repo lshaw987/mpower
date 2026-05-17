@@ -1,0 +1,255 @@
+---
+import Base from '../layouts/Base.astro';
+import GreenBlock from '../components/GreenBlock.astro';
+import VerticalCard from '../components/VerticalCard.astro';
+---
+<Base title="MPower" current="Home" description="MPower — knowledge, power, yours. Pre-launch in Aotearoa NZ, 2026. Equip2MPower.">
+
+  {/* Hero ─────────────────────────────────────────────────────────────── */}
+  <section class="hero">
+    <div class="container">
+      <div class="mono hero-kicker">§ Pre-launch | NZ based, globally relevant | 2026</div>
+      <h1 class="display hero-title">
+        Knowledge. <span class="i-accent">Power.</span> Yours.
+      </h1>
+      <p class="body-lg hero-sub">
+        MPower is the answer you came for — in your language, on your phone, in the moment you need it. We're built so people don't need us. <span class="accent">Equip<em>2</em>MPower.</span>
+      </p>
+      <div class="hero-ctas">
+        <a href="/waitlist" class="btn btn-primary">Join the waitlist <span class="arr">→</span></a>
+        <a href="/about" class="btn btn-ghost">Read why <span class="arr">→</span></a>
+      </div>
+
+      <hr class="rule" style="margin-top: 72px;" />
+      <div class="hero-footnote">
+        <span class="mono">Fig. 01 — The name encodes the journey.</span>
+        <span class="mono">Equip them. Then empower.</span>
+      </div>
+    </div>
+  </section>
+
+  {/* Manifesto — C-direction long-form ──────────────────────────────────── */}
+  <section class="manifesto">
+    <div class="container">
+      <div class="mf-kicker mono">§ 01 · The manifesto</div>
+      <h2 class="mf-statement display">
+        We believe people are <span class="i-accent">already capable.</span>
+      </h2>
+      <div class="mf-body">
+        <aside class="mf-side">
+          <span class="mono">§ The why</span>
+          <p class="mf-aside body-sm">The world doesn't lack for expertise. It lacks for delivery.</p>
+        </aside>
+        <div class="mf-prose">
+          <p class="body-lg mf-lede">
+            They just need the right tools, in the right place, in their own language. Good knowledge is locked behind paywalls, buried in jargon, sitting in offices of people who don't share.
+          </p>
+          <p class="body mf-graf">
+            That's a delivery failure, not a capability gap. MPower is what people become — not what we do <em>to</em> them. The italic <span class="accent" style="font-style:italic;font-weight:700;">2</span> in our tagline is the bridge between knowing and doing. <span class="accent">Equip them. Then empower.</span>
+          </p>
+          <p class="body mf-graf">
+            We're designing from the hardest case outward. The smallholder farmer on patchy data. The teacher with a hand-me-down phone. The community health worker between visits. Build for them and the work gets better for everyone.
+          </p>
+        </div>
+      </div>
+      <hr class="rule mf-rule" />
+      <p class="mf-pull display">
+        Success looks like the day you <span class="i-accent">don't need us</span> anymore — but you stay because you love being part of our community, and keep <span class="i-accent">growing, thriving, flourishing.</span>
+      </p>
+    </div>
+  </section>
+
+  {/* Verticals — A-style cards ─────────────────────────────────────────── */}
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="mono">§ 02 · The Family · Phase 1</span>
+        <h2 class="display" style="font-size: var(--t-h2); max-width: 18ch;">
+          Two homes <span class="i-accent">at launch.</span>
+        </h2>
+      </div>
+
+      <div class="vert-grid">
+        <VerticalCard
+          name="Agri"
+          tagline="For people who work with soil and seasons."
+          body="Straight answers when the weather turns, the soil tests come back odd, or the price drops. No agronomist on retainer required. Built with NZ farmers, for NZ farmers — paddock by paddock, season by season."
+          url="https://agri.mpowerhq.co.nz"
+          accent="var(--c-clay)"
+          ink="var(--c-wheat)"
+          tags={[['Clay','#C04B26'],['Earth','#8B2F15'],['Wheat','#FFD9A8'],['Soil','#2D1810']]}
+        />
+        <VerticalCard
+          name="Ed"
+          tagline="For everyone who learns. For everyone who teaches."
+          body="The colour humans have used to write knowledge for 4,000 years — cuneiform to fountain pen to printed page. Gold is the spark. We skip the lazy edtech blue."
+          url="https://ed.mpowerhq.co.nz"
+          accent="var(--c-indigo)"
+          ink="var(--c-page)"
+          tags={[['Indigo','#4338CA'],['Night','#1E1B4B'],['Gold','#FCD34D'],['Page','#E0E7FF']]}
+        />
+      </div>
+
+      <div class="vert-future">
+        <div class="mono">§ 02 · To be earned — 2027 onward</div>
+        <div class="vert-grid-3">
+          <VerticalCard name="Health"  tagline="Life and care." body="Cardinal red — used across every culture for medical and spiritual healing." accent="#B91C1C" coming={true} />
+          <VerticalCard name="Finance" tagline="Trust and value." body="Obsidian and gold leaf. Skips both bank-blue and money-green." accent="#0A0A0A" coming={true} />
+          <VerticalCard name="Civic"   tagline="Authority and judgement." body="Deep purple — skips political-party associations." accent="#5B21B6" coming={true} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* The B-direction green block ───────────────────────────────────────── */}
+  <GreenBlock
+    kicker="§ The why behind the work"
+    cta={{ href: '/about', label: 'Read the why' }}
+  >
+    <h2>Built so you <em>don't need us</em> anymore.</h2>
+    <p>
+      People are already capable. They just need the right tools, in the right place, in their own language. The world doesn't lack for expertise — it lacks for delivery.
+    </p>
+  </GreenBlock>
+
+  {/* How it works teaser ───────────────────────────────────────────────── */}
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="mono">§ How it works</span>
+        <h2 class="display" style="font-size: var(--t-h2); max-width: 22ch;">
+          Real answers. <span class="i-accent">No jargon. No gatekeepers.</span>
+        </h2>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <h3 class="heading step-title">Tell us what you need.</h3>
+          <p class="body step-body">Plain question, plain language. Voice note, text, your own dialect — whatever works on your phone, on patchy data.</p>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <h3 class="heading step-title">We deliver the answer.</h3>
+          <p class="body step-body">No paywalls. No jargon. No 40-page PDF. The thing you came for, in the moment you came for it.</p>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <h3 class="heading step-title">You take it from there.</h3>
+          <p class="body step-body">Try it. Tweak it for your land, your classroom, your community. Pass it on.</p>
+        </li>
+      </ol>
+
+      <a href="/how-it-works" class="btn btn-ghost" style="margin-top: 56px;">
+        Read the full principle <span class="arr">→</span>
+      </a>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* Hero -------------------------------------------------------------- */
+  .hero { padding-block: clamp(80px, 12vw, 180px); }
+  .hero-kicker { color: var(--c-spring); margin-bottom: 32px; }
+  .hero-title {
+    font-size: var(--t-display);
+    max-width: 14ch;
+    line-height: 0.92;
+  }
+  .hero-sub {
+    margin-top: clamp(28px, 3vw, 44px);
+    max-width: 60ch;
+    font-size: var(--t-body-lg);
+    opacity: .9;
+  }
+  .hero-ctas {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    margin-top: clamp(36px, 4vw, 56px);
+  }
+  .hero-footnote {
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    padding-top: 18px;
+  }
+  .hero-footnote .mono:first-child { color: var(--c-spring); }
+
+  /* Manifesto --------------------------------------------------------- */
+  .manifesto { padding-block: clamp(80px, 10vw, 140px); border-top: 1px solid var(--c-rule); }
+  .mf-kicker { color: var(--c-spring); margin-bottom: 32px; letter-spacing: 0.18em; }
+  .mf-statement {
+    font-size: clamp(56px, 7vw, 104px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    max-width: 22ch;
+    padding-bottom: 0.1em;
+  }
+  .mf-body {
+    display: grid;
+    grid-template-columns: 1fr 2.4fr;
+    gap: clamp(40px, 6vw, 96px);
+    margin-top: clamp(48px, 6vw, 80px);
+  }
+  .mf-side .mono { color: var(--c-spring); display: block; margin-bottom: 14px; }
+  .mf-aside { font-style: italic; opacity: .85; max-width: 28ch; }
+  .mf-prose { max-width: 62ch; }
+  .mf-lede { font-size: clamp(20px, 1.8vw, 26px); line-height: 1.5; opacity: .92; }
+  .mf-graf { margin-top: 24px; opacity: .85; }
+  .mf-rule { margin-top: clamp(56px, 6vw, 88px); }
+  .mf-pull {
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    max-width: 24ch;
+    margin-top: clamp(36px, 4vw, 56px);
+    padding-bottom: 0.1em;
+  }
+  @media (max-width: 860px) {
+    .mf-body { grid-template-columns: 1fr; }
+  }
+
+  /* Verticals --------------------------------------------------------- */
+  .vert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .vert-future { margin-top: clamp(64px, 7vw, 96px); }
+  .vert-future > .mono { color: var(--c-fog); margin-bottom: 24px; display: block; }
+  .vert-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 860px) {
+    .vert-grid { grid-template-columns: 1fr; }
+    .vert-grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* Steps ------------------------------------------------------------- */
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .steps li {
+    padding: 32px 28px 32px 0;
+    border-top: 1px solid var(--c-rule);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .step-num {
+    font-family: var(--f-display);
+    font-weight: 800;
+    color: var(--c-spring);
+    font-size: clamp(36px, 4vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .step-title { font-size: var(--t-h4); }
+  .step-body  { max-width: 36ch; opacity: .85; }
+
+  @media (max-width: 860px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+</style>

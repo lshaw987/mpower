@@ -1,0 +1,63 @@
+---
+/**
+ * Full-bleed Spring-green statement block. The B-direction's "loud" moment,
+ * dropped into the C-direction's quiet long-read. Use sparingly — once per
+ * page, max.
+ *
+ * Props:
+ *   kicker  — small mono caps above (optional)
+ *   children — the big statement itself, wrapped in <h2>/<p>
+ *   cta     — { href, label } for an optional button
+ */
+interface Props {
+  kicker?: string;
+  cta?: { href: string; label: string } | null;
+}
+const { kicker, cta = null } = Astro.props;
+---
+<section class="gb">
+  <div class="container">
+    {kicker && <div class="mono gb-kicker">{kicker}</div>}
+    <div class="gb-body"><slot /></div>
+    {cta && (
+      <a href={cta.href} class="btn gb-cta">{cta.label} <span class="arr">→</span></a>
+    )}
+  </div>
+</section>
+
+<style>
+  .gb {
+    background: var(--c-spring);
+    color: var(--c-spring-ink);
+    padding-block: clamp(96px, 12vw, 180px);
+  }
+  .gb-kicker { color: var(--c-spring-ink); opacity: .65; margin-bottom: 28px; }
+  .gb-body :global(h2) {
+    font-family: var(--f-display);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.96;
+    font-size: var(--t-h1);
+    max-width: 18ch;
+    color: var(--c-spring-ink);
+    text-wrap: balance;
+  }
+  .gb-body :global(em),
+  .gb-body :global(.i) {
+    font-style: italic;
+    font-weight: 800;
+  }
+  .gb-body :global(p) {
+    margin-top: 28px; max-width: 60ch;
+    font-size: var(--t-body-lg);
+    line-height: 1.5;
+    color: var(--c-spring-ink);
+    opacity: .85;
+  }
+  .gb-cta {
+    margin-top: clamp(36px, 4vw, 56px);
+    background: var(--c-spring-ink);
+    color: var(--c-spring);
+  }
+  .gb-cta:hover { background: #000; }
+</style>

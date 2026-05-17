@@ -1,0 +1,170 @@
+---
+/**
+ * The A-style vertical card — large coloured edge, mono label, body copy,
+ * tag list. Used on the homepage (Agri + Ed side-by-side) and re-used on
+ * the Verticals page. Future verticals use the same component with
+ * `coming` to dash the edge and dim the card.
+ *
+ * Props:
+ *   name      — "Agri", "Ed", "Health" etc
+ *   tagline   — short editorial line
+ *   body      — paragraph
+ *   url       — link target (sub-domain or in-site anchor)
+ *   tags      — color chips, e.g. [['Clay','#C04B26'], ...]
+ *   accent    — CSS color for the edge + M
+ *   ink       — CSS color for the tagline (defaults to mist)
+ *   coming    — boolean; dashes the edge and reads "soon"
+ */
+interface Props {
+  name: string;
+  tagline: string;
+  body: string;
+  url?: string;
+  tags?: [string, string][];
+  accent: string;
+  ink?: string;
+  coming?: boolean;
+  badge?: string; // override the "01" / "02" badge text
+}
+const {
+  name,
+  tagline,
+  body,
+  url,
+  tags = [],
+  accent,
+  ink,
+  coming = false,
+  badge,
+} = Astro.props;
+const Tag = url && !coming ? 'a' : 'div';
+---
+<Tag
+  href={url}
+  class:list={['vc', { 'vc-coming': coming }]}
+  style={`--vc-accent: ${accent}; --vc-ink: ${ink || 'var(--c-mist)'};`}
+>
+  <div class="vc-edge"></div>
+  <div class="vc-body">
+    <div class="vc-row">
+      <span class="mono vc-mono">{badge || (coming ? `Future · MPower ${name}` : `MPower ${name}`)}</span>
+      {!coming && <span class="mono vc-host">{name.toLowerCase()}.mpowerhq.co.nz</span>}
+    </div>
+
+    <h3 class="vc-name">
+      <span class="vc-m">M</span>Power <em class="vc-italic">{name}</em>
+    </h3>
+    <p class="vc-tagline">{tagline}</p>
+    <p class="body vc-blurb">{body}</p>
+
+    {tags.length > 0 && (
+      <ul class="vc-tags">
+        {tags.map(([label, hex]) => (
+          <li class="vc-tag">
+            <span class="vc-swatch" style={`background: ${hex};`}></span>
+            <span>{label}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {!coming && (
+      <div class="vc-arrow" aria-hidden="true">
+        Open <span class="arr">→</span>
+      </div>
+    )}
+  </div>
+</Tag>
+
+<style>
+  .vc {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    background: var(--c-steel);
+    border: 1px solid var(--c-rule-soft);
+    border-radius: 4px;
+    overflow: hidden;
+    color: var(--c-mist);
+    transition: transform .25s var(--ease-out), border-color .15s var(--ease-out);
+    text-decoration: none;
+  }
+  a.vc:hover {
+    transform: translateY(-3px);
+    border-color: var(--vc-accent);
+  }
+  a.vc:hover .vc-arrow { color: var(--vc-accent); }
+  a.vc:hover .vc-arrow .arr { transform: translateX(4px); }
+
+  .vc-edge {
+    background: var(--vc-accent);
+    height: 100%;
+  }
+  .vc-coming .vc-edge {
+    background: repeating-linear-gradient(
+      135deg,
+      var(--vc-accent) 0 8px,
+      transparent 8px 16px
+    );
+    opacity: .6;
+  }
+  .vc-coming { opacity: .65; }
+
+  .vc-body { padding: clamp(28px, 3.2vw, 44px); display: flex; flex-direction: column; gap: 18px; }
+
+  .vc-row {
+    display: flex; justify-content: space-between; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .vc-mono { color: var(--vc-accent); }
+  .vc-host { color: var(--c-fog); }
+
+  .vc-name {
+    font-family: var(--f-display);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: clamp(40px, 4.5vw, 72px);
+    line-height: 0.96;
+  }
+  .vc-m { color: var(--vc-accent); }
+  .vc-italic { font-style: italic; color: var(--vc-ink); font-weight: 500; }
+
+  .vc-tagline {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(20px, 1.6vw, 26px);
+    color: var(--vc-ink);
+    line-height: 1.3;
+    max-width: 32ch;
+  }
+  .vc-blurb { color: var(--c-mist); opacity: .82; max-width: 52ch; }
+
+  .vc-tags {
+    list-style: none; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+    margin-top: 8px;
+  }
+  .vc-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--f-mono); font-size: var(--t-mono);
+    color: var(--c-fog); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .vc-swatch {
+    width: 16px; height: 16px; border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+  }
+
+  .vc-arrow {
+    margin-top: auto;
+    font-family: var(--f-mono); font-size: var(--t-mono);
+    color: var(--c-mist); text-transform: uppercase; letter-spacing: 0.14em;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: color .15s var(--ease-out);
+  }
+  .vc-arrow .arr { transition: transform .2s var(--ease-out); }
+
+  @media (max-width: 600px) {
+    .vc-name { font-size: 44px; }
+  }
+</style>

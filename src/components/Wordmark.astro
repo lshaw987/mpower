@@ -1,0 +1,57 @@
+---
+/**
+ * MPower wordmark. The "M" is Spring green; the rest is Mist (or inherits).
+ * The optional tagline lockup adds "Equip2MPower" underneath with the
+ * italic 2 — only shown at display sizes (see tokens for context).
+ *
+ * Props:
+ *   size: 'sm' | 'md' | 'lg'  (controls font-size — wraps in clamp)
+ *   tagline: boolean          (show "Equip2MPower" beneath)
+ */
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  tagline?: boolean;
+  href?: string | null;
+}
+const { size = 'md', tagline = false, href = '/' } = Astro.props;
+const sizeClass = `wm wm-${size}`;
+---
+{href ? (
+  <a href={href} class={sizeClass} aria-label="MPower — home">
+    <span class="wm-mark"><span class="wm-m">M</span>Power</span>
+    {tagline && (
+      <span class="wm-tag">Equip<span class="wm-2">2</span>MPower</span>
+    )}
+  </a>
+) : (
+  <span class={sizeClass}>
+    <span class="wm-mark"><span class="wm-m">M</span>Power</span>
+    {tagline && (
+      <span class="wm-tag">Equip<span class="wm-2">2</span>MPower</span>
+    )}
+  </span>
+)}
+
+<style>
+  .wm { display: inline-flex; flex-direction: column; gap: 2px; line-height: 1; color: inherit; }
+  .wm-mark {
+    font-family: var(--f-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .wm-m { color: var(--c-spring); }
+  .wm-sm .wm-mark { font-size: 22px; }
+  .wm-md .wm-mark { font-size: 28px; }
+  .wm-lg .wm-mark { font-size: clamp(48px, 6vw, 88px); }
+
+  .wm-tag {
+    font-family: var(--f-display);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--c-fog);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .wm-lg .wm-tag { font-size: clamp(16px, 1.5vw, 22px); margin-top: 8px; }
+  .wm-2 { font-style: italic; color: var(--c-spring); font-weight: 800; }
+</style>

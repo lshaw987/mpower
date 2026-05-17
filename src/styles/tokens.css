@@ -1,0 +1,80 @@
+/* MPower brand tokens — single source of truth
+   ----------------------------------------------
+   Pulled from the Equip2MPower brand book v1.0.
+   Anything that ships needs to come from these vars; never hard-code a hex.
+*/
+
+:root {
+  /* Palette ------------------------------------------------------------- */
+  /* Parent brand: Deep Sea base with Spring green as the only accent.    */
+  --c-deep-sea: #0B1620;       /* primary background */
+  --c-steel:    #1A2733;       /* surface 1 (cards on dark, the green block's neighbour) */
+  --c-steel-2:  #11202B;       /* surface 2 (banded sections, slightly lifted from base) */
+  --c-mist:     #E8EEF4;       /* primary text on dark */
+  --c-fog:      #8B9AAB;       /* secondary text / mono labels */
+  --c-rule:     rgba(232, 238, 244, 0.16); /* hairline dividers */
+  --c-rule-soft:rgba(232, 238, 244, 0.10);
+
+  --c-spring:   #4ADE80;       /* THE accent — used sparingly */
+  --c-spring-2: #22C55E;       /* hover state */
+  --c-spring-ink:#052e16;      /* text on Spring green surfaces */
+
+  /* Sub-brand accents (Agri + Ed) --------------------------------------- */
+  --c-clay:     #C04B26;
+  --c-earth:    #8B2F15;
+  --c-wheat:    #FFD9A8;
+  --c-soil:     #2D1810;
+
+  --c-indigo:   #4338CA;
+  --c-night:    #1E1B4B;
+  --c-gold:     #FCD34D;
+  --c-page:     #E0E7FF;
+
+  /* Type ---------------------------------------------------------------- */
+  --f-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --f-display: 'Plus Jakarta Sans', sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Modular scale — clamps for responsive type ---------------------------
+     Base = 17px mobile, 18px desktop. Scale ratio ~1.25 on phone, 1.333 on
+     desktop. Display sizes shrink hard on mobile so headlines stay punchy
+     without overflowing on a 360px screen. */
+  --t-mono:   clamp(11px, 0.72vw + 8px, 13px);
+  --t-body-sm:clamp(14px, 0.3vw + 13px, 15px);
+  --t-body:   clamp(16px, 0.4vw + 15px, 18px);
+  --t-body-lg:clamp(18px, 0.6vw + 16px, 22px);
+  --t-h4:     clamp(22px, 1.2vw + 18px, 30px);
+  --t-h3:     clamp(28px, 2.0vw + 20px, 48px);
+  --t-h2:     clamp(40px, 4.2vw + 22px, 80px);
+  --t-h1:     clamp(56px, 7.5vw + 24px, 128px);
+  --t-display:clamp(72px, 10vw + 24px, 160px);  /* the big home hero */
+
+  /* Spacing scale — used as section paddings and gaps ------------------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10:128px;
+
+  /* Page gutter — generous on desktop, tight on phone for max content width */
+  --gutter: clamp(20px, 5vw, 96px);
+  --content-max: 1280px;
+
+  /* Motion -------------------------------------------------------------- */
+  --ease-out: cubic-bezier(.2,.7,.3,1);
+  --ease-in-out: cubic-bezier(.6,.05,.4,1);
+}
+
+/* Honour reduced-motion. The site is mostly static anyway — kill the few
+   transitions that exist. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

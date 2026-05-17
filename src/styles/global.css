@@ -1,0 +1,126 @@
+/* MPower global styles
+   --------------------
+   Imported once from Base.astro. Everything below is unscoped on purpose —
+   these are the reset + type primitives + utility classes the whole site
+   leans on. Component-specific styles live in their .astro files.
+*/
+
+@import './tokens.css';
+
+/* Fonts — Plus Jakarta Sans (display + body) and JetBrains Mono (labels).
+   Loaded from Google Fonts with display=swap so the page never blocks on
+   font download. Subset to latin + latin-ext for now; add other ranges
+   when we launch in te reo / Pacific languages. */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Reset ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--c-deep-sea);
+  color: var(--c-mist);
+  font-family: var(--f-sans);
+  font-size: var(--t-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Prevent iOS Safari font-boost on landscape orientation change */
+  -webkit-text-size-adjust: 100%;
+}
+img, picture, svg, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+/* Selection — keep on-brand */
+::selection { background: var(--c-spring); color: var(--c-spring-ink); }
+
+/* Type primitives ------------------------------------------------------ */
+.display {
+  font-family: var(--f-display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+.heading {
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.mono {
+  font-family: var(--f-mono);
+  font-size: var(--t-mono);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-fog);
+}
+.body-lg { font-size: var(--t-body-lg); line-height: 1.5; }
+.body    { font-size: var(--t-body);    line-height: 1.6; }
+.body-sm { font-size: var(--t-body-sm); line-height: 1.55; color: var(--c-fog); }
+
+/* "Italic 2" — used in the tagline + accent moments */
+.i-accent { font-style: italic; color: var(--c-spring); font-weight: 800; }
+.accent   { color: var(--c-spring); }
+
+/* Layout helpers ------------------------------------------------------- */
+.container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  width: 100%;
+}
+.section { padding-block: clamp(64px, 9vw, 140px); }
+.section-tight { padding-block: clamp(48px, 6vw, 96px); }
+
+.rule { height: 1px; background: var(--c-rule); border: 0; }
+.rule-bright { height: 1px; background: var(--c-spring); border: 0; }
+
+/* Buttons -------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: var(--t-body);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .15s var(--ease-out), background .15s var(--ease-out),
+              color .15s var(--ease-out), border-color .15s var(--ease-out);
+  font-family: inherit;
+}
+.btn .arr { transition: transform .2s var(--ease-out); }
+.btn:hover .arr { transform: translateX(3px); }
+
+.btn-primary { background: var(--c-spring); color: var(--c-spring-ink); }
+.btn-primary:hover { background: var(--c-spring-2); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--c-mist);
+  border-color: var(--c-rule);
+}
+.btn-ghost:hover { border-color: var(--c-mist); background: rgba(255,255,255,0.04); }
+
+/* Section heads — § marker + title + optional subtitle */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+/* Focus ring — keyboard only, on brand */
+:focus-visible {
+  outline: 2px solid var(--c-spring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Phone fix: stop horizontal scroll if any descendant overflows */
+body { overflow-x: hidden; }

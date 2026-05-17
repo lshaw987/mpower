@@ -1,0 +1,112 @@
+---
+import Wordmark from './Wordmark.astro';
+interface Props { current?: string }
+const { current = '' } = Astro.props;
+const links = [
+  { href: '/about',         label: 'About' },
+  { href: '/verticals',     label: 'Verticals' },
+  { href: '/how-it-works',  label: 'How it works' },
+  { href: '/stories',       label: 'Stories' },
+];
+---
+<header class="nav">
+  <div class="nav-inner container">
+    <Wordmark size="sm" />
+    <nav class="nav-links" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href} class:list={['nav-link', { 'is-current': current === l.label }]}>{l.label}</a>
+      ))}
+    </nav>
+    <a href="/waitlist" class="btn btn-primary nav-cta">Join the waitlist <span class="arr">→</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  {/* Mobile drawer */}
+  <div id="nav-drawer" class="nav-drawer" hidden>
+    <nav aria-label="Mobile">
+      {links.map((l) => (
+        <a href={l.href} class:list={['drawer-link', { 'is-current': current === l.label }]}>{l.label}</a>
+      ))}
+      <a href="/waitlist" class="btn btn-primary drawer-cta">Join the waitlist <span class="arr">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11, 22, 32, 0.85);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--c-rule-soft);
+  }
+  .nav-inner {
+    display: flex; align-items: center; gap: 24px;
+    padding-block: 14px;
+  }
+  .nav-links {
+    display: flex; gap: 28px; flex: 1;
+    margin-left: 32px;
+  }
+  .nav-link {
+    font-size: 15px; font-weight: 500;
+    color: var(--c-mist);
+    opacity: .78;
+    transition: opacity .15s var(--ease-out), color .15s var(--ease-out);
+  }
+  .nav-link:hover { opacity: 1; }
+  .nav-link.is-current { opacity: 1; color: var(--c-spring); }
+  .nav-cta { padding: 10px 18px; font-size: 14px; }
+
+  /* Mobile toggle (hamburger) — three lines */
+  .nav-toggle {
+    display: none;
+    background: none; border: 0; cursor: pointer;
+    width: 36px; height: 36px;
+    padding: 6px;
+    flex-direction: column; justify-content: space-between;
+  }
+  .nav-toggle span {
+    display: block; height: 2px; background: var(--c-mist); border-radius: 2px;
+    transition: transform .2s var(--ease-out), opacity .2s var(--ease-out);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+  .nav-drawer {
+    border-top: 1px solid var(--c-rule-soft);
+    padding: 24px var(--gutter);
+    background: var(--c-deep-sea);
+  }
+  .nav-drawer[hidden] { display: none; }
+  .nav-drawer nav { display: flex; flex-direction: column; gap: 18px; }
+  .drawer-link {
+    font-size: 22px; font-weight: 600;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--c-rule-soft);
+  }
+  .drawer-link.is-current { color: var(--c-spring); }
+  .drawer-cta { align-self: flex-start; margin-top: 8px; }
+
+  @media (max-width: 860px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+  }
+</style>
+
+<script>
+  // Mobile drawer toggle — vanilla. No framework needed.
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('nav-drawer');
+  if (toggle && drawer) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      if (open) drawer.setAttribute('hidden', '');
+      else drawer.removeAttribute('hidden');
+    });
+  }
+</script>

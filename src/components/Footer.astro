@@ -1,0 +1,95 @@
+---
+import Wordmark from './Wordmark.astro';
+const year = new Date().getFullYear();
+---
+<footer class="ft">
+  <div class="container">
+    <hr class="rule-bright" />
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <Wordmark size="md" tagline={true} href={null} />
+        <p class="body-sm" style="max-width:320px; margin-top:20px;">
+          Made with 💓. MPower HQ.<br />
+          Aotearoa New Zealand · 2026.
+        </p>
+      </div>
+
+      <div>
+        <div class="mono">Family</div>
+        <ul class="ft-list">
+          <li><a href="/verticals#agri">MPower <em>Agri</em></a></li>
+          <li><a href="/verticals#ed">MPower <em>Ed</em></a></li>
+          <li class="ft-soft">MPower Health · 2027</li>
+          <li class="ft-soft">MPower Finance · TBA</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="mono">Read</div>
+        <ul class="ft-list">
+          <li><a href="/about">About</a></li>
+          <li><a href="/how-it-works">How it works</a></li>
+          <li><a href="/stories">Stories</a></li>
+          <li><a href="/waitlist">Waitlist</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="mono">Reach us</div>
+        <ul class="ft-list">
+          <li><a href="/contact">Contact &amp; partnerships</a></li>
+          <li><a href="mailto:kia.ora@mpowerhq.co.nz">kia.ora@mpowerhq.co.nz</a></li>
+          <li class="ft-soft">mpowerhq.co.nz</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ft-bottom">
+      <span class="mono">© {year} MPower · Aotearoa NZ</span>
+      <nav class="ft-legal" aria-label="Legal">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+      <span class="mono">Built for the hardest case first.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft { padding-top: 64px; padding-bottom: 40px; background: var(--c-deep-sea); }
+  .ft-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    padding-top: 48px;
+  }
+  .ft-list { list-style: none; padding: 0; margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .ft-list a { color: var(--c-mist); opacity: .82; }
+  .ft-list a:hover { color: var(--c-spring); opacity: 1; }
+  .ft-list em { font-style: italic; color: var(--c-fog); font-weight: 500; }
+  .ft-soft { color: var(--c-fog); font-size: var(--t-body-sm); }
+
+  .ft-bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 24px;
+    padding-top: 32px; margin-top: 48px;
+    border-top: 1px solid var(--c-rule-soft);
+  }
+  .ft-legal { display: flex; gap: 20px; }
+  .ft-legal a {
+    font-family: var(--f-mono);
+    font-size: var(--t-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-fog);
+  }
+  .ft-legal a:hover { color: var(--c-spring); }
+
+  @media (max-width: 860px) {
+    .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .ft-brand { grid-column: span 2; }
+  }
+  @media (max-width: 480px) {
+    .ft-grid { grid-template-columns: 1fr; }
+    .ft-brand { grid-column: span 1; }
+  }
+</style>

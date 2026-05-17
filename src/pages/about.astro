@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import GreenBlock from '../components/GreenBlock.astro';
+---
+<Base title="About" current="About" description="The why behind MPower. People are already capable — they just need the right tools, in the right place, in their own language.">
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ About · The why · 2026</div>
+      <h1 class="display about-h1">
+        People are <span class="i-accent">already capable.</span>
+      </h1>
+      <p class="body-lg about-lede">
+        They just need the right tools, in the right place, in their own language. The world doesn't lack for expertise. It lacks for delivery.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <span class="mono accent">§ 01</span>
+        <h2 class="heading two-col-title">The name encodes the journey.</h2>
+      </div>
+      <div>
+        <p class="body-lg">
+          MPower is what people become — not what we do <em>to</em> them. The italic <span class="i-accent">2</span> in the tagline is the bridge between knowing and doing. <span class="accent">Equip them. Then empower.</span>
+        </p>
+        <p class="body" style="margin-top: 24px; opacity: .82;">
+          Equip in, MPower out. The italic 2 only appears at display sizes — in body text it reads as standard. Everywhere else, it stays as a small mark of the brand's confidence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="mono accent">§ 02 · Three audiences</span>
+      <h2 class="display audience-title">
+        We design from <span class="i-accent">the hardest case</span> outward.
+      </h2>
+
+      <div class="audiences">
+        <article>
+          <h3 class="heading">Individuals</h3>
+          <p class="body-lg">The person who needs an answer right now. The smallholder farmer. The teacher. The community health worker. The first-generation business owner.</p>
+        </article>
+        <article>
+          <h3 class="heading">Organisations</h3>
+          <p class="body-lg">NGOs, cooperatives, government extension services, community groups. Existing to serve the individuals above and needing a platform to scale their reach.</p>
+        </article>
+        <article>
+          <h3 class="heading">Communities</h3>
+          <p class="body-lg">Networks of practice. Villages, regions, professional groups. Where knowledge moves between peers — not just expert to learner.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <GreenBlock kicker="§ 03 · Closer">
+    <h2>You were always capable. <em>Now you're equipped.</em></h2>
+  </GreenBlock>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .about-h1 { font-size: var(--t-h1); max-width: 18ch; }
+  .about-lede { margin-top: 32px; max-width: 60ch; opacity: .9; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+  }
+  .two-col-title { font-size: var(--t-h4); margin-top: 14px; max-width: 14ch; }
+
+  .audience-title { font-size: var(--t-h2); margin-top: 28px; max-width: 22ch; }
+  .audiences { margin-top: 56px; display: flex; flex-direction: column; gap: 36px; }
+  .audiences article {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--c-rule);
+  }
+  .audiences h3 { font-size: var(--t-h3); }
+  .audiences p { max-width: 56ch; opacity: .86; }
+
+  @media (max-width: 860px) {
+    .two-col { grid-template-columns: 1fr; gap: 24px; }
+    .audiences article { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>

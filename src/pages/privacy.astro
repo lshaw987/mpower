@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Privacy"
+  description="What we collect, why, and the promise underneath it: we never sell your data. Plain language, the same as everything else here."
+>
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ Privacy · 2026</div>
+      <h1 class="display legal-h1">Privacy.</h1>
+      <p class="flag">
+        Draft — plain-language orientation, not a finished legal document. A privacy lawyer reviews this and resolves the flagged items before the site goes live.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="prose">
+        <h2>The short version</h2>
+        <p>We collect the least we can, we use it to run MPower and nothing sneaky, and we never sell it. That's the whole idea. The detail is below in plain language. If anything here isn't clear, email us and ask — <a href="mailto:kia.ora@mpowerhq.co.nz">kia.ora@mpowerhq.co.nz</a>.</p>
+
+        <h2>What we collect, and why</h2>
+        <p><strong>When you give us your email</strong> (newsletter, the Edu waitlist, or just to stay posted): your email address, and the list you joined. We use it to send you what you signed up for. Nothing else.</p>
+        <p><strong>When you start a trial or become a member:</strong> your name, email, and the payment details you enter. Payment is handled by a dedicated payment provider — your card details go to them, not into our systems. We see that a payment happened, not your card number.</p>
+        <p><strong>When you're inside the community:</strong> the account you create in Circle (the community) and your access to Notion (the resource library), plus what you post and how you use it — so the community works and we can make it better.</p>
+        <p><strong>Basic site analytics:</strong> how people find and move through the site. This is about the site, not about you personally being tracked across the internet.</p>
+        <p class="flag flag-inline">To confirm before launch: the named payment processor, the named analytics tool and whether it uses cookies. Not invented here.</p>
+        <p>We don't collect anything we don't need. If we ever want to collect something new, we'll tell you why first.</p>
+
+        <h2>Who else touches it</h2>
+        <p>To run MPower we use a few trusted tools, and your data passes through them: the payment provider, Circle (where the community lives), Notion (the resource library), our email platform, and site analytics. Each one only gets what it needs to do its job. We don't hand your details to anyone outside that list.</p>
+
+        <h2>The promise</h2>
+        <p>We do not sell your data. We do not rent it. We do not hand it to advertisers, sponsors or anyone selling something. There are no ads in here and no affiliate deals. That's the same promise we make about the community itself — nobody is ever selling you anything in MPower, and that includes us selling you.</p>
+
+        <h2>How long we keep it, and getting it removed</h2>
+        <p>We keep your information for as long as you're with us, and for a reasonable while after so we can sort out anything like billing questions. You can ask us what we hold about you, ask us to fix it, or ask us to delete it. Email <a href="mailto:kia.ora@mpowerhq.co.nz">kia.ora@mpowerhq.co.nz</a> and a human will sort it.</p>
+        <p class="flag flag-inline">To confirm before launch: retention period and the NZ Privacy Act response timeframe — lawyer to set the exact wording.</p>
+
+        <h2>Your choices</h2>
+        <ul>
+          <li><strong>Email:</strong> unsubscribe in one click from any email. Done.</li>
+          <li><strong>Membership:</strong> cancel in one click, anytime, from your account. No phone call, no guilt.</li>
+          <li><strong>Your data:</strong> ask and we'll tell you what we've got, fix it, or remove it.</li>
+        </ul>
+
+        <h2>Changes to this page</h2>
+        <p>If we change how we handle your data, we'll update this page and, if it's a real change, we'll tell you directly rather than burying it. The date of the last update sits at the bottom.</p>
+
+        <h2>Contact</h2>
+        <p>Questions about any of this? Email <a href="mailto:kia.ora@mpowerhq.co.nz">kia.ora@mpowerhq.co.nz</a>. A person reads it.</p>
+        <p class="mono dim">Last updated: [set on publish]</p>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .legal-h1 { font-size: var(--t-h1); max-width: 14ch; }
+
+  .flag {
+    border-left: 3px solid var(--c-clay);
+    background: var(--c-steel);
+    color: var(--c-wheat);
+    padding: 16px 20px;
+    margin-top: 28px;
+    font-size: var(--t-body-sm);
+    line-height: 1.6;
+    border-radius: 0 4px 4px 0;
+    max-width: 64ch;
+  }
+  .flag-inline { margin-block: 24px; }
+
+  .prose { max-width: 68ch; }
+  .prose h2 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: var(--t-h4);
+    margin-top: 48px;
+    margin-bottom: 14px;
+  }
+  .prose h2:first-child { margin-top: 0; }
+  .prose p { margin-top: 16px; opacity: .88; line-height: 1.7; }
+  .prose ul { margin-top: 16px; padding-left: 22px; opacity: .88; line-height: 1.7; }
+  .prose li { margin-top: 8px; }
+  .prose strong { color: var(--c-mist); font-weight: 600; }
+  .prose a { color: var(--c-spring); }
+  .prose a:hover { text-decoration: underline; }
+  .dim { color: var(--c-fog); margin-top: 40px; }
+</style>
