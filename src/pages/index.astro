@@ -3,145 +3,175 @@ import Base from '../layouts/Base.astro';
 import GreenBlock from '../components/GreenBlock.astro';
 import VerticalCard from '../components/VerticalCard.astro';
 ---
-<Base title="MPower" current="Home" description="MPower — knowledge, power, yours. Pre-launch in Aotearoa NZ, 2026. Equip2MPower.">
+<Base title="MPower" current="Home" description="MPower - a subscription community that equips people with the knowledge, power and skills to grow, thrive and flourish, without relying on anyone else for the answers. Pre-launch in Aotearoa NZ, 2026.">
 
   {/* Hero ─────────────────────────────────────────────────────────────── */}
   <section class="hero">
     <div class="container">
-      <div class="mono hero-kicker">§ Pre-launch | NZ based, globally relevant | 2026</div>
+      <div class="mono hero-kicker">§ Pre-launch · 2026</div>
       <h1 class="display hero-title">
         Knowledge. <span class="i-accent">Power.</span> Yours.
       </h1>
       <p class="body-lg hero-sub">
-        MPower is the answer you came for — in your language, on your phone, in the moment you need it. We're built so people don't need us. <span class="accent">Equip<em>2</em>MPower.</span>
+        MPower is the answer you came for... in your language, on your phone, in the moment you need it. We're built so people don't need us - but stay because you love being part of our community and keep growing, thriving and flourishing. <span class="accent">Equip you. Then empower you.</span>
       </p>
       <div class="hero-ctas">
         <a href="/waitlist" class="btn btn-primary">Join the waitlist <span class="arr">→</span></a>
-        <a href="/about" class="btn btn-ghost">Read why <span class="arr">→</span></a>
+        <a href="/about" class="btn btn-ghost">The why <span class="arr">→</span></a>
       </div>
 
       <hr class="rule" style="margin-top: 72px;" />
       <div class="hero-footnote">
-        <span class="mono">Fig. 01 — The name encodes the journey.</span>
-        <span class="mono">Equip them. Then empower.</span>
+        <span class="mono">§ Fig. 01 - The name encodes the journey.</span>
+        <span class="mono">Equip<span class="i-accent">2</span>MPower</span>
       </div>
     </div>
   </section>
 
-  {/* Manifesto — C-direction long-form ──────────────────────────────────── */}
+  {/* Manifesto ──────────────────────────────────────────────────────────── */}
   <section class="manifesto">
     <div class="container">
-      <div class="mf-kicker mono">§ 01 · The manifesto</div>
+      <div class="mf-kicker mono">§ The why</div>
       <h2 class="mf-statement display">
-        We believe people are <span class="i-accent">already capable.</span>
+        People are <span class="i-accent">already capable.</span>
       </h2>
       <div class="mf-body">
         <aside class="mf-side">
           <span class="mono">§ The why</span>
-          <p class="mf-aside body-sm">The world doesn't lack for expertise. It lacks for delivery.</p>
+          <p class="mf-aside body-sm">The world doesn't lack for expertise. It lacks people wanting to build each other up.</p>
         </aside>
         <div class="mf-prose">
           <p class="body-lg mf-lede">
-            They just need the right tools, in the right place, in their own language. Good knowledge is locked behind paywalls, buried in jargon, sitting in offices of people who don't share.
+            They just need the right tools, in the right place, in plain language. Good knowledge sits behind paywalls, buried in jargon, locked in industry bodies too slow or too gatekept to get it to the people doing the work.
           </p>
           <p class="body mf-graf">
-            That's a delivery failure, not a capability gap. MPower is what people become — not what we do <em>to</em> them. The italic <span class="accent" style="font-style:italic;font-weight:700;">2</span> in our tagline is the bridge between knowing and doing. <span class="accent">Equip them. Then empower.</span>
+            That's a delivery failure, not a capability gap. MPowered is what people become, not what we do <em>to</em> them. The italic <span class="i-accent">2</span> in our tagline is the bridge between knowing and doing. We equip - the knowledge, the tools, the plain-language how - and the power is yours from there.
           </p>
           <p class="body mf-graf">
-            We're designing from the hardest case outward. The smallholder farmer on patchy data. The teacher with a hand-me-down phone. The community health worker between visits. Build for them and the work gets better for everyone.
+            No gatekeepers. No jargon. No sense that someone's talking down to you. We're on a mission to change that.
           </p>
         </div>
       </div>
       <hr class="rule mf-rule" />
       <p class="mf-pull display">
-        Success looks like the day you <span class="i-accent">don't need us</span> anymore — but you stay because you love being part of our community, and keep <span class="i-accent">growing, thriving, flourishing.</span>
+        Success looks like the day you <span class="i-accent">don't need us</span> anymore... and you stay anyway, because you love the community, and keep <span class="i-accent">growing, thriving, flourishing.</span>
       </p>
     </div>
   </section>
 
-  {/* Verticals — A-style cards ─────────────────────────────────────────── */}
+  {/* Phase 1 verticals ─────────────────────────────────────────────────── */}
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="mono">§ 02 · The Family · Phase 1</span>
+        <span class="mono">§ 02 · Our communities · Phase 1</span>
         <h2 class="display" style="font-size: var(--t-h2); max-width: 18ch;">
-          Two homes <span class="i-accent">at launch.</span>
+          One open now. <span class="i-accent">Two launching next.</span>
         </h2>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <VerticalCard
+          name="Teams"
+          badge="Available now · MPower Teams"
+          tagline="Your team. Your context."
+          body="Leadership development built around your team, your context and your growth trajectory - ongoing, not a one-workshop wonder. Open now, by arrangement."
+          url="mailto:askme@mpowerhq.nz?subject=MPower Teams enquiry"
+          host="askme@mpowerhq.nz"
+          accent="var(--c-bronze)"
+          ink="var(--c-amber)"
+        />
       </div>
 
       <div class="vert-grid">
         <VerticalCard
           name="Agri"
-          tagline="For people who work with soil and seasons."
-          body="Straight answers when the weather turns, the soil tests come back odd, or the price drops. No agronomist on retainer required. Built with NZ farmers, for NZ farmers — paddock by paddock, season by season."
-          url="https://agri.mpowerhq.co.nz"
+          badge="01 · MPower Agri"
+          tagline="Leadership for people who work with soil and seasons."
+          body="For the people carrying the business side of a food and fibre operation - the budgets, the team, the succession plan, the hard calls. You can find an agronomist, a vet, a stock agent. This is the one place built for the leadership and the business behind the farm gate, in plain language, with nobody selling you anything."
+          url="https://agri.mpowerhq.nz"
+          host="agri.mpowerhq.nz"
           accent="var(--c-clay)"
           ink="var(--c-wheat)"
-          tags={[['Clay','#C04B26'],['Earth','#8B2F15'],['Wheat','#FFD9A8'],['Soil','#2D1810']]}
+          tags={[['Clay','#C04B26'],['Wheat','#FFD9A8'],['Earth','#8B2F15'],['Soil','#2D1810']]}
         />
         <VerticalCard
           name="Ed"
-          tagline="For everyone who learns. For everyone who teaches."
-          body="The colour humans have used to write knowledge for 4,000 years — cuneiform to fountain pen to printed page. Gold is the spark. We skip the lazy edtech blue."
-          url="https://ed.mpowerhq.co.nz"
+          badge="02 · MPower Ed"
+          tagline="Leadership for everyone who learns. For everyone who teaches."
+          body="Yours is the one trade whose whole job is to pass it on - and the people leading it get the least support for the leadership side. Built for principals, board chairs, department heads, training leads, kura and ECE management. The tools, the language, and a community leading the same load, so you're not carrying it on your own."
+          url="https://ed.mpowerhq.nz"
+          host="ed.mpowerhq.nz"
           accent="var(--c-indigo)"
-          ink="var(--c-page)"
-          tags={[['Indigo','#4338CA'],['Night','#1E1B4B'],['Gold','#FCD34D'],['Page','#E0E7FF']]}
+          ink="var(--c-gold)"
+          tags={[['Indigo','#818CF8'],['Gold','#FCD34D'],['Night','#1E1B4B'],['Page','#E0E7FF']]}
         />
       </div>
 
       <div class="vert-future">
-        <div class="mono">§ 02 · To be earned — 2027 onward</div>
-        <div class="vert-grid-3">
-          <VerticalCard name="Health"  tagline="Life and care." body="Cardinal red — used across every culture for medical and spiritual healing." accent="#B91C1C" coming={true} />
-          <VerticalCard name="Finance" tagline="Trust and value." body="Obsidian and gold leaf. Skips both bank-blue and money-green." accent="#0A0A0A" coming={true} />
-          <VerticalCard name="Civic"   tagline="Authority and judgement." body="Deep purple — skips political-party associations." accent="#5B21B6" coming={true} />
+        <div class="mono">§ 02 · The leadership ladder - coming soon</div>
+        <div class="vert-grid">
+          <VerticalCard
+            name="Leaders"
+            tagline="Coaching and community."
+            body="For individuals who want the benefit of coaching and a community that has their back - a place to grow alongside others on the same path."
+            accent="var(--c-violet)"
+            ink="var(--c-lilac)"
+            coming={true}
+          />
+          <VerticalCard
+            name="Rising"
+            tagline="Headstart and habits."
+            body="Our next generation of leaders - giving them a headstart in the world, with the language and habits of leadership before they need them."
+            accent="var(--c-cyan)"
+            ink="var(--c-mint)"
+            coming={true}
+          />
         </div>
       </div>
     </div>
   </section>
 
-  {/* The B-direction green block ───────────────────────────────────────── */}
+  {/* Green statement ───────────────────────────────────────────────────── */}
   <GreenBlock
-    kicker="§ The why behind the work"
+    kicker="§ Built so you don't need us anymore."
     cta={{ href: '/about', label: 'Read the why' }}
   >
     <h2>Built so you <em>don't need us</em> anymore.</h2>
     <p>
-      People are already capable. They just need the right tools, in the right place, in their own language. The world doesn't lack for expertise — it lacks for delivery.
+      People are already capable. They just need the right tools, in the right place, in plain language. The world doesn't lack for expertise - it lacks people genuinely wanting to build each other up.
     </p>
   </GreenBlock>
 
-  {/* How it works teaser ───────────────────────────────────────────────── */}
+  {/* How it works ──────────────────────────────────────────────────────── */}
   <section class="section">
     <div class="container">
       <div class="section-head">
         <span class="mono">§ How it works</span>
         <h2 class="display" style="font-size: var(--t-h2); max-width: 22ch;">
-          Real answers. <span class="i-accent">No jargon. No gatekeepers.</span>
+          One place. <span class="i-accent">Nobody selling you anything.</span>
         </h2>
       </div>
 
       <ol class="steps">
         <li>
           <span class="step-num">01</span>
-          <h3 class="heading step-title">Tell us what you need.</h3>
-          <p class="body step-body">Plain question, plain language. Voice note, text, your own dialect — whatever works on your phone, on patchy data.</p>
+          <h3 class="heading step-title">Free, on social.</h3>
+          <p class="body step-body">The genuinely useful stuff lives in public. No teasers, no gate. That's the access promise, made real.</p>
         </li>
         <li>
           <span class="step-num">02</span>
-          <h3 class="heading step-title">We deliver the answer.</h3>
-          <p class="body step-body">No paywalls. No jargon. No 40-page PDF. The thing you came for, in the moment you came for it.</p>
+          <h3 class="heading step-title">Try the community free for 30 days.</h3>
+          <p class="body step-body">Card captured at signup so there's no break - never charged during the trial, cancel in one click anytime.</p>
         </li>
         <li>
           <span class="step-num">03</span>
-          <h3 class="heading step-title">You take it from there.</h3>
-          <p class="body step-body">Try it. Tweak it for your land, your classroom, your community. Pass it on.</p>
+          <h3 class="heading step-title">Stay for the room and the library.</h3>
+          <p class="body step-body">A real community plus a plain-language resource library. First 100 founding members lock their rate for life.</p>
         </li>
       </ol>
 
       <a href="/how-it-works" class="btn btn-ghost" style="margin-top: 56px;">
-        Read the full principle <span class="arr">→</span>
+        How it works, in full <span class="arr">→</span>
       </a>
     </div>
   </section>

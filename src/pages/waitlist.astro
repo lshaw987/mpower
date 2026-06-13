@@ -1,14 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-
-// Klaviyo public keys — read at build time and injected into the inline
-// script below via `define:vars`. Set these in Vercel → Project → Settings
-// → Environment Variables (or in a local .env for dev). Both are public-
-// safe per Klaviyo's Client API.
-const KLAVIYO_COMPANY_ID = import.meta.env.PUBLIC_KLAVIYO_COMPANY_ID ?? '';
-const KLAVIYO_LIST_ID    = import.meta.env.PUBLIC_KLAVIYO_LIST_ID    ?? '';
 ---
-<Base title="Waitlist" current="Waitlist" description="Pre-launch waitlist for MPower. Take what's yours.">
+<Base title="Waitlist" current="Waitlist" description="Pre-launch waitlist for MPower. Knowledge. Power. Yours.">
 
   <section class="section">
     <div class="container narrow">
@@ -17,91 +10,29 @@ const KLAVIYO_LIST_ID    = import.meta.env.PUBLIC_KLAVIYO_LIST_ID    ?? '';
         Take what's <span class="i-accent">yours.</span>
       </h1>
       <p class="body-lg wl-lede">
-        MPower opens in stages. Tell us who you are and we'll let you in when your vertical is ready — Agri first, Ed shortly after.
+        MPower opens in stages. MPower Agri and MPower Ed launch first; MPower Teams is here now, by arrangement. Tell us who you are and we'll let you in when your community is ready.
       </p>
     </div>
   </section>
 
   <section class="section-tight">
     <div class="container narrow">
-      <form
-        id="waitlist-form"
-        class="wl-form"
-        novalidate
-      >
-        <fieldset class="wl-fieldset">
-          <legend class="mono accent">§ 01 · Who are you?</legend>
-          <div class="audience">
-            {['Individual', 'Organisation', 'Community', 'Funder / Partner'].map((a, i) => (
-              <label class="aud-opt">
-                <input type="radio" name="audience" value={a} checked={i === 0} />
-                <span class="aud-label">{a}</span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
+      {/* Klaviyo embedded form. Powered by the onsite script + init in
+          Base.astro (company SKABCW). The form fields, validation, success
+          state and double opt-in are all managed in Klaviyo - this div is
+          the mount point. Per the 18 May 2026 spec. */}
+      <div class="klaviyo-form-W2JdnP"></div>
 
-        <fieldset class="wl-fieldset">
-          <legend class="mono accent">§ 02 · Which vertical?</legend>
-          <div class="verts">
-            <label class="vert-opt vert-clay">
-              <input type="checkbox" name="vertical_agri" checked />
-              <div>
-                <div class="vert-name"><span class="m">M</span>Power <em>Agri</em></div>
-                <div class="body-sm">Soil and seasons.</div>
-              </div>
-            </label>
-            <label class="vert-opt vert-indigo">
-              <input type="checkbox" name="vertical_ed" checked />
-              <div>
-                <div class="vert-name"><span class="m">M</span>Power <em>Ed</em></div>
-                <div class="body-sm">Learn and teach.</div>
-              </div>
-            </label>
-          </div>
-        </fieldset>
-
-        <fieldset class="wl-fieldset">
-          <legend class="mono accent">§ 03 · Where do we reach you?</legend>
-          <div class="grid-2">
-            <label class="field">
-              <span class="field-label">Your name</span>
-              <input name="name" type="text" autocomplete="name" required placeholder="Plain language, please." />
-            </label>
-            <label class="field">
-              <span class="field-label">Email</span>
-              <input name="email" type="email" autocomplete="email" required placeholder="you@somewhere.nz" />
-            </label>
-          </div>
-          <label class="field" style="margin-top: 24px;">
-            <span class="field-label">Anything we should know? (optional)</span>
-            <textarea name="note" rows="3" placeholder="Where you are, what you do, what you're hoping for."></textarea>
-          </label>
-        </fieldset>
-
-        <hr class="rule-bright" style="margin-block: 36px;" />
-
-        <div class="wl-submit">
-          <p class="body-sm wl-promise">
-            We won't sell your address. We won't spam. We'll write maybe once a month, and only when there's something real to say.
-          </p>
-          <button type="submit" class="btn btn-primary">
-            Add me to the waitlist <span class="arr">→</span>
-          </button>
-        </div>
-
-        <p id="wl-error" class="wl-error" role="alert" hidden></p>
-      </form>
-
-      <div id="wl-success" class="wl-success" hidden>
-        <span class="mono accent">§ You're in.</span>
-        <h2 class="display wl-thanks">
-          Thanks. <span class="i-accent">We'll be in touch.</span>
-        </h2>
-        <p class="body-lg" style="margin-top: 24px; max-width: 52ch;">
-          You'll hear from us when your vertical opens. Until then — Knowledge. Power. Yours.
+      <noscript>
+        <p class="body wl-fallback">
+          The waitlist form needs JavaScript. If it isn't loading, email
+          <a href="mailto:hello@mpowerhq.nz">hello@mpowerhq.nz</a> and we'll add you by hand.
         </p>
-      </div>
+      </noscript>
+
+      <p class="body-sm wl-promise">
+        We won't sell your address. We won't spam. We'll write maybe once a month, and only when there's something real to say. Nobody is ever selling you anything in here, including us.
+      </p>
     </div>
   </section>
 
@@ -113,235 +44,17 @@ const KLAVIYO_LIST_ID    = import.meta.env.PUBLIC_KLAVIYO_LIST_ID    ?? '';
   .wl-h1 { font-size: var(--t-h1); line-height: 1.04; padding-bottom: 0.12em; }
   .wl-lede { margin-top: 48px; max-width: 60ch; opacity: .9; }
 
-  .wl-form { display: flex; flex-direction: column; gap: 0; }
-  .wl-fieldset {
-    border: 0;
+  .klaviyo-form-W2JdnP { margin-top: 8px; min-height: 120px; }
+
+  .wl-fallback { margin-top: 24px; opacity: .9; }
+  .wl-fallback a { color: var(--c-spring); }
+
+  .wl-promise {
+    margin-top: 36px;
+    padding-top: 24px;
     border-top: 1px solid var(--c-rule);
-    padding-block: 36px;
-    margin: 0;
-  }
-  .wl-fieldset legend { margin-bottom: 24px; }
-
-  /* Audience radios — pill segmented buttons */
-  .audience { display: flex; gap: 10px; flex-wrap: wrap; }
-  .aud-opt input { position: absolute; opacity: 0; pointer-events: none; }
-  .aud-label {
-    display: inline-block;
-    padding: 12px 20px;
-    border: 1px solid var(--c-rule);
-    color: var(--c-mist);
-    cursor: pointer;
-    font-weight: 500;
-    transition: all .12s var(--ease-out);
-  }
-  .aud-opt input:checked + .aud-label {
-    border-color: var(--c-spring);
-    background: rgba(74, 222, 128, 0.08);
-    color: var(--c-spring);
-  }
-  .aud-opt input:focus-visible + .aud-label {
-    outline: 2px solid var(--c-spring);
-    outline-offset: 2px;
-  }
-
-  /* Vertical checkboxes — colored card blocks */
-  .verts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .vert-opt {
-    display: flex; align-items: center; gap: 14px;
-    padding: 20px 22px;
-    border: 1px solid var(--c-rule);
-    cursor: pointer;
-    transition: border-color .12s var(--ease-out);
-  }
-  .vert-opt:has(input:checked) { border-color: currentColor; }
-  .vert-opt input {
-    width: 18px; height: 18px;
-    accent-color: currentColor;
-  }
-  .vert-name { font-family: var(--f-display); font-weight: 700; font-size: 20px; color: var(--c-mist); }
-  .vert-name em { font-style: italic; color: var(--c-fog); font-weight: 500; }
-  .vert-name .m { color: currentColor; }
-  .vert-clay { color: var(--c-clay); }
-  .vert-indigo { color: var(--c-indigo); }
-
-  /* Text fields */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field-label {
-    font-family: var(--f-mono);
-    font-size: var(--t-mono);
-    color: var(--c-fog);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .field input,
-  .field textarea {
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--c-rule);
-    color: var(--c-mist);
-    padding: 12px 0;
-    font-family: var(--f-sans);
-    font-size: var(--t-body-lg);
-    outline: none;
-    transition: border-color .15s var(--ease-out);
-    resize: vertical;
-    width: 100%;
-  }
-  .field input::placeholder,
-  .field textarea::placeholder {
-    color: var(--c-fog);
+    max-width: 560px;
     font-style: italic;
-  }
-  .field input:focus,
-  .field textarea:focus {
-    border-bottom-color: var(--c-spring);
-  }
-
-  .wl-submit {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 24px;
-  }
-  .wl-promise { max-width: 480px; font-style: italic; opacity: .85; }
-  .wl-error {
-    margin-top: 18px;
-    color: #FF9D8B;
-    background: rgba(255,157,139,0.06);
-    border: 1px solid #FF9D8B;
-    padding: 12px 16px;
-    border-radius: 4px;
-  }
-
-  /* Success state */
-  .wl-success { padding-top: 48px; border-top: 1px solid var(--c-rule); }
-  .wl-thanks { font-size: var(--t-h1); margin-top: 24px; max-width: 14ch; }
-
-  @media (max-width: 720px) {
-    .verts { grid-template-columns: 1fr; }
-    .grid-2 { grid-template-columns: 1fr; }
-    .wl-submit { flex-direction: column; align-items: stretch; }
-    .wl-submit .btn { justify-content: center; }
+    opacity: .85;
   }
 </style>
-
-<script is:inline define:vars={{ COMPANY_ID: KLAVIYO_COMPANY_ID, LIST_ID: KLAVIYO_LIST_ID }}>
-  // Klaviyo client-side submit. COMPANY_ID + LIST_ID are injected at
-  // build time from Astro's `import.meta.env.PUBLIC_*` — set them in
-  // Vercel → Project → Settings → Environment Variables.
-  //
-  // Both are public-safe per Klaviyo's Client API "Subscribe Profile"
-  // endpoint — developers.klaviyo.com/en/reference/subscribe_profile.
-  //
-  // When the keys are empty (e.g. local dev without a .env) the form
-  // logs the payload and shows the success state so the UI can be
-  // reviewed without hitting Klaviyo.
-
-  const form    = document.getElementById('waitlist-form');
-  const errEl   = document.getElementById('wl-error');
-  const success = document.getElementById('wl-success');
-
-  function showError(msg) {
-    errEl.textContent = msg;
-    errEl.removeAttribute('hidden');
-  }
-  function clearError() {
-    errEl.setAttribute('hidden', '');
-    errEl.textContent = '';
-  }
-
-  async function submitToKlaviyo(payload) {
-    if (!COMPANY_ID || !LIST_ID) {
-      // Dev mode — log and pretend it worked.
-      console.warn('[waitlist] Klaviyo keys not configured; would have submitted:', payload);
-      return { ok: true, dev: true };
-    }
-    const verticals = [];
-    if (payload.vertical_agri) verticals.push('Agri');
-    if (payload.vertical_ed)   verticals.push('Ed');
-
-    const body = {
-      data: {
-        type: 'subscription',
-        attributes: {
-          profile: {
-            data: {
-              type: 'profile',
-              attributes: {
-                email: payload.email,
-                first_name: payload.name,
-                properties: {
-                  audience: payload.audience,
-                  verticals,
-                  note: payload.note || '',
-                  source: 'mpowerhq.co.nz/waitlist',
-                },
-              },
-            },
-          },
-        },
-        relationships: {
-          list: { data: { type: 'list', id: LIST_ID } },
-        },
-      },
-    };
-
-    const res = await fetch(
-      `https://a.klaviyo.com/client/subscriptions/?company_id=${COMPANY_ID}`,
-      {
-        method: 'POST',
-        headers: {
-          revision: '2024-10-15',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      },
-    );
-    return { ok: res.ok, status: res.status };
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    clearError();
-    const fd = new FormData(form);
-    const payload = {
-      audience: fd.get('audience'),
-      vertical_agri: !!fd.get('vertical_agri'),
-      vertical_ed:   !!fd.get('vertical_ed'),
-      name:  String(fd.get('name')  || '').trim(),
-      email: String(fd.get('email') || '').trim(),
-      note:  String(fd.get('note')  || '').trim(),
-    };
-
-    if (!payload.email || !/^.+@.+\..+/.test(payload.email)) {
-      showError('Please enter a valid email address.'); return;
-    }
-    if (!payload.name) {
-      showError('Please add your name so we know how to greet you.'); return;
-    }
-    if (!payload.vertical_agri && !payload.vertical_ed) {
-      showError('Pick at least one vertical — Agri, Ed, or both.'); return;
-    }
-
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true; btn.textContent = 'Sending…';
-
-    try {
-      const result = await submitToKlaviyo(payload);
-      if (!result.ok) {
-        showError("Something went wrong. Please try again, or email kia.ora@mpowerhq.co.nz.");
-        btn.disabled = false; btn.innerHTML = 'Add me to the waitlist <span class="arr">→</span>';
-        return;
-      }
-      form.setAttribute('hidden', '');
-      success.removeAttribute('hidden');
-      // Move focus to the success heading so screen readers + keyboard
-      // users land on the confirmation — without forcing a viewport jump.
-      const thanks = success.querySelector('h2');
-      if (thanks) { thanks.setAttribute('tabindex', '-1'); thanks.focus(); }
-    } catch (err) {
-      showError("Network hiccup — please try again in a moment.");
-      btn.disabled = false; btn.innerHTML = 'Add me to the waitlist <span class="arr">→</span>';
-    }
-  });
-</script>
-</Base>

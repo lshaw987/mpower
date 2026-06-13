@@ -2,16 +2,16 @@
 import Base from '../layouts/Base.astro';
 import VerticalCard from '../components/VerticalCard.astro';
 ---
-<Base title="Verticals" current="Verticals" description="The MPower family. Same wordmark, same typography, same Deep Sea base. Each vertical claims one signature accent.">
+<Base title="Communities" current="Communities" description="The MPower family - a leadership ladder. Same wordmark, same typography, same Deep Sea base. Each vertical owns four colour roles.">
 
   <section class="section">
     <div class="container">
-      <div class="mono kicker">§ The family · Phase 1</div>
+      <div class="mono kicker">§ 02 · Our communities · Phase 1</div>
       <h1 class="display verts-h1">
-        Siblings, <span class="i-accent">not clones.</span>
+        A leadership <span class="i-accent">ladder.</span>
       </h1>
       <p class="body-lg verts-lede">
-        Same wordmark. Same typography. Same Deep Sea base. Each vertical claims one signature accent rooted in something deep about its meaning. <span class="accent">Discipline is the system. Flexibility is the flavour.</span>
+        Five offerings, one family. Two launch as Phase 1 communities with their own subdomains. The other three form a leadership ladder, from a whole team down to the next generation. <span class="accent">Same system. Each one its own flavour.</span>
       </p>
     </div>
   </section>
@@ -20,43 +20,95 @@ import VerticalCard from '../components/VerticalCard.astro';
     <div class="container">
       <hr class="rule" style="margin-bottom: 48px;" />
 
-      <div id="agri" class="vert-feature">
-        <VerticalCard
-          name="Agri"
-          tagline="For people who work with soil and seasons."
-          body="The colour of fired earth, of pots that hold seed, of soil at sunset. Universal across cultures — clay pots, brick, earthen homes — carrying thousands of years of meaning around food, harvest, and human craft. The radical move: skip green entirely. Every other ag brand defaults there. We claim the colour of the ground itself."
-          url="https://agri.mpowerhq.co.nz"
-          accent="var(--c-clay)"
-          ink="var(--c-wheat)"
-          tags={[['Clay','#C04B26'],['Earth','#8B2F15'],['Wheat','#FFD9A8'],['Soil','#2D1810']]}
-        />
+      <div class="future-head">
+        <span class="mono">§ 01 · Available now</span>
+        <h2 class="display future-title">Start with your team, today.</h2>
       </div>
-
-      <div id="ed" class="vert-feature">
+      <div id="teams" class="vert-feature">
         <VerticalCard
-          name="Ed"
-          tagline="For everyone who learns. For everyone who teaches."
-          body="The colour humans have used to write knowledge for over 4,000 years — from cuneiform to fountain pen to printed page. Gold is the spark of insight, the moment of understanding. The radical move: skip the lazy edtech blue that every learning startup uses. We claim the deeper, older blue — the one ideas have always been written in."
-          url="https://ed.mpowerhq.co.nz"
-          accent="var(--c-indigo)"
-          ink="var(--c-page)"
-          tags={[['Indigo','#4338CA'],['Night','#1E1B4B'],['Gold','#FCD34D'],['Page','#E0E7FF']]}
+          name="Teams"
+          badge="Available now · MPower Teams"
+          tagline="Your team. Your context."
+          body="Leadership development built around your team, your context and your growth trajectory - ongoing, not a one-workshop wonder. This one is open now: get in touch and we will build it with you."
+          url="mailto:askme@mpowerhq.nz?subject=MPower Teams enquiry"
+          host="askme@mpowerhq.nz"
+          accent="var(--c-bronze)"
+          ink="var(--c-amber)"
+          tags={[['Bronze','#B45309'],['Amber','#FCD34D'],['Sienna','#7C2D12'],['Cream','#FEF3C7']]}
         />
       </div>
 
       <hr class="rule" style="margin-block: 48px;" />
 
       <div class="future-head">
-        <span class="mono">§ 03 · Future · To be earned</span>
+        <span class="mono">§ 02 · Launching · Phase 1</span>
+        <h2 class="display future-title">Two communities opening next.</h2>
+      </div>
+
+      <div id="agri" class="vert-feature">
+        <figure class="media">
+          <div class="media-frame"><img src="/images/agri.jpg" alt="MPower Agri - soil and seasons, Waikato." loading="lazy" /></div>
+          <figcaption class="mono">§ Agri - soil and seasons · Waikato</figcaption>
+        </figure>
+        <VerticalCard
+          name="Agri"
+          badge="01 · MPower Agri · Phase 1"
+          tagline="Leadership for people who work with soil and seasons."
+          body="For the people carrying the business side of a food and fibre operation - the budgets, the team, the succession plan, the hard calls. You can find an agronomist, a vet, a stock agent. This is the one place built for the leadership and the business behind the farm gate, in plain language, with nobody selling you anything."
+          url="https://agri.mpowerhq.nz"
+          host="agri.mpowerhq.nz"
+          accent="var(--c-clay)"
+          ink="var(--c-wheat)"
+          tags={[['Clay','#C04B26'],['Wheat','#FFD9A8'],['Earth','#8B2F15'],['Soil','#2D1810']]}
+        />
+      </div>
+
+      <div id="ed" class="vert-feature">
+        <figure class="media">
+          <div class="media-frame"><img src="/images/ed.jpg" alt="MPower Ed - learn and teach, Tāmaki Makaurau." loading="lazy" /></div>
+          <figcaption class="mono">§ Ed - learn and teach · Tāmaki Makaurau</figcaption>
+        </figure>
+        <VerticalCard
+          name="Ed"
+          badge="02 · MPower Ed · Phase 1"
+          tagline="Leadership for everyone who learns. For everyone who teaches."
+          body="Yours is the one trade whose whole job is to pass it on - and the people leading it get the least support for the leadership side. Built for principals, board chairs, department heads, training leads, kura and ECE management. The tools, the language, and a community leading the same load, so you're not carrying it on your own."
+          url="https://ed.mpowerhq.nz"
+          host="ed.mpowerhq.nz"
+          accent="var(--c-indigo)"
+          ink="var(--c-gold)"
+          tags={[['Indigo','#818CF8'],['Gold','#FCD34D'],['Night','#1E1B4B'],['Page','#E0E7FF']]}
+        />
+      </div>
+
+      <hr class="rule" style="margin-block: 48px;" />
+
+      <div class="future-head">
+        <span class="mono">§ 03 · Coming soon</span>
         <h2 class="display future-title">
-          Each new vertical earns its colour through the same logic.
+          More of the ladder, on the way.
         </h2>
       </div>
 
       <div class="future-grid">
-        <VerticalCard name="Health"  tagline="Life and care." body="Cardinal red — the colour of life, the universal sign of care, used across every culture for medical and spiritual healing." accent="#B91C1C" coming={true} />
-        <VerticalCard name="Finance" tagline="Trust and value." body="Obsidian black and gold leaf — the colour of trust, of precious things; skips both bank-blue and money-green." accent="#0A0A0A" coming={true} />
-        <VerticalCard name="Civic"   tagline="Authority and judgement." body="Deep purple — the colour of authority and judgement, while skipping political-party associations." accent="#5B21B6" coming={true} />
+        <VerticalCard
+          name="Leaders"
+          badge="04 · Coming soon"
+          tagline="Coaching and community."
+          body="For individuals who want the benefit of coaching and a community that has their back - a place to grow alongside others on the same path."
+          accent="var(--c-violet)"
+          ink="var(--c-lilac)"
+          coming={true}
+        />
+        <VerticalCard
+          name="Rising"
+          badge="05 · Coming soon"
+          tagline="Headstart and habits."
+          body="Our next generation of leaders - giving them a headstart in the world, with the language and habits of leadership before they need them."
+          accent="var(--c-cyan)"
+          ink="var(--c-mint)"
+          coming={true}
+        />
       </div>
     </div>
   </section>
@@ -68,13 +120,18 @@ import VerticalCard from '../components/VerticalCard.astro';
   .verts-h1 { font-size: var(--t-h1); max-width: 14ch; }
   .verts-lede { margin-top: 32px; max-width: 64ch; opacity: .9; }
   .vert-feature { margin-bottom: 32px; }
+  .media { margin: 0 0 20px; }
+  .media-frame { border-radius: 4px; overflow: hidden; border: 1px solid var(--c-rule-soft); }
+  .media-frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; filter: saturate(.92) brightness(.97); }
+  .media figcaption { font-family: var(--f-mono); font-size: var(--t-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--c-fog); padding-top: 12px; }
   .future-head { margin-bottom: 32px; }
   .future-head .mono { color: var(--c-fog); display: block; margin-bottom: 18px; }
   .future-title { font-size: var(--t-h3); max-width: 24ch; }
   .future-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+    margin-top: 32px;
   }
   @media (max-width: 860px) { .future-grid { grid-template-columns: 1fr; } }
 </style>

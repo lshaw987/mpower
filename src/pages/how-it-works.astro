@@ -2,23 +2,32 @@
 import Base from '../layouts/Base.astro';
 import GreenBlock from '../components/GreenBlock.astro';
 ---
-<Base title="How it works" current="How it works" description="Real answers. No jargon. No gatekeepers. Designed for the hardest case first.">
+<Base title="How it works" current="How it works" description="Free on social. Try the community free for 30 days. Stay for the room and the library. Nobody selling you anything inside.">
 
   <section class="section">
     <div class="container">
       <div class="mono kicker">§ How it works</div>
       <h1 class="display hiw-h1">
-        Real answers. <span class="i-accent">No jargon. No gatekeepers.</span>
+        One place. <span class="i-accent">Nobody selling you anything.</span>
       </h1>
     </div>
   </section>
 
   <section class="section-tight">
     <div class="container">
+      <figure class="media">
+        <div class="media-frame"><img src="/images/how-it-works.jpg" alt="In the moment you need it." loading="lazy" /></div>
+        <figcaption class="mono">§ Fig. 04 · In the moment you need it · Kitchen table, ute, staffroom</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
       {[
-        {n:'§ 01', t:'Tell us what you need.', b:'Plain question, plain language. Voice note, text, your own dialect — whatever works on your phone, on patchy data, in the moment.'},
-        {n:'§ 02', t:'We deliver the answer.', b:'No paywalls. No jargon. No links to a 40-page PDF. The thing you actually came for, in the moment you came for it.'},
-        {n:'§ 03', t:'You take it from there.', b:"Try it. Tweak it for your land, your classroom, your community. Pass it on. We measure success when you don't need us anymore."},
+        {n:'§ 01', t:'Free, on social.', b:'The genuinely useful stuff lives in public - no teasers, no gate. That is the access promise made real. Nobody is locked out of the knowledge that lives in the open.'},
+        {n:'§ 02', t:'Try the community free for 30 days.', b:'We capture your card at signup so there is no break and no surprise. We do not charge it during the trial. Cancel in one click, anytime, including during the trial.'},
+        {n:'§ 03', t:'Stay for the room and the library.', b:'A real community in Circle plus a plain-language resource library in Notion - tools, templates, summaries. The first 100 founding members lock their rate for life.'},
       ].map((s) => (
         <article class="step">
           <div>
@@ -34,17 +43,17 @@ import GreenBlock from '../components/GreenBlock.astro';
   <section class="section">
     <div class="container">
       <hr class="rule" style="margin-bottom: 48px;" />
-      <span class="mono accent">§ 04 · The delivery principles</span>
+      <span class="mono accent">§ The principles</span>
       <h2 class="display principles-title">
-        Designed for <span class="i-accent">the hardest case</span> first.
+        Plain language. <span class="i-accent">No gatekeepers.</span>
       </h2>
 
       <div class="principles">
         {[
-          ['Phone-first',   'Built to work on a $30 device on patchy data. Loads in under two seconds on 2G.'],
-          ['Your language', 'Not translated — written. Local idioms, local examples, local units of measure.'],
-          ['Offline-ready', 'Save it. Pass it. Read it tomorrow on a bus with no signal.'],
-          ['Peer-to-peer',  'Knowledge moves sideways, not just expert to learner.'],
+          ['Plain, not simple',  'Everyday language, never dumbed down. Strip the jargon, keep the intelligence. Written the way you would say it, with NZ examples and how things really work here.'],
+          ['Nobody selling you', 'No ads, no sponsors, no affiliate deals inside the communities, including us upselling you. That is a promise to members, and it is not negotiable.'],
+          ['One place',          'The single source of truth people say does not exist - the community and the library together, not scattered across forty tabs and forty-page PDFs.'],
+          ['Built so you do not need us', 'We measure success by the day you can answer for yourself, teach someone else, and pass it on - and stay anyway, because you love the community.'],
         ].map(([t, b]) => (
           <div class="principle">
             <h4 class="heading principle-title">{t}</h4>
@@ -56,7 +65,7 @@ import GreenBlock from '../components/GreenBlock.astro';
   </section>
 
   <GreenBlock cta={{ href: '/waitlist', label: 'Join the waitlist' }}>
-    <h2>If this sounds like something you needed years ago — <em>we'd like to hear from you.</em></h2>
+    <h2>If this sounds like something you needed years ago - <em>we'd like to hear from you.</em></h2>
   </GreenBlock>
 
 </Base>
@@ -64,6 +73,10 @@ import GreenBlock from '../components/GreenBlock.astro';
 <style>
   .kicker { color: var(--c-spring); margin-bottom: 36px; }
   .hiw-h1 { font-size: var(--t-h1); max-width: 18ch; }
+  .media { margin: 0; }
+  .media-frame { border-radius: 4px; overflow: hidden; border: 1px solid var(--c-rule-soft); }
+  .media-frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; filter: saturate(.92) brightness(.97); }
+  .media figcaption { font-family: var(--f-mono); font-size: var(--t-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--c-fog); padding-top: 12px; }
 
   .step {
     display: grid;

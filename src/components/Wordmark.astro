@@ -1,12 +1,16 @@
 ---
 /**
- * MPower wordmark. The "M" is Spring green; the rest is Mist (or inherits).
- * The optional tagline lockup adds "Equip2MPower" underneath with the
- * italic 2 — only shown at display sizes (see tokens for context).
+ * MPower parent wordmark. The "M" is Spring green (bold Accent); "Power" is
+ * regular, Mist on dark / inherits. The optional tagline lockup adds
+ * "Knowledge. Power. Yours." underneath.
+ * Vertical lockups (M + Power + italic vertical name in the Ink colour) are
+ * rendered by VerticalCard.astro, not here.
+ * (Equip2MPower / the italic-2 device is revived by the 18 May 2026 spec as
+ * the tagline device; the brand name stays plain MPower.)
  *
  * Props:
- *   size: 'sm' | 'md' | 'lg'  (controls font-size — wraps in clamp)
- *   tagline: boolean          (show "Equip2MPower" beneath)
+ *   size: 'sm' | 'md' | 'lg'  (controls font-size, wraps in clamp)
+ *   tagline: boolean          (show the tagline line beneath)
  */
 interface Props {
   size?: 'sm' | 'md' | 'lg';
@@ -17,17 +21,17 @@ const { size = 'md', tagline = false, href = '/' } = Astro.props;
 const sizeClass = `wm wm-${size}`;
 ---
 {href ? (
-  <a href={href} class={sizeClass} aria-label="MPower — home">
+  <a href={href} class={sizeClass} aria-label="MPower - home">
     <span class="wm-mark"><span class="wm-m">M</span>Power</span>
     {tagline && (
-      <span class="wm-tag">Equip<span class="wm-2">2</span>MPower</span>
+      <span class="wm-tag">Knowledge. Power. Yours.</span>
     )}
   </a>
 ) : (
   <span class={sizeClass}>
     <span class="wm-mark"><span class="wm-m">M</span>Power</span>
     {tagline && (
-      <span class="wm-tag">Equip<span class="wm-2">2</span>MPower</span>
+      <span class="wm-tag">Knowledge. Power. Yours.</span>
     )}
   </span>
 )}

@@ -4,9 +4,10 @@ interface Props { current?: string }
 const { current = '' } = Astro.props;
 const links = [
   { href: '/about',         label: 'About' },
-  { href: '/verticals',     label: 'Verticals' },
+  { href: '/verticals',     label: 'Communities' },
   { href: '/how-it-works',  label: 'How it works' },
   { href: '/stories',       label: 'Stories' },
+  { href: '/contact',       label: 'Contact' },
 ];
 ---
 <header class="nav">
@@ -37,7 +38,7 @@ const links = [
 <style>
   .nav {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(11, 22, 32, 0.85);
+    background: rgba(15, 25, 34, 0.85);
     backdrop-filter: saturate(140%) blur(14px);
     -webkit-backdrop-filter: saturate(140%) blur(14px);
     border-bottom: 1px solid var(--c-rule-soft);

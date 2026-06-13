@@ -1,41 +1,62 @@
-/* MPower brand tokens — single source of truth
+/* MPower brand tokens - single source of truth
    ----------------------------------------------
-   Pulled from the Equip2MPower brand book v1.0.
+   Source: layer-4-brains/mpower/context/brand-architecture.md, which absorbs
+   the 18 May 2026 Brand & Content Spec (+ Lisa's reconciliation calls).
    Anything that ships needs to come from these vars; never hard-code a hex.
 */
 
 :root {
   /* Palette ------------------------------------------------------------- */
   /* Parent brand: Deep Sea base with Spring green as the only accent.    */
-  --c-deep-sea: #0B1620;       /* primary background */
-  --c-steel:    #1A2733;       /* surface 1 (cards on dark, the green block's neighbour) */
-  --c-steel-2:  #11202B;       /* surface 2 (banded sections, slightly lifted from base) */
+  --c-deep-sea: #0F1922;       /* primary background */
+  --c-steel:    #18222D;       /* surface 1 (cards on dark, the green block's neighbour) */
+  --c-steel-2:  #13202B;       /* surface 2 (banded sections, slightly lifted from base) */
   --c-mist:     #E8EEF4;       /* primary text on dark */
   --c-fog:      #8B9AAB;       /* secondary text / mono labels */
   --c-rule:     rgba(232, 238, 244, 0.16); /* hairline dividers */
   --c-rule-soft:rgba(232, 238, 244, 0.10);
 
-  --c-spring:   #4ADE80;       /* THE accent — used sparingly */
+  --c-spring:   #4ADE80;       /* brand green - the italic 2, accent highlights (sparingly) */
   --c-spring-2: #22C55E;       /* hover state */
   --c-spring-ink:#052e16;      /* text on Spring green surfaces */
 
-  /* Sub-brand accents (Agri + Ed) --------------------------------------- */
-  --c-clay:     #C04B26;
-  --c-earth:    #8B2F15;
-  --c-wheat:    #FFD9A8;
-  --c-soil:     #2D1810;
+  /* Vertical palettes - four roles each: Accent · Ink · Deep · Light ---- */
+  /* 01 · Agri - Clay family */
+  --c-clay:     #C04B26;       /* Accent */
+  --c-wheat:    #FFD9A8;       /* Ink */
+  --c-earth:    #8B2F15;       /* Deep */
+  --c-soil:     #2D1810;       /* Light/Shadow */
 
-  --c-indigo:   #4338CA;
-  --c-night:    #1E1B4B;
-  --c-gold:     #FCD34D;
-  --c-page:     #E0E7FF;
+  /* 02 · Ed - Indigo + Gold */
+  --c-indigo:   #818CF8;       /* Accent */
+  --c-gold:     #FCD34D;       /* Ink */
+  --c-night:    #1E1B4B;       /* Deep */
+  --c-page:     #E0E7FF;       /* Light */
+
+  /* 03 · Teams - Bronze + Amber */
+  --c-bronze:   #B45309;       /* Accent */
+  --c-amber:    #FCD34D;       /* Ink (shares Ed gold - open decision) */
+  --c-sienna:   #7C2D12;       /* Deep */
+  --c-cream:    #FEF3C7;       /* Light */
+
+  /* 04 · Leaders - Violet family */
+  --c-violet:   #C084FC;       /* Accent */
+  --c-lilac:    #F5D0FE;       /* Ink */
+  --c-plum:     #581C87;       /* Deep */
+  --c-petal:    #FAE8FF;       /* Light */
+
+  /* 05 · Rising - Cyan family */
+  --c-cyan:     #22D3EE;       /* Accent */
+  --c-mint:     #A5F3FC;       /* Ink */
+  --c-lagoon:   #155E75;       /* Deep */
+  --c-sky:      #E0F2FE;       /* Light */
 
   /* Type ---------------------------------------------------------------- */
   --f-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --f-display: 'Plus Jakarta Sans', sans-serif;
   --f-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  /* Modular scale — clamps for responsive type ---------------------------
+  /* Modular scale - clamps for responsive type ---------------------------
      Base = 17px mobile, 18px desktop. Scale ratio ~1.25 on phone, 1.333 on
      desktop. Display sizes shrink hard on mobile so headlines stay punchy
      without overflowing on a 360px screen. */
@@ -49,7 +70,7 @@
   --t-h1:     clamp(56px, 7.5vw + 24px, 128px);
   --t-display:clamp(72px, 10vw + 24px, 160px);  /* the big home hero */
 
-  /* Spacing scale — used as section paddings and gaps ------------------- */
+  /* Spacing scale - used as section paddings and gaps ------------------- */
   --s-1: 4px;
   --s-2: 8px;
   --s-3: 12px;
@@ -61,7 +82,7 @@
   --s-9: 96px;
   --s-10:128px;
 
-  /* Page gutter — generous on desktop, tight on phone for max content width */
+  /* Page gutter - generous on desktop, tight on phone for max content width */
   --gutter: clamp(20px, 5vw, 96px);
   --content-max: 1280px;
 
@@ -70,7 +91,7 @@
   --ease-in-out: cubic-bezier(.6,.05,.4,1);
 }
 
-/* Honour reduced-motion. The site is mostly static anyway — kill the few
+/* Honour reduced-motion. The site is mostly static anyway - kill the few
    transitions that exist. */
 @media (prefers-reduced-motion: reduce) {
   * {

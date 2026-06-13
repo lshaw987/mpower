@@ -11,7 +11,7 @@ interface Props {
 }
 const {
   title,
-  description = 'MPower — knowledge, power, yours. Built so people get answers in their own language, on their own phone, in the moment they need them. Pre-launch 2026.',
+  description = 'MPower - a subscription community that equips people with the knowledge, power and skills to grow, thrive and flourish, without relying on anyone else for the answers. Pre-launch in Aotearoa NZ, 2026.',
   current,
   ogImage = '/og-default.png',
 } = Astro.props;
@@ -23,7 +23,7 @@ const fullTitle = title === 'MPower' ? title : `${title} · MPower`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#0B1620" />
+    <meta name="theme-color" content="#0F1922" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
 
@@ -35,10 +35,10 @@ const fullTitle = title === 'MPower' ? title : `${title} · MPower`;
     <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    {/* Favicon — placeholder; replace with real assets at build time */}
+    {/* Favicon - placeholder; replace with real assets at build time */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    {/* Preconnect to Google Fonts — small win, real on slow connections */}
+    {/* Preconnect to Google Fonts - small win, real on slow connections */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -51,6 +51,15 @@ const fullTitle = title === 'MPower' ? title : `${title} · MPower`;
       <slot />
     </main>
     <Footer />
+
+    {/* Klaviyo onsite - powers the embedded waitlist form (class
+        klaviyo-form-W2JdnP). Company SKABCW. Per the 18 May spec this
+        script + init sit before </body> in the root template. */}
+    <script defer src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=SKABCW"></script>
+    <script is:inline>
+      /* eslint-disable */
+      var _klOnsite = _klOnsite || []; _klOnsite.push(['account', 'SKABCW']);
+    </script>
 
     <style>
       .skip-link {

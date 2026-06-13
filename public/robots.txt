@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mpowerhq.co.nz/sitemap-index.xml
+Sitemap: https://mpowerhq.nz/sitemap-index.xml

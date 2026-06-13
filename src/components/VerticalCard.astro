@@ -1,36 +1,41 @@
 ---
 /**
- * The A-style vertical card — large coloured edge, mono label, body copy,
- * tag list. Used on the homepage (Agri + Ed side-by-side) and re-used on
- * the Verticals page. Future verticals use the same component with
- * `coming` to dash the edge and dim the card.
+ * The A-style vertical card - large coloured edge, mono label, body copy,
+ * tag list. Used on the homepage and the Verticals page. The leadership
+ * ladder verticals use `coming` to dash the edge and dim the card.
  *
  * Props:
- *   name      — "Agri", "Ed", "Health" etc
- *   tagline   — short editorial line
- *   body      — paragraph
- *   url       — link target (sub-domain or in-site anchor)
- *   tags      — color chips, e.g. [['Clay','#C04B26'], ...]
- *   accent    — CSS color for the edge + M
- *   ink       — CSS color for the tagline (defaults to mist)
- *   coming    — boolean; dashes the edge and reads "soon"
+ *   name      - "Agri", "Ed", "Teams", "Leaders", "Rising"
+ *   tagline   - short editorial line
+ *   body      - paragraph
+ *   url       - link target (sub-domain, mailto, or in-site anchor)
+ *   host      - small mono host/handle label (e.g. "agri.mpowerhq.nz" or
+ *               "askme@mpowerhq.nz"); defaults to "<name>.mpowerhq.nz".
+ *               Pass '' to hide it.
+ *   tags      - color chips, e.g. [['Clay','#C04B26'], ...]
+ *   accent    - CSS color for the edge + M
+ *   ink       - CSS color for the italic vertical name (defaults to mist)
+ *   coming    - boolean; dashes the edge and reads "soon"
+ *   badge     - override the "01" / "02" badge text
  */
 interface Props {
   name: string;
   tagline: string;
   body: string;
   url?: string;
+  host?: string;
   tags?: [string, string][];
   accent: string;
   ink?: string;
   coming?: boolean;
-  badge?: string; // override the "01" / "02" badge text
+  badge?: string;
 }
 const {
   name,
   tagline,
   body,
   url,
+  host,
   tags = [],
   accent,
   ink,
@@ -38,6 +43,7 @@ const {
   badge,
 } = Astro.props;
 const Tag = url && !coming ? 'a' : 'div';
+const hostLabel = host !== undefined ? host : `${name.toLowerCase()}.mpowerhq.nz`;
 ---
 <Tag
   href={url}
@@ -47,8 +53,8 @@ const Tag = url && !coming ? 'a' : 'div';
   <div class="vc-edge"></div>
   <div class="vc-body">
     <div class="vc-row">
-      <span class="mono vc-mono">{badge || (coming ? `Future · MPower ${name}` : `MPower ${name}`)}</span>
-      {!coming && <span class="mono vc-host">{name.toLowerCase()}.mpowerhq.co.nz</span>}
+      <span class="mono vc-mono">{badge || (coming ? `Coming soon · MPower ${name}` : `MPower ${name}`)}</span>
+      {!coming && hostLabel && <span class="mono vc-host">{hostLabel}</span>}
     </div>
 
     <h3 class="vc-name">
