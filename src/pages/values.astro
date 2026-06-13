@@ -1,0 +1,127 @@
+---
+import Base from '../layouts/Base.astro';
+import GreenBlock from '../components/GreenBlock.astro';
+
+const values = [
+  {
+    n: '§ 01',
+    name: 'Humans <span class="i-accent">First.</span>',
+    lede: 'Humans are the core of extraordinary teams.',
+    detail: "People aren't just 'resources' or 'capital'. They're the reason organisations succeed. We prioritise hauora, belonging and strengths so extraordinary teams thrive.",
+    tag: 'Hauora · Belonging · Strengths',
+  },
+  {
+    n: '§ 02',
+    name: 'Courageous <span class="i-accent">Curiosity.</span>',
+    lede: 'Be curious enough to ask. Be brave enough to act.',
+    detail: 'We choose curiosity over certainty, and lean into the messy questions and uncertain future others avoid. We explore openly, challenge assumptions, and are brave enough to act on what we find.',
+    tag: 'Curiosity over certainty · Challenge assumptions · Brave enough to act',
+  },
+  {
+    n: '§ 03',
+    name: 'Empowered <span class="i-accent">Growth.</span>',
+    lede: 'Empowered people empower others.',
+    detail: 'We build capability - in ourselves, our clients and our communities. Real empowerment means giving people the tools, trust and support to grow, lead and make impactful change.',
+    tag: 'Tools · Trust · Support to grow and lead',
+  },
+  {
+    n: '§ 04',
+    name: 'Future by <span class="i-accent">design.</span>',
+    lede: "We don't wait for the future - we design it.",
+    detail: "We don't wait for the future to arrive - we co-design it. Innovation is both disruption and intention: breaking what no longer serves, and shaping what comes next. Learning and growth aren't by accident - they're intentional choices.",
+    tag: 'Disruption · Intention · Growth by choice',
+  },
+  {
+    n: '§ 05',
+    name: 'Adding value, <span class="i-accent">always.</span>',
+    lede: 'Every action must matter.',
+    detail: 'We believe in intentional activity that adds value. Everything we do must matter. Extraordinary teams thrive when their energy goes into meaningful work, not endless motion - never activity for activity\'s sake.',
+    tag: 'Intentional activity · Meaningful work · Never motion for motion\'s sake',
+  },
+];
+---
+<Base title="Values" current="Values" description="At MPower, values are more than words. Humans First, Courageous Curiosity, Empowered Growth, Future by Design, Adding Value Always - the compass behind everything we build.">
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ Values · The compass</div>
+      <h1 class="display values-h1">Values must <span class="i-accent">breathe.</span></h1>
+      <p class="body-lg values-intro">At MPower, our values are more than words. They're the principles that shape how we think, partner, and grow. They guide every conversation, every decision, and every act of courage and care.</p>
+      <p class="body values-graf">We aren't interested in creating more corporate wallpaper. Values must show up in how we lead, design, challenge, and work with people every day. They aren't buzzwords or a branding exercise. They're the foundation, our compass when things get messy, our reminder of what matters most, and the reason we do what we do.</p>
+      <p class="body values-graf">Because when values are real, they're not just <em>written</em>. They're <em>felt</em>.</p>
+      <p class="mono values-source">§ Inherited from Radical HR · the practice behind <span class="i-accent">M</span>Power</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 64px;" />
+      <div class="values-list">
+        {values.map((v) => (
+          <article class="val">
+            <div class="val-num"><span class="mono" set:html={v.n} /></div>
+            <div class="val-body">
+              <h2 class="display val-name" set:html={v.name} />
+              <p class="body-lg val-lede">{v.lede}</p>
+              <p class="body val-detail">{v.detail}</p>
+              <p class="mono val-tag">{v.tag}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <GreenBlock
+    kicker="§ Closer"
+    cta={{ href: 'mailto:askme@mpowerhq.nz?subject=Values in practice enquiry', label: 'Start a conversation' }}
+  >
+    <h2>When values are real, they're not just <em>written.</em> They're <em>felt.</em></h2>
+    <p>Want to test these in a room? <strong>askme@mpowerhq.nz</strong></p>
+  </GreenBlock>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .values-h1 { font-size: var(--t-h1); max-width: 16ch; line-height: 1.0; }
+  .values-intro { margin-top: 32px; max-width: 60ch; opacity: .92; }
+  .values-graf { margin-top: 18px; max-width: 60ch; opacity: .82; }
+  .values-source { margin-top: 36px; color: var(--c-fog); letter-spacing: 0.14em; }
+
+  .values-list { display: flex; flex-direction: column; gap: 0; }
+  .val {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: clamp(24px, 4vw, 64px);
+    padding-block: clamp(48px, 6vw, 80px);
+    border-top: 1px solid var(--c-rule);
+    align-items: start;
+  }
+  .val:last-child { border-bottom: 1px solid var(--c-rule); }
+  .val-num .mono { color: var(--c-spring); letter-spacing: 0.18em; font-size: 14px; display: block; padding-top: 14px; }
+  .val-name {
+    font-size: clamp(48px, 5.5vw, 96px);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    margin: 0 0 24px;
+    max-width: 14ch;
+  }
+  .val-lede { max-width: 48ch; line-height: 1.4; color: var(--c-mist); margin: 0 0 18px; }
+  .val-detail { max-width: 56ch; color: var(--c-mist); opacity: .85; line-height: 1.6; margin: 0 0 24px; }
+  .val-tag {
+    display: block;
+    color: var(--c-fog);
+    font-size: var(--t-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    max-width: 80ch;
+    padding-top: 18px;
+    border-top: 1px solid var(--c-rule-soft);
+  }
+  @media (max-width: 860px) {
+    .val { grid-template-columns: 1fr; gap: 16px; }
+    .val-num .mono { padding-top: 0; }
+  }
+</style>

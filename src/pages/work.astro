@@ -1,0 +1,217 @@
+---
+import Base from '../layouts/Base.astro';
+import GreenBlock from '../components/GreenBlock.astro';
+
+const services = [
+  {
+    mono: '§ 01 · 1:1', cadence: 'Monthly · 6 sessions', accent: 'var(--c-spring)',
+    name: 'Coaching.', tagline: 'For leaders without a title, or with one and quietly drowning.',
+    blurb: 'The space to ask <em>what kind of leader do I actually want to be</em>, and the room to answer it honestly. Six sessions, monthly. Built for the principal, the manager, the operator, the parent stepping into something bigger.',
+    arrow: 'Start a conversation', subject: 'Coaching enquiry',
+  },
+  {
+    mono: '§ 02 · Half-day or full', cadence: 'Single session · in-person or online', accent: 'var(--c-clay)',
+    name: 'Team workshops.', tagline: 'One session. Habits and changes your team can use on Monday.',
+    blurb: "Strengths, communication, the actual admin. Designed so an online room doesn't go flat and an in-person room doesn't drift. Comes with a take-home so the change holds past Friday.",
+    arrow: 'Book a session', subject: 'Team workshop enquiry',
+  },
+  {
+    mono: '§ 03 · Cohort', cadence: '3-9 months · multi-session', accent: 'var(--c-indigo)',
+    name: 'Leadership programmes.', tagline: 'A multi-month arc for a cohort that needs to grow together.',
+    blurb: "Principals, exec teams, sector leaders. The room gets honest. People change while they still can. We've designed this for education leadership, agri governance, and organisations between stages.",
+    arrow: 'Design a programme', subject: 'Leadership programme enquiry',
+  },
+  {
+    mono: '§ 04 · Neutral chair', cadence: 'Day rate · half- or full-day', accent: 'var(--c-gold)',
+    name: 'Facilitation.', tagline: 'Boards, retreats, the hard conversations.',
+    blurb: 'A neutral chair who asks the very good questions, keeps the room moving, and lets you be a participant in your own meeting instead of running it. Strategic planning days, board off-sites, succession conversations.',
+    arrow: 'Hold the room', subject: 'Facilitation enquiry',
+  },
+  {
+    mono: '§ 05 · Engagement', cadence: '6-12 months · retained', accent: 'var(--c-wheat)',
+    name: 'Organisational consulting.', tagline: 'Structure reviews and scale-up groundwork.',
+    blurb: 'For organisations that have outgrown how they were built. We do the unglamorous work, structure, operating model, decision rights, that has to be in place before you can grow without breaking. Board chair quote: <em>"A powerhouse for change."</em>',
+    arrow: 'Scope the engagement', subject: 'Org consulting enquiry',
+  },
+  {
+    mono: '§ 06 · Keynote', cadence: 'Conferences, sector days', accent: 'var(--c-mist)',
+    name: 'Speaking.', tagline: 'The MPower thesis, in your room.',
+    blurb: 'For conferences, sector events, leadership days. Plain language, real stories, the case for equipping rather than rescuing. Tailored to your audience, never the same talk twice.',
+    arrow: 'Invite Lisa', subject: 'Speaking enquiry',
+  },
+];
+
+const steps = [
+  ['01', "You tell us what's actually going on.", 'A 30-minute call. No deck, no diagnostic, no upsell. The problem in your words, and a straight answer about whether we\'re the right fit.'],
+  ['02', 'We propose the shape.', "One of the six on this page, or a hybrid. Written in plain language. Priced upfront. No retainers you can't get out of."],
+  ['03', 'We do the work.', 'With you, not to you. Decisions stay yours. The goal is to leave your team more capable than we found them, not more dependent.'],
+];
+---
+<Base title="Work with us" current="Work with us" description="The MPower platform is pre-launch. The practice isn't. Coaching, team workshops, leadership programmes, facilitation, consulting and speaking with Radical HR, the practice behind MPower.">
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ Work with us · Today, not next year</div>
+      <h1 class="display work-h1">While we build <span class="i-accent">M</span>Power, <span class="i-accent">the work is already happening.</span></h1>
+      <p class="body-lg work-lede">The platform is pre-launch. The practice isn't. For years now, <strong>Radical HR</strong>, our consulting and facilitation practice, has been doing the work behind MPower with leaders, teams, boards and whole organisations across Aotearoa.</p>
+      <p class="body-lg work-lede">If you need a person in the room before the platform is live, this is how that works.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 56px;" />
+      <span class="mono accent">§ 01 · Six ways in</span>
+      <h2 class="display work-h2">Productised, not packaged. <span class="i-accent">Built around you.</span></h2>
+      <p class="body work-sub">Each of these has been delivered, refined, and delivered again. Same shape, your context. Pick the one that fits or tell us the problem and we'll suggest the fit.</p>
+
+      <div class="services">
+        {services.map((s) => (
+          <a class="svc" href={`mailto:askme@mpowerhq.nz?subject=${encodeURIComponent(s.subject)}`} style={`--svc-accent: ${s.accent};`}>
+            <div class="svc-head">
+              <span class="mono svc-mono">{s.mono}</span>
+              <span class="mono svc-cadence">{s.cadence}</span>
+            </div>
+            <h3 class="display svc-name">{s.name}</h3>
+            <p class="svc-tagline">{s.tagline}</p>
+            <p class="body svc-blurb" set:html={s.blurb} />
+            <div class="svc-arrow">{s.arrow} <span class="arr">→</span></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 56px;" />
+      <span class="mono accent">§ 02 · How it starts</span>
+      <h2 class="display work-h2">Conversation first. <span class="i-accent">Always.</span></h2>
+      <ol class="steps">
+        {steps.map(([n, t, b]) => (
+          <li>
+            <span class="step-num">{n}</span>
+            <h3 class="heading step-title">{t}</h3>
+            <p class="body step-body">{b}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 56px;" />
+      <div class="practice">
+        <div>
+          <span class="mono accent">§ 03 · The practice</span>
+          <h3 class="display practice-h">Radical HR is the practice behind <span class="i-accent">M</span>Power.</h3>
+        </div>
+        <div class="practice-body">
+          <p class="body-lg">Radical HR is Lisa Shaw's consulting and facilitation practice, the place this work has lived for years. MPower is what happens when those answers go from one room at a time to one tap at a time.</p>
+          <p class="body">If your need is human-shaped, a coach in the room, a chair at the table, a programme for your cohort, that's Radical HR. If your need is platform-shaped, in-the-moment answers for hundreds or thousands of people, that's MPower, soon.</p>
+          <p class="body">Either way, same standards. Plain language, no door-guarding, built so you don't need us forever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <GreenBlock
+    kicker="§ Closer"
+    cta={{ href: 'mailto:askme@mpowerhq.nz?subject=Work with us enquiry', label: 'Start a conversation' }}
+  >
+    <h2>Tell us what you actually need. <em>We'll be honest about whether we're the fit.</em></h2>
+    <p>One email. One call. One straight answer. <strong>askme@mpowerhq.nz</strong></p>
+  </GreenBlock>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .work-h1 { font-size: var(--t-h1); max-width: 16ch; line-height: 1.0; }
+  .work-lede { margin-top: 18px; max-width: 60ch; opacity: .92; }
+  .work-lede:first-of-type { margin-top: 32px; }
+  .work-h2 { font-size: var(--t-h2); margin-top: 16px; max-width: 22ch; line-height: 1.05; }
+  .work-sub { margin-top: 18px; max-width: 56ch; opacity: .85; }
+
+  .services {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .svc {
+    display: flex; flex-direction: column; gap: 14px;
+    background: var(--c-steel);
+    border: 1px solid var(--c-rule-soft);
+    border-radius: 4px;
+    padding: clamp(24px, 2.6vw, 36px);
+    color: var(--c-mist);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform .18s var(--ease-out), border-color .18s var(--ease-out), background .18s var(--ease-out);
+  }
+  .svc::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--svc-accent, var(--c-spring));
+    opacity: .85;
+  }
+  .svc:hover { transform: translateY(-3px); border-color: var(--svc-accent); background: var(--c-steel-2); }
+  .svc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .svc-mono { color: var(--svc-accent); }
+  .svc-cadence { color: var(--c-fog); opacity: .7; }
+  .svc-name {
+    font-family: var(--f-display); font-weight: 800; letter-spacing: -0.035em;
+    font-size: clamp(36px, 3.4vw, 52px); line-height: 0.98;
+    color: var(--c-mist); margin: 4px 0 0 0;
+  }
+  .svc-tagline {
+    font-family: var(--f-display); font-style: italic; font-weight: 500;
+    font-size: clamp(18px, 1.4vw, 22px); line-height: 1.3; color: var(--svc-accent);
+    max-width: 32ch; margin: 0;
+  }
+  .svc-blurb { max-width: 52ch; color: var(--c-mist); opacity: .82; line-height: 1.55; margin: 0; }
+  .svc-arrow {
+    margin-top: auto; padding-top: 12px;
+    font-family: var(--f-mono); font-size: var(--t-mono); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--svc-accent);
+    display: inline-flex; gap: 8px; align-items: center;
+  }
+  .svc:hover .svc-arrow .arr { transform: translateX(4px); }
+  .svc-arrow .arr { transition: transform .2s var(--ease-out); display: inline-block; }
+
+  .steps {
+    list-style: none; padding: 0; margin-top: 56px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  }
+  .steps li {
+    padding: 32px 28px 32px 0;
+    border-top: 1px solid var(--c-rule);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .step-num {
+    font-family: var(--f-display); font-weight: 800; color: var(--c-spring);
+    font-size: clamp(36px, 4vw, 56px); line-height: 1; letter-spacing: -0.04em;
+  }
+  .step-title { font-size: var(--t-h4); }
+  .step-body { max-width: 36ch; opacity: .85; }
+
+  .practice {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+  .practice-h { font-size: var(--t-h3); margin-top: 16px; max-width: 14ch; line-height: 1.1; }
+  .practice-body { max-width: 60ch; }
+  .practice-body p { margin-top: 18px; opacity: .85; line-height: 1.5; }
+  .practice-body p:first-child { margin-top: 0; opacity: .95; }
+
+  @media (max-width: 860px) {
+    .services { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .practice { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
