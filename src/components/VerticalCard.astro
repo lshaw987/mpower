@@ -63,16 +63,6 @@ const hostLabel = host !== undefined ? host : `${name.toLowerCase()}.mpowerhq.nz
     <p class="vc-tagline">{tagline}</p>
     <p class="body vc-blurb">{body}</p>
 
-    {tags.length > 0 && (
-      <ul class="vc-tags">
-        {tags.map(([label, hex]) => (
-          <li class="vc-tag">
-            <span class="vc-swatch" style={`background: ${hex};`}></span>
-            <span>{label}</span>
-          </li>
-        ))}
-      </ul>
-    )}
 
     {!coming && (
       <div class="vc-arrow" aria-hidden="true">

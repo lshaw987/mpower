@@ -2,35 +2,139 @@
 import Base from '../layouts/Base.astro';
 import GreenBlock from '../components/GreenBlock.astro';
 ---
-<Base title="Stories" current="Stories" description="Real member stories land here after launch. No saviour-narrative imagery, no stock boardrooms, no pity-bait. Hands, not headshots.">
+<Base title="Stories" current="Stories" description="The work behind MPower. Role-anonymised stories from rooms Lisa has run, leaders she has coached, teams she has walked alongside. Member stories land here after launch.">
 
   <section class="section">
     <div class="container">
-      <div class="mono kicker">§ Stories · Fig. 03 - Hands, not headshots · Aotearoa</div>
-      <h1 class="display stories-h1">
-        Real people. <span class="i-accent">After launch.</span>
-      </h1>
-      <p class="body-lg stories-lede">
-        We're pre-launch, so there are no stories here yet - and we won't invent any. When real members tell us what changed, in their words and with their permission, their stories land here. Real people, real moments. No saviour-narrative imagery, no stock boardrooms, no pity-bait close-ups. Hands, not headshots.
-      </p>
+      <div class="mono kicker">§ The work behind <span class="i-accent">M</span>Power</div>
+      <h1 class="display stories-h1">What happens <span class="i-accent">in the room.</span></h1>
+      <p class="body-lg stories-lede">MPower the platform is pre-launch. The work behind it isn't. These are role-anonymised stories from rooms Lisa has run, leaders she has coached, teams she has walked alongside. Member stories will live here after launch. Until then, this is the proof behind the founder.</p>
     </div>
   </section>
 
+  {/* Featured: the principal arc */}
   <section class="section-tight">
     <div class="container">
       <hr class="rule" style="margin-bottom: 48px;" />
-      <div class="holding">
-        <span class="mono accent">§ Until then</span>
-        <p class="body-lg holding-body">
-          If you want to be one of the first - and you'd be open to telling us what changed once you're in - join the waitlist. Founding members shape what this community becomes.
-        </p>
-        <a href="/waitlist" class="btn btn-primary" style="margin-top: 32px;">Join the waitlist <span class="arr">→</span></a>
+      <div class="mono" style="color: var(--c-spring);">★ Featured · Leadership programme · Education</div>
+      <h2 class="display feat-title">"If I didn't make change, I'd <span class="i-accent">crash and burn.</span> I wouldn't be here in five years."</h2>
+      <div class="feat-row">
+        <div>
+          <p class="body-lg feat-lede">Two workshops in, a principal said something she hadn't planned to say. She'd been leading the way the job teaches you to lead, carry it all, keep going, look like you've got it handled. Then she did the maths on where that was heading and didn't like the answer.</p>
+          <p class="body feat-graf">So she changed one thing. Then the next. A daily journal, something she'd always thought wasn't for her. A written intention every morning, and when the day got loud, she came back to it. Her head got clearer. The frustration that used to run her, she learned to flip.</p>
+          <p class="body feat-graf">Nobody handed her a worksheet. She got the space to ask <em>"what kind of leader do I actually want to be"</em>, and the room was safe enough that she answered it honestly, then acted. That is the work. Not the slides. The moment a leader decides to change while she still can.</p>
+        </div>
+        <div class="feat-meta">
+          <span class="mono" style="color: var(--c-fog);">Principal · Education leadership programme</span>
+          <span class="mono" style="color: var(--c-fog); opacity: .7;">Role-anonymised</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <GreenBlock kicker="§ The promise">
-    <h2>We don't fake it. <em>Real stories, or none.</em></h2>
+  {/* Field notes */}
+  <section class="section">
+    <div class="container">
+      <span class="mono accent">§ 02 · More field notes</span>
+      <div class="story-list">
+
+        <article class="story-row">
+          <div>
+            <span class="mono story-tag" style="color: var(--c-indigo);">School team · Strengths session</span>
+            <p class="mono story-sub">Online · 90 min</p>
+          </div>
+          <div class="story-meat">
+            <h3 class="display story-title">The team that streamlined the actual work.</h3>
+            <p class="body story-lede">Everyone who runs sessions knows online is the format that goes flat, and a school team has heard "play to your strengths" a hundred times. They didn't leave with a theory. They left with their admin actually streamlined and a few habits they could use on Monday.</p>
+            <blockquote class="story-quote" style="border-left-color: var(--c-indigo);">"You were so well prepared, which made for a valuable session. The little tips and tricks have been amazing, efficient ways of being organised, how to streamline the admin in a school. Highly engaging. You pushed us out of our comfort zone in a supportive and caring way."</blockquote>
+          </div>
+          <span class="mono story-read">School team<br/>participant</span>
+        </article>
+
+        <article class="story-row">
+          <div>
+            <span class="mono story-tag" style="color: var(--c-clay);">Leadership team · Programme kickoff</span>
+            <p class="mono story-sub">Session 1 of an arc</p>
+          </div>
+          <div class="story-meat">
+            <h3 class="display story-title">The team that finally knew where it was going.</h3>
+            <p class="body story-lede">A leadership team started a programme not sure what they'd get out of it. They finished the first session knowing where they were headed and how they'd talk to their people about it.</p>
+            <blockquote class="story-quote" style="border-left-color: var(--c-clay);">"We both left feeling excited about what's ahead, and confident we'll learn so much. For the first time in a long time, I feel like we're going to have a clearer direction in what we're trying to achieve, and how we communicate with the teams."</blockquote>
+            <p class="body story-after">The change isn't a new strategy doc. It's a team that can finally see the road and say it out loud to each other.</p>
+          </div>
+          <span class="mono story-read">Leadership-team<br/>participant</span>
+        </article>
+
+        <article class="story-row">
+          <div>
+            <span class="mono story-tag" style="color: var(--c-indigo);">Principals · Leadership room</span>
+            <p class="mono story-sub">Full-day workshop</p>
+          </div>
+          <div class="story-meat">
+            <h3 class="display story-title">The principals who got honest in the room.</h3>
+            <p class="body story-lede">Leading a school is lonely. The job quietly rewards looking like you're fine. The proof a room is built right is when principals stop performing in it and say how they're actually going.</p>
+            <blockquote class="story-quote" style="border-left-color: var(--c-indigo);">"You do an amazing job of making the principals feel comfortable and able to be vulnerable with how they are going. Your list of resources is another highlight."</blockquote>
+            <p class="body story-after">The transformation: people who carry a lot, given one place they could put it down and be honest. That doesn't happen by accident. It gets designed.</p>
+          </div>
+          <span class="mono story-read">Education<br/>leadership programme</span>
+        </article>
+
+        <article class="story-row">
+          <div>
+            <span class="mono story-tag" style="color: var(--c-spring);">Board &amp; executive · Org review</span>
+            <p class="mono story-sub">12-month engagement</p>
+          </div>
+          <div class="story-meat">
+            <h3 class="display story-title">The organisation set up to scale.</h3>
+            <p class="body story-lede">A board and executive team had outgrown how they were structured. Over a year of close work, the structure got reviewed properly, and the operating side got clearer and steadier, the unglamorous groundwork an organisation needs in place before it can grow.</p>
+            <blockquote class="story-quote" style="border-left-color: var(--c-spring);">"A powerhouse for change. Numerous efficiencies, all essential for us to scale up."<footer class="story-cite">, Board Chair</footer></blockquote>
+            <blockquote class="story-quote" style="border-left-color: var(--c-spring); margin-top: 14px;">"A thorough review of our organisational structure, guided by invaluable support."<footer class="story-cite">, CEO</footer></blockquote>
+            <p class="body story-after">The change here isn't loud. It's an organisation that can now grow without breaking, because someone did the work to set it up to.</p>
+          </div>
+          <span class="mono story-read">Board chair<br/>+ CEO</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  {/* Pull-quote bank */}
+  <section class="section-tight" style="padding-bottom: clamp(80px, 10vw, 140px);">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 48px;" />
+      <span class="mono accent">§ 03 · In their words</span>
+      <h2 class="display pq-title">What people say <span class="i-accent">about working with Lisa.</span></h2>
+      <div class="pq-grid">
+        <figure class="pq">
+          <blockquote class="display pq-quote">"An amazing coach. She truly understands people, and how to dig into their psyche to understand their hidden potential."</blockquote>
+          <figcaption class="mono pq-cite">, General Manager</figcaption>
+        </figure>
+        <figure class="pq">
+          <blockquote class="display pq-quote">"What makes Lisa unique is the combination of traits rarely combined in one person, her inquiring nature, the very good questions, the open mind, the enthusiasm."</blockquote>
+          <figcaption class="mono pq-cite">, General Manager</figcaption>
+        </figure>
+        <figure class="pq">
+          <blockquote class="display pq-quote">"You pushed us out of our comfort zone in a supportive, caring way."</blockquote>
+          <figcaption class="mono pq-cite">, School team participant</figcaption>
+        </figure>
+        <figure class="pq">
+          <blockquote class="display pq-quote">"For the first time in a long time, I feel like we have a clearer direction."</blockquote>
+          <figcaption class="mono pq-cite">, Leadership-team participant</figcaption>
+        </figure>
+        <figure class="pq">
+          <blockquote class="display pq-quote">"It's really good giving me good things to consider with the direction of school, and the balance needed with MOE requirements."</blockquote>
+          <figcaption class="mono pq-cite">, School principal</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <GreenBlock
+    kicker="§ The work, now"
+    cta={{ href: '/work', label: 'Work with us' }}
+  >
+    <h2>Want a person in the room <em>before the platform's live?</em></h2>
+    <p>The practice behind MPower is open today. Coaching, workshops, programmes, facilitation and more.</p>
   </GreenBlock>
 
 </Base>
@@ -38,12 +142,34 @@ import GreenBlock from '../components/GreenBlock.astro';
 <style>
   .kicker { color: var(--c-spring); margin-bottom: 36px; }
   .stories-h1 { font-size: var(--t-h1); max-width: 14ch; }
-  .stories-lede { margin-top: 32px; max-width: 64ch; opacity: .9; }
+  .stories-lede { margin-top: 32px; max-width: 60ch; opacity: .9; }
 
-  .holding { max-width: 60ch; }
-  .holding-body { margin-top: 18px; opacity: .9; }
+  .feat-title { font-size: var(--t-h2); margin-top: 24px; max-width: 24ch; line-height: 1.0; }
+  .feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px; align-items: center; }
+  .feat-lede { max-width: 48ch; opacity: .9; }
+  .feat-graf { margin-top: 20px; max-width: 60ch; color: var(--c-mist); opacity: .9; }
+  .feat-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  .story-list { margin-top: 32px; }
+  .story-row { display: grid; grid-template-columns: 1.2fr 2fr 1fr; gap: 48px; padding-block: 36px; border-top: 1px solid var(--c-rule); align-items: baseline; }
+  .story-row:last-child { border-bottom: 1px solid var(--c-rule); }
+  .story-sub { color: var(--c-fog); margin-top: 8px; opacity: .7; }
+  .story-title { font-size: var(--t-h4); margin-bottom: 10px; }
+  .story-lede { max-width: 52ch; opacity: .82; }
+  .story-quote { margin: 18px 0 0; padding-left: 18px; border-left: 2px solid var(--c-spring); max-width: 56ch; font-style: italic; color: var(--c-mist); line-height: 1.5; }
+  .story-cite { font-style: normal; font-family: var(--f-mono); font-size: var(--t-mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--c-fog); margin-top: 8px; }
+  .story-after { margin-top: 14px; color: var(--c-mist); opacity: .8; max-width: 56ch; }
+  .story-read { text-align: right; color: var(--c-fog); }
+
+  .pq-title { font-size: var(--t-h3); margin-top: 16px; max-width: 22ch; }
+  .pq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px 48px; margin-top: 48px; }
+  .pq { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .pq-quote { font-size: clamp(22px, 1.8vw, 28px); line-height: 1.25; margin: 0; max-width: 28ch; font-weight: 600; letter-spacing: -0.02em; }
+  .pq-cite { color: var(--c-fog); }
 
   @media (max-width: 860px) {
-    .holding { max-width: none; }
+    .feat-row { grid-template-columns: 1fr; }
+    .story-row { grid-template-columns: 1fr; gap: 8px; }
+    .story-read { text-align: left; }
   }
 </style>
