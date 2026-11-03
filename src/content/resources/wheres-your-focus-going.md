@@ -5,6 +5,8 @@ format: "Read"
 theme: "Self care"
 source: "First shared on radicalhr.nz, February 2025"
 readingTime: 2
+image: "/images/resources/wheres-your-focus-going.jpg"
+imageAlt: "A paper diary open to the week, with a pen and a sprig of greenery."
 order: 6
 ---
 

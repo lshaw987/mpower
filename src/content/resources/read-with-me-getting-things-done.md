@@ -6,6 +6,8 @@ theme: "Your week"
 source: "Lisa's reading notes, first shared on radicalhr.nz"
 pdf: "/resources/pdf/read-with-me-getting-things-done.pdf"
 readingTime: 3
+image: "/images/resources/read-with-me-getting-things-done.jpg"
+imageAlt: "Cover of Getting Things Done by David Allen."
 order: 8
 book:
   title: "Getting Things Done"

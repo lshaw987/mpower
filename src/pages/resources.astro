@@ -1,8 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { jpegSize } from '../lib/image-size';
 
 const all = (await getCollection('resources')).sort((a, b) => a.data.order - b.data.order);
+
+// Tile media. Three variants so the grid stays even whatever a piece has:
+//   photo  - 16:10 cover crop of the piece's image
+//   cover  - a book review: the portrait cover centred on a Steel panel
+//   panel  - no image yet: Deep Sea panel with the format glyph in Spring
+const cards = all.map((r) => ({
+  r,
+  size: r.data.image ? jpegSize(r.data.image) : null,
+  variant: !r.data.image ? 'panel' : r.data.book ? 'cover' : 'photo',
+}));
+
+// Format glyphs (24x24, stroked in currentColor) for the panel variant.
+const glyphs: Record<string, string> = {
+  Guide: '<path d="M4 12h15M13 6l6 6-6 6"/>',
+  Template: '<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/>',
+  Read: '<path d="M12 6.5C10 5 7.5 4.5 4 4.5v13c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-13c-3.5 0-6 .5-8 2zM12 6.5v13"/>',
+  Review: '<path d="M7 3h10v18l-5-4-5 4z"/>',
+};
 
 const formats = ['Guide', 'Template', 'Read', 'Review'] as const;
 const themes = ['Self care', 'Your week', 'Leading', 'Growth'] as const;
@@ -70,7 +89,7 @@ const locked = [
       <p class="mono rs-count" id="rs-count" aria-live="polite" hidden></p>
 
       <div class="rs-grid" id="rs-grid">
-        {all.map((r) => (
+        {cards.map(({ r, size, variant }) => (
           <a
             href={`/resources/${r.slug}`}
             class="rc"
@@ -78,16 +97,36 @@ const locked = [
             data-theme={r.data.theme}
           >
             <div class="rc-edge"></div>
-            <div class="rc-body">
-              <div class="rc-tags">
-                <span class="mono rc-tag rc-tag-format">{r.data.format}</span>
-                <span class="mono rc-tag rc-tag-theme">{r.data.theme}</span>
+            <div class="rc-main">
+              <div class={`rc-media rc-media-${variant}`}>
+                {variant !== 'panel' && (
+                  <img
+                    src={r.data.image}
+                    alt={r.data.imageAlt ?? ''}
+                    width={size?.width}
+                    height={size?.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                {variant === 'panel' && (
+                  <span class="rc-glyph" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" set:html={glyphs[r.data.format]} />
+                    <span class="mono rc-glyph-label">{r.data.format}</span>
+                  </span>
+                )}
               </div>
-              <h2 class="heading rc-title">{r.data.title}</h2>
-              <p class="body-sm rc-summary">{r.data.summary}</p>
-              <div class="rc-foot">
-                <span class="mono rc-meta">{r.data.readingTime} min read{r.data.pdf && <span class="rc-pdf">· PDF</span>}</span>
-                <span class="mono rc-arrow" aria-hidden="true">Read <span class="arr">→</span></span>
+              <div class="rc-body">
+                <div class="rc-tags">
+                  <span class="mono rc-tag rc-tag-format">{r.data.format}</span>
+                  <span class="mono rc-tag rc-tag-theme">{r.data.theme}</span>
+                </div>
+                <h2 class="heading rc-title">{r.data.title}</h2>
+                <p class="body-sm rc-summary">{r.data.summary}</p>
+                <div class="rc-foot">
+                  <span class="mono rc-meta">{r.data.readingTime} min read{r.data.pdf && <span class="rc-pdf">· PDF</span>}</span>
+                  <span class="mono rc-arrow" aria-hidden="true">Read <span class="arr">→</span></span>
+                </div>
               </div>
             </div>
           </a>
@@ -96,20 +135,28 @@ const locked = [
         {locked.map((l) => (
           <a href="/waitlist" class="rc rc-locked" data-locked="true">
             <div class="rc-edge"></div>
-            <div class="rc-body">
-              <div class="rc-tags">
-                <span class="mono rc-tag rc-tag-locked">
-                  <svg class="rc-lock" width="11" height="13" viewBox="0 0 11 13" aria-hidden="true" focusable="false">
-                    <rect x="0.75" y="5.25" width="9.5" height="7" rx="1.25" fill="none" stroke="currentColor" stroke-width="1.5" />
-                    <path d="M3 5.25V3.5a2.5 2.5 0 0 1 5 0v1.75" fill="none" stroke="currentColor" stroke-width="1.5" />
-                  </svg>
-                  Members only
-                </span>
+            <div class="rc-main">
+              <div class="rc-media rc-media-locked" aria-hidden="true">
+                <svg class="rc-lock-big" width="40" height="48" viewBox="0 0 11 13" focusable="false">
+                  <rect x="0.75" y="5.25" width="9.5" height="7" rx="1.25" fill="none" stroke="currentColor" stroke-width="0.9" />
+                  <path d="M3 5.25V3.5a2.5 2.5 0 0 1 5 0v1.75" fill="none" stroke="currentColor" stroke-width="0.9" />
+                </svg>
               </div>
-              <h2 class="heading rc-title">{l.title}</h2>
-              <p class="body-sm rc-summary">{l.body}</p>
-              <div class="rc-foot">
-                <span class="mono rc-arrow rc-arrow-locked" aria-hidden="true">Join the waitlist <span class="arr">→</span></span>
+              <div class="rc-body">
+                <div class="rc-tags">
+                  <span class="mono rc-tag rc-tag-locked">
+                    <svg class="rc-lock" width="11" height="13" viewBox="0 0 11 13" aria-hidden="true" focusable="false">
+                      <rect x="0.75" y="5.25" width="9.5" height="7" rx="1.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+                      <path d="M3 5.25V3.5a2.5 2.5 0 0 1 5 0v1.75" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                    Members only
+                  </span>
+                </div>
+                <h2 class="heading rc-title">{l.title}</h2>
+                <p class="body-sm rc-summary">{l.body}</p>
+                <div class="rc-foot">
+                  <span class="mono rc-arrow rc-arrow-locked" aria-hidden="true">Join the waitlist <span class="arr">→</span></span>
+                </div>
               </div>
             </div>
           </a>
@@ -210,7 +257,40 @@ const locked = [
   .rc:hover .rc-arrow { color: var(--c-spring); }
   .rc:hover .rc-arrow .arr { transform: translateX(4px); }
   .rc-edge { background: var(--c-spring); height: 100%; }
-  .rc-body { padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .rc-main { display: flex; flex-direction: column; min-width: 0; }
+  .rc-body { padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; flex: 1; }
+
+  /* Tile media: one 16:10 slot, three looks, so every card in a row lines up */
+  .rc-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--c-deep-sea);
+    border-bottom: 1px solid var(--c-rule-soft);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rc-media-photo img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(.92) brightness(.97);
+    transition: transform .45s var(--ease-out);
+  }
+  .rc-media-photo::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 38%;
+    background: linear-gradient(to top, rgba(24, 34, 45, 0.6), rgba(24, 34, 45, 0));
+    pointer-events: none;
+  }
+  .rc:hover .rc-media-photo img { transform: scale(1.03); }
+  .rc-media-cover { background: var(--c-steel-2); }
+  .rc-media-cover img {
+    display: block; height: 78%; width: auto;
+    border-radius: 2px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  }
+  .rc-media-panel { color: var(--c-spring); }
+  .rc-glyph { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: .9; }
+  .rc-glyph-label { color: var(--c-fog); letter-spacing: .14em; }
+  .rc-media-locked { color: var(--c-fog); opacity: .45; }
 
   .rc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .rc-tag {

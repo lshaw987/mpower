@@ -6,6 +6,8 @@ theme: "Self care"
 source: "Lisa's reading notes, first shared on radicalhr.nz"
 pdf: "/resources/pdf/read-with-me-a-minute-to-think.pdf"
 readingTime: 3
+image: "/images/resources/read-with-me-a-minute-to-think.jpg"
+imageAlt: "Cover of A Minute to Think by Juliet Funt."
 order: 7
 book:
   title: "A Minute to Think"

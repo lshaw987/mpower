@@ -17,6 +17,11 @@ const resources = defineCollection({
     pdf: z.string().optional(),
     readingTime: z.number(),
     order: z.number(),
+    // Tile + hero photo: /images/resources/<slug>.jpg (1200w max, q80). Optional - a
+    // piece with no image gets the Deep Sea panel with its format glyph on the index
+    // and no hero band on its page. Book covers are portrait and render as a centred cover.
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     book: z
       .object({
         title: z.string(),

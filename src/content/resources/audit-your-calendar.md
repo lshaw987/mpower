@@ -6,6 +6,8 @@ theme: "Your week"
 source: "First shared on radicalhr.nz, April 2025"
 pdf: "/resources/pdf/audit-your-calendar.pdf"
 readingTime: 3
+image: "/images/resources/audit-your-calendar.jpg"
+imageAlt: "A month planner lying open on a wooden desk."
 order: 3
 ---
 

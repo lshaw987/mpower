@@ -5,6 +5,8 @@ format: "Guide"
 theme: "Your week"
 source: "First shared on radicalhr.nz, May 2025"
 readingTime: 4
+image: "/images/resources/is-your-week-running-you.jpg"
+imageAlt: "A desk with pens, sticky notes and an open notebook."
 order: 4
 ---
 

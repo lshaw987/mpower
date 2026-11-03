@@ -16,27 +16,20 @@ import GreenBlock from '../components/GreenBlock.astro';
     </div>
   </section>
 
+  {/* Text + image block: the §01 copy on the left, the hands photo beside it at
+      desktop and under it on a phone. The image sits in the 2fr column so it
+      renders near its native 786px, never stretched across the page. */}
   <section class="section">
-    <div class="container two-col">
+    <div class="container two-col two-col-media">
       <div>
         <span class="mono accent">§ 01 · The name encodes the journey</span>
         <h2 class="heading two-col-title">Equip you. Then empower you.</h2>
-      </div>
-      <div>
-        <p class="body-lg">
+        <p class="body-lg two-col-text">
           MPowered is what people become, not something we do <em>to</em> you. The italic <span class="i-accent">2</span> in our tagline - Equip<span class="i-accent">2</span>MPower - is the bridge between knowing and doing.
         </p>
-        <p class="body" style="margin-top: 24px; opacity: .82;">
-          It is the stylised hinge in <em>Equip2MPower</em> - a real italic 2 at display sizes, a standard 2 in body text. A small, deliberate mark of the brand's confidence.
-        </p>
       </div>
-    </div>
-  </section>
-
-  <section class="section-tight">
-    <div class="container">
       <figure class="media">
-        <div class="media-frame"><img src="/images/about.jpg" alt="Real people, real moments - Aotearoa." loading="lazy" /></div>
+        <div class="media-frame"><img src="/images/about.jpg" alt="Real people, real moments - Aotearoa." width="786" height="478" loading="lazy" decoding="async" /></div>
         <figcaption class="mono">§ Hands, not headshots · Aotearoa</figcaption>
       </figure>
     </div>
@@ -95,7 +88,7 @@ import GreenBlock from '../components/GreenBlock.astro';
 
   .media { margin: 0; }
   .media-frame { border-radius: 4px; overflow: hidden; border: 1px solid var(--c-rule-soft); }
-  .media-frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; filter: saturate(.92) brightness(.97); }
+  .media-frame img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; filter: saturate(.92) brightness(.97); }
   .media figcaption { font-family: var(--f-mono); font-size: var(--t-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--c-fog); padding-top: 12px; }
 
   .two-col {
@@ -103,7 +96,9 @@ import GreenBlock from '../components/GreenBlock.astro';
     grid-template-columns: 1fr 2fr;
     gap: 64px;
   }
+  .two-col-media { align-items: start; }
   .two-col-title { font-size: var(--t-h4); margin-top: 14px; max-width: 18ch; }
+  .two-col-text { margin-top: 24px; max-width: 40ch; opacity: .9; }
 
   .audience-title { font-size: var(--t-h2); margin-top: 28px; max-width: 22ch; }
   .audiences { margin-top: 56px; display: flex; flex-direction: column; gap: 36px; }

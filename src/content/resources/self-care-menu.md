@@ -6,6 +6,8 @@ theme: "Self care"
 source: "First shared on radicalhr.nz, May 2025"
 pdf: "/resources/pdf/self-care-menu.pdf"
 readingTime: 4
+image: "/images/resources/self-care-menu.jpg"
+imageAlt: "A hand writing a checklist in a grid notebook."
 order: 1
 ---
 

@@ -6,6 +6,8 @@ theme: "Growth"
 source: "Lisa's reading notes, first shared on radicalhr.nz"
 pdf: "/resources/pdf/read-with-me-playing-big.pdf"
 readingTime: 4
+image: "/images/resources/read-with-me-playing-big.jpg"
+imageAlt: "Cover of Playing Big by Tara Mohr."
 order: 9
 book:
   title: "Playing Big"

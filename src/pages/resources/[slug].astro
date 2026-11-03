@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { jpegSize } from '../../lib/image-size';
 
 export async function getStaticPaths() {
   const all = (await getCollection('resources')).sort((a, b) => a.data.order - b.data.order);
@@ -25,6 +26,10 @@ const { Content } = await entry.render();
 const d = entry.data;
 const formatHref = `/resources?format=${encodeURIComponent(d.format)}`;
 const themeHref = `/resources?theme=${encodeURIComponent(d.theme)}`;
+// Hero band under the title. Photos fill the column (max ~380px tall); book
+// covers are portrait, so they sit centred on a Steel panel instead of cropping.
+const heroSize = d.image ? jpegSize(d.image) : null;
+const heroIsCover = Boolean(d.book);
 ---
 <Base title={d.title} current="Resources" description={d.summary}>
 
@@ -49,6 +54,19 @@ const themeHref = `/resources?theme=${encodeURIComponent(d.theme)}`;
           <a href={d.pdf} class="btn btn-primary art-pdf" download>Download the PDF <span class="arr">↓</span></a>
         )}
       </div>
+
+      {d.image && (
+        <figure class:list={['art-hero', { 'art-hero-cover': heroIsCover }]}>
+          <img
+            src={d.image}
+            alt={d.imageAlt ?? ''}
+            width={heroSize?.width}
+            height={heroSize?.height}
+            loading="eager"
+            decoding="async"
+          />
+        </figure>
+      )}
 
       <hr class="rule" style="margin-block: 40px;" />
 
@@ -120,6 +138,25 @@ const themeHref = `/resources?theme=${encodeURIComponent(d.theme)}`;
   .art-standfirst { margin-top: 24px; max-width: 60ch; opacity: .9; }
   .art-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; color: var(--c-fog); }
   .art-pdf { padding: 10px 18px; font-size: var(--t-body-sm); }
+
+  /* Hero band: full-bleed within the column, capped so it never pushes the body
+     below the fold; same radius, hairline and photo filter as the other media frames. */
+  .art-hero {
+    margin: 36px 0 0;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--c-rule-soft);
+    background: var(--c-steel-2);
+  }
+  .art-hero img {
+    display: block; width: 100%; height: auto;
+    max-height: 380px; object-fit: cover;
+    filter: saturate(.92) brightness(.97);
+  }
+  .art-hero-cover { display: flex; justify-content: center; padding: 28px; }
+  .art-hero-cover img {
+    width: auto; max-height: 300px; border-radius: 2px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+  }
 
   .book {
     background: var(--c-steel);
