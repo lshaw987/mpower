@@ -1,0 +1,352 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const all = (await getCollection('resources')).sort((a, b) => a.data.order - b.data.order);
+
+const formats = ['Guide', 'Template', 'Read', 'Review'] as const;
+const themes = ['Self care', 'Your week', 'Leading', 'Growth'] as const;
+
+// Members-only placeholders. Same grid, muted, no dates or counts.
+const locked = [
+  {
+    title: 'Webinars + recordings',
+    body: 'Live sessions with Lisa, recorded for members.',
+  },
+  {
+    title: 'Ask Lisa',
+    body: "Bring the question you can't ask anywhere else, answered for members.",
+  },
+];
+---
+<Base
+  title="Resources"
+  current="Resources"
+  description="A small free sample of the MPower member library - guides, templates, reads and reviews in plain language. New pieces land here first."
+>
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ Resources · Free</div>
+      <h1 class="display rs-h1">
+        A taste of what's <span class="i-accent">inside.</span>
+      </h1>
+      <p class="body-lg rs-lede">
+        A few pieces from the member library, free, no wall. Guides, templates, reads and the odd book review - the kind of thing you can use this week. Members get the lot.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight rs-list">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 40px;" />
+
+      {/* Tag bar. Pills are real links so the page works with JS off (every
+          card shows; the links just reload). With JS on, the inline script
+          below takes over: filters the grid, marks the active pill, keeps
+          the URL in sync. */}
+      <div class="tagbar" id="tagbar">
+        <div class="tagrow" role="group" aria-label="Filter by format">
+          <span class="mono tagrow-label">Format</span>
+          <div class="pills">
+            <a href="/resources" class="pill" data-filter="format" data-value="" aria-pressed="true">All</a>
+            {formats.map((f) => (
+              <a href={`/resources?format=${encodeURIComponent(f)}`} class="pill" data-filter="format" data-value={f} aria-pressed="false">{f}</a>
+            ))}
+          </div>
+        </div>
+        <div class="tagrow" role="group" aria-label="Filter by theme">
+          <span class="mono tagrow-label">Theme</span>
+          <div class="pills">
+            <a href="/resources" class="pill" data-filter="theme" data-value="" aria-pressed="true">All</a>
+            {themes.map((t) => (
+              <a href={`/resources?theme=${encodeURIComponent(t)}`} class="pill" data-filter="theme" data-value={t} aria-pressed="false">{t}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <p class="mono rs-count" id="rs-count" aria-live="polite" hidden></p>
+
+      <div class="rs-grid" id="rs-grid">
+        {all.map((r) => (
+          <a
+            href={`/resources/${r.slug}`}
+            class="rc"
+            data-format={r.data.format}
+            data-theme={r.data.theme}
+          >
+            <div class="rc-edge"></div>
+            <div class="rc-body">
+              <div class="rc-tags">
+                <span class="mono rc-tag rc-tag-format">{r.data.format}</span>
+                <span class="mono rc-tag rc-tag-theme">{r.data.theme}</span>
+              </div>
+              <h2 class="heading rc-title">{r.data.title}</h2>
+              <p class="body-sm rc-summary">{r.data.summary}</p>
+              <div class="rc-foot">
+                <span class="mono rc-meta">{r.data.readingTime} min read{r.data.pdf && <span class="rc-pdf">· PDF</span>}</span>
+                <span class="mono rc-arrow" aria-hidden="true">Read <span class="arr">→</span></span>
+              </div>
+            </div>
+          </a>
+        ))}
+
+        {locked.map((l) => (
+          <a href="/waitlist" class="rc rc-locked" data-locked="true">
+            <div class="rc-edge"></div>
+            <div class="rc-body">
+              <div class="rc-tags">
+                <span class="mono rc-tag rc-tag-locked">
+                  <svg class="rc-lock" width="11" height="13" viewBox="0 0 11 13" aria-hidden="true" focusable="false">
+                    <rect x="0.75" y="5.25" width="9.5" height="7" rx="1.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M3 5.25V3.5a2.5 2.5 0 0 1 5 0v1.75" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                  Members only
+                </span>
+              </div>
+              <h2 class="heading rc-title">{l.title}</h2>
+              <p class="body-sm rc-summary">{l.body}</p>
+              <div class="rc-foot">
+                <span class="mono rc-arrow rc-arrow-locked" aria-hidden="true">Join the waitlist <span class="arr">→</span></span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p class="body rs-empty" id="rs-empty" hidden>
+        Nothing free in that corner yet. Clear a filter, or join the waitlist and members get the lot.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container narrow">
+      <hr class="rule" style="margin-bottom: 48px;" />
+      <div class="mono kicker-sm">§ Stay posted</div>
+      <h2 class="display rs-h2">Want the <span class="i-accent">next ones?</span></h2>
+      <p class="body rs-capture-line">
+        New free pieces land here first. No wall, no spam - one email when there's something worth your time.
+      </p>
+
+      {/* Same Klaviyo embedded form as /waitlist. Powered by the onsite
+          script + init in Base.astro (company SKABCW). */}
+      <div class="klaviyo-form-W2JdnP"></div>
+
+      <noscript>
+        <p class="body rs-fallback">
+          The form needs JavaScript. If it isn't loading, email
+          <a href="mailto:askme@mpowerhq.nz?subject=waitlist">askme@mpowerhq.nz</a> with 'waitlist' and we'll add you by hand.
+        </p>
+      </noscript>
+
+      <p class="body rs-fallback" data-kl-fallback hidden>
+        Can't see the form? Your browser may be blocking it - email
+        <a href="mailto:askme@mpowerhq.nz?subject=waitlist">askme@mpowerhq.nz</a> with 'waitlist' and we'll add you.
+      </p>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .kicker-sm { color: var(--c-spring); margin-bottom: 20px; }
+  .rs-h1 { font-size: var(--t-h1); max-width: 14ch; }
+  .rs-lede { margin-top: 32px; max-width: 60ch; opacity: .9; }
+  .narrow { max-width: 920px; }
+  .rs-h2 { font-size: var(--t-h3); max-width: 20ch; }
+  .rs-capture-line { margin-top: 20px; max-width: 56ch; opacity: .88; }
+
+  /* Tag bar ----------------------------------------------------------- */
+  .tagbar { display: flex; flex-direction: column; gap: 14px; }
+  .tagrow { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .tagrow-label { min-width: 64px; color: var(--c-fog); }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    display: inline-flex; align-items: center;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--c-rule);
+    font-size: var(--t-body-sm);
+    font-weight: 500;
+    color: var(--c-mist);
+    opacity: .85;
+    transition: border-color .15s var(--ease-out), background .15s var(--ease-out), color .15s var(--ease-out), opacity .15s var(--ease-out);
+  }
+  .pill:hover { border-color: var(--c-mist); opacity: 1; }
+  .pill[aria-pressed="true"] {
+    background: var(--c-spring);
+    color: var(--c-spring-ink);
+    border-color: var(--c-spring);
+    opacity: 1;
+    font-weight: 600;
+  }
+
+  .rs-count { margin-top: 28px; color: var(--c-fog); }
+  .rs-count[hidden] { display: none; }
+
+  /* Cards ------------------------------------------------------------- */
+  .rs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .rc {
+    display: grid;
+    grid-template-columns: 10px 1fr;
+    background: var(--c-steel);
+    border: 1px solid var(--c-rule-soft);
+    border-radius: 4px;
+    overflow: hidden;
+    color: var(--c-mist);
+    transition: transform .25s var(--ease-out), border-color .15s var(--ease-out);
+  }
+  .rc[hidden] { display: none; }
+  .rc:hover { transform: translateY(-3px); border-color: var(--c-spring); }
+  .rc:hover .rc-arrow { color: var(--c-spring); }
+  .rc:hover .rc-arrow .arr { transform: translateX(4px); }
+  .rc-edge { background: var(--c-spring); height: 100%; }
+  .rc-body { padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+  .rc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rc-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--c-rule);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .rc-tag-format { color: var(--c-spring); border-color: rgba(74, 222, 128, 0.35); }
+  .rc-tag-theme { color: var(--c-fog); }
+  .rc-tag-locked { color: var(--c-fog); }
+  .rc-lock { flex-shrink: 0; }
+
+  .rc-title { font-size: var(--t-h4); overflow-wrap: anywhere; }
+  .rc-summary { color: var(--c-mist); opacity: .78; max-width: 46ch; }
+  .rc-foot {
+    margin-top: auto; padding-top: 10px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .rc-meta { color: var(--c-fog); }
+  .rc-pdf { color: var(--c-spring); margin-left: 6px; }
+  .rc-arrow {
+    color: var(--c-mist); letter-spacing: 0.14em;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: color .15s var(--ease-out);
+  }
+  .rc-arrow .arr { transition: transform .2s var(--ease-out); }
+
+  /* Locked (members-only) cards: dashed edge, dimmed, same shape */
+  .rc-locked { opacity: .62; }
+  .rc-locked .rc-edge {
+    background: repeating-linear-gradient(135deg, var(--c-fog) 0 6px, transparent 6px 12px);
+    opacity: .6;
+  }
+  .rc-locked:hover { opacity: .85; border-color: var(--c-fog); }
+  .rc-locked:hover .rc-arrow { color: var(--c-mist); }
+  .rc-arrow-locked { color: var(--c-fog); }
+
+  .rs-empty { margin-top: 32px; color: var(--c-fog); max-width: 52ch; }
+  .rs-empty[hidden] { display: none; }
+
+  /* Capture ----------------------------------------------------------- */
+  .klaviyo-form-W2JdnP { margin-top: 28px; min-height: 120px; }
+  .rs-fallback { margin-top: 24px; opacity: .9; }
+  .rs-fallback[hidden] { display: none; }
+  .rs-fallback a { color: var(--c-spring); }
+
+  @media (max-width: 1000px) { .rs-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) {
+    .rs-grid { grid-template-columns: 1fr; }
+    .tagrow { align-items: flex-start; flex-direction: column; gap: 10px; }
+    .tagrow-label { min-width: 0; }
+  }
+</style>
+
+<script>
+  // Tag filter. Progressive: with JS off every card is already in the HTML
+  // and the pills are plain links. Here we take over the clicks, filter the
+  // grid in place, mark the active pill and keep ?format=/?theme= in the URL.
+  const grid = document.getElementById('rs-grid');
+  const count = document.getElementById('rs-count');
+  const empty = document.getElementById('rs-empty');
+  const pills = Array.from(document.querySelectorAll<HTMLAnchorElement>('.pill'));
+  const cards = grid ? Array.from(grid.querySelectorAll<HTMLElement>('.rc:not([data-locked])')) : [];
+
+  const state: { format: string; theme: string } = { format: '', theme: '' };
+
+  const valid = (key: 'format' | 'theme', v: string) =>
+    pills.some((p) => p.dataset.filter === key && p.dataset.value === v);
+
+  function apply(pushUrl: boolean) {
+    let shown = 0;
+    for (const c of cards) {
+      const ok =
+        (!state.format || c.dataset.format === state.format) &&
+        (!state.theme || c.dataset.theme === state.theme);
+      if (ok) { c.removeAttribute('hidden'); shown++; }
+      else c.setAttribute('hidden', '');
+    }
+    for (const p of pills) {
+      const key = p.dataset.filter as 'format' | 'theme';
+      p.setAttribute('aria-pressed', String((p.dataset.value || '') === state[key]));
+    }
+    const filtered = Boolean(state.format || state.theme);
+    if (count) {
+      count.textContent = `Showing ${shown} of ${cards.length}`;
+      if (filtered) count.removeAttribute('hidden'); else count.setAttribute('hidden', '');
+    }
+    if (empty) {
+      if (shown === 0 && cards.length > 0) empty.removeAttribute('hidden');
+      else empty.setAttribute('hidden', '');
+    }
+    if (pushUrl) {
+      const q = new URLSearchParams();
+      if (state.format) q.set('format', state.format);
+      if (state.theme) q.set('theme', state.theme);
+      const qs = q.toString();
+      history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+    }
+  }
+
+  // Initial state from the URL (so the detail page's pills and shared links land filtered).
+  const params = new URLSearchParams(location.search);
+  const f = params.get('format') || '';
+  const t = params.get('theme') || '';
+  if (valid('format', f)) state.format = f;
+  if (valid('theme', t)) state.theme = t;
+
+  for (const p of pills) {
+    p.addEventListener('click', (e) => {
+      e.preventDefault();
+      const key = p.dataset.filter as 'format' | 'theme';
+      state[key] = p.dataset.value || '';
+      apply(true);
+    });
+  }
+
+  if (cards.length) apply(false);
+</script>
+
+<script is:inline>
+  // Klaviyo fallback. If an ad-blocker stops klaviyo.js the form div stays
+  // empty; after 3s, show the plain-email line instead of a blank space.
+  // If the form turns up late (slow connection), hide the line again.
+  (function () {
+    var form = document.querySelector('.klaviyo-form-W2JdnP');
+    var fb = document.querySelector('[data-kl-fallback]');
+    if (!form || !fb) return;
+    var sync = function () {
+      if (form.children.length === 0) fb.removeAttribute('hidden');
+      else fb.setAttribute('hidden', '');
+    };
+    setTimeout(function () {
+      sync();
+      if ('MutationObserver' in window) new MutationObserver(sync).observe(form, { childList: true });
+    }, 3000);
+  })();
+</script>

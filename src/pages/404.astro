@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Not found" description="That page isn't here. Try the home page, the free resources, or the waitlist.">
+
+  <section class="section">
+    <div class="container">
+      <div class="mono kicker">§ 404</div>
+      <h1 class="display nf-h1">That page <span class="i-accent">isn't here.</span></h1>
+      <p class="body-lg nf-lede">
+        It may have moved, or the link had a typo in it. Nothing lost - here are the places worth going.
+      </p>
+      <div class="nf-links">
+        <a href="/" class="btn btn-primary">Home <span class="arr">→</span></a>
+        <a href="/resources" class="btn btn-ghost">Resources <span class="arr">→</span></a>
+        <a href="/waitlist" class="btn btn-ghost">Waitlist <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .nf-h1 { font-size: var(--t-h1); max-width: 14ch; }
+  .nf-lede { margin-top: 32px; max-width: 52ch; opacity: .9; }
+  .nf-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+</style>

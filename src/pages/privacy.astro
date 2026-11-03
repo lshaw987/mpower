@@ -10,9 +10,6 @@ import Base from '../layouts/Base.astro';
     <div class="container">
       <div class="mono kicker">§ Privacy · 2026</div>
       <h1 class="display legal-h1">Privacy.</h1>
-      <p class="flag">
-        Draft - plain-language orientation, not a finished legal document. A privacy lawyer reviews this and resolves the flagged items before the site goes live.
-      </p>
     </div>
   </section>
 
@@ -27,7 +24,6 @@ import Base from '../layouts/Base.astro';
         <p><strong>When you start a trial or become a member:</strong> your name, email, and the payment details you enter. Payment is handled by a dedicated payment provider - your card details go to them, not into our systems. We see that a payment happened, not your card number.</p>
         <p><strong>When you're inside the community:</strong> the account you create in Circle (the community) and your access to Notion (the resource library), plus what you post and how you use it - so the community works and we can make it better.</p>
         <p><strong>Basic site analytics:</strong> how people find and move through the site. This is about the site, not about you personally being tracked across the internet.</p>
-        <p class="flag flag-inline">To confirm before launch: the named payment processor, the named analytics tool and whether it uses cookies. Not invented here.</p>
         <p>We don't collect anything we don't need. If we ever want to collect something new, we'll tell you why first.</p>
 
         <h2>Who else touches it</h2>
@@ -38,7 +34,6 @@ import Base from '../layouts/Base.astro';
 
         <h2>How long we keep it, and getting it removed</h2>
         <p>We keep your information for as long as you're with us, and for a reasonable while after so we can sort out anything like billing questions. You can ask us what we hold about you, ask us to fix it, or ask us to delete it. Email <a href="mailto:askme@mpowerhq.nz">askme@mpowerhq.nz</a> and a human will sort it.</p>
-        <p class="flag flag-inline">To confirm before launch: retention period and the NZ Privacy Act response timeframe - lawyer to set the exact wording.</p>
 
         <h2>Your choices</h2>
         <ul>
@@ -52,7 +47,7 @@ import Base from '../layouts/Base.astro';
 
         <h2>Contact</h2>
         <p>Questions about any of this? Email <a href="mailto:askme@mpowerhq.nz">askme@mpowerhq.nz</a>. A person reads it.</p>
-        <p class="mono dim">Last updated: [set on publish]</p>
+        <p class="mono dim">Last updated: 4 November 2026</p>
       </div>
     </div>
   </section>
@@ -62,19 +57,6 @@ import Base from '../layouts/Base.astro';
 <style>
   .kicker { color: var(--c-spring); margin-bottom: 36px; }
   .legal-h1 { font-size: var(--t-h1); max-width: 14ch; }
-
-  .flag {
-    border-left: 3px solid var(--c-clay);
-    background: var(--c-steel);
-    color: var(--c-wheat);
-    padding: 16px 20px;
-    margin-top: 28px;
-    font-size: var(--t-body-sm);
-    line-height: 1.6;
-    border-radius: 0 4px 4px 0;
-    max-width: 64ch;
-  }
-  .flag-inline { margin-block: 24px; }
 
   .prose { max-width: 68ch; }
   .prose h2 {

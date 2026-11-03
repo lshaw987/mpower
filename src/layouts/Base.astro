@@ -16,6 +16,10 @@ const {
   ogImage = '/og-default.png',
 } = Astro.props;
 const fullTitle = title === 'MPower' ? title : `${title} · MPower`;
+// Canonical: the page path on the configured site host, no query string.
+// Vercel serves clean URLs with no trailing slash (vercel.json), so strip it.
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = new URL(path, Astro.site).href;
 ---
 <!doctype html>
 <html lang="en-NZ">
@@ -26,12 +30,14 @@ const fullTitle = title === 'MPower' ? title : `${title} · MPower`;
     <meta name="theme-color" content="#0F1922" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
 
-    {/* Open Graph + Twitter */}
+    {/* Open Graph + Twitter. URLs derive from `site` in astro.config.mjs
+        (www.mpowerhq.nz) - never hard-code the host here. */}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
     <meta name="twitter:card" content="summary_large_image" />
 
