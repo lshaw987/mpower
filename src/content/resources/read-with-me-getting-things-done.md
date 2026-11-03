@@ -1,6 +1,6 @@
 ---
 title: "Read with me: Getting Things Done"
-summary: "David Allen's book started my whole productivity journey. Content gold, prose dust - here's what to take from it."
+summary: "David Allen's book started my whole productivity journey. Content gold, prose dust - what to take from it."
 format: "Review"
 theme: "Your week"
 source: "Lisa's reading notes, first shared on radicalhr.nz"

@@ -24,14 +24,14 @@ Sound familiar? Are you nodding along?
 
 ## The shift - projects versus tasks
 
-Here's the simple (but powerful) principle I teach that consistently helps people take back control. Separate your projects from your tasks.
+The simple (but powerful) principle I teach, the one that consistently helps people take back control, is this. Separate your projects from your tasks.
 
 It comes straight from David Allen's Getting Things Done, and everything I've read in the neuroscience backs it - your brain loves clarity. It craves closed loops. A clear next step and a sense of resolution.
 
 - A **project** is anything that takes more than one step to complete.
 - A **task** is a single, clear, actionable thing you can do in one go.
 
-Here's where most people get stuck..... They write "Implement structured literacy" or "Launch a wellbeing programme" on their to-do list and wonder why it never moves. That's a multi-step project wearing a task's clothes. It needs its own plan.
+This is where most people get stuck..... They write "Implement structured literacy" or "Launch a wellbeing programme" on their to-do list and wonder why it never moves. That's a multi-step project wearing a task's clothes. It needs its own plan.
 
 Meanwhile, "Email staff the literacy training dates" is a task. You can do it, tick it off, and feel that small, powerful hit of momentum.
 
@@ -56,7 +56,7 @@ The result? You stay stuck in reactive mode. You can't get at your higher-order 
 
 ## Your challenge - two questions
 
-If you really want to make a change, here's where to start.
+If you really want to make a change, this is where to start.
 
 📅 **Block out time with yourself.** Not when you "find the time". Make the time, and treat it like a meeting you wouldn't cancel on anyone else.
 

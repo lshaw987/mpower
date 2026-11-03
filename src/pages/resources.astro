@@ -42,25 +42,26 @@ const locked = [
       <hr class="rule" style="margin-bottom: 40px;" />
 
       {/* Tag bar. Pills are real links so the page works with JS off (every
-          card shows; the links just reload). With JS on, the inline script
-          below takes over: filters the grid, marks the active pill, keeps
-          the URL in sync. */}
+          card shows; the links just reload; no aria-pressed, because a plain
+          link is not a toggle). With JS on, the inline script below takes
+          over: gives each pill role="button" + aria-pressed, filters the
+          grid, marks the active pill, keeps the URL in sync. */}
       <div class="tagbar" id="tagbar">
         <div class="tagrow" role="group" aria-label="Filter by format">
           <span class="mono tagrow-label">Format</span>
           <div class="pills">
-            <a href="/resources" class="pill" data-filter="format" data-value="" aria-pressed="true">All</a>
+            <a href="/resources" class="pill" data-filter="format" data-value="">All</a>
             {formats.map((f) => (
-              <a href={`/resources?format=${encodeURIComponent(f)}`} class="pill" data-filter="format" data-value={f} aria-pressed="false">{f}</a>
+              <a href={`/resources?format=${encodeURIComponent(f)}`} class="pill" data-filter="format" data-value={f}>{f}</a>
             ))}
           </div>
         </div>
         <div class="tagrow" role="group" aria-label="Filter by theme">
           <span class="mono tagrow-label">Theme</span>
           <div class="pills">
-            <a href="/resources" class="pill" data-filter="theme" data-value="" aria-pressed="true">All</a>
+            <a href="/resources" class="pill" data-filter="theme" data-value="">All</a>
             {themes.map((t) => (
-              <a href={`/resources?theme=${encodeURIComponent(t)}`} class="pill" data-filter="theme" data-value={t} aria-pressed="false">{t}</a>
+              <a href={`/resources?theme=${encodeURIComponent(t)}`} class="pill" data-filter="theme" data-value={t}>{t}</a>
             ))}
           </div>
         </div>
@@ -269,8 +270,10 @@ const locked = [
 
 <script>
   // Tag filter. Progressive: with JS off every card is already in the HTML
-  // and the pills are plain links. Here we take over the clicks, filter the
-  // grid in place, mark the active pill and keep ?format=/?theme= in the URL.
+  // and the pills are plain links. Here we turn the pills into toggle buttons
+  // (role + aria-pressed are set only from this script), take over the clicks,
+  // filter the grid in place, mark the active pill and keep ?format=/?theme=
+  // in the URL.
   const grid = document.getElementById('rs-grid');
   const count = document.getElementById('rs-count');
   const empty = document.getElementById('rs-empty');
@@ -321,6 +324,7 @@ const locked = [
   if (valid('theme', t)) state.theme = t;
 
   for (const p of pills) {
+    p.setAttribute('role', 'button');
     p.addEventListener('click', (e) => {
       e.preventDefault();
       const key = p.dataset.filter as 'format' | 'theme';
@@ -329,7 +333,8 @@ const locked = [
     });
   }
 
-  if (cards.length) apply(false);
+  // Always mark the pills, even if the grid is empty, so aria-pressed exists once JS is on.
+  apply(false);
 </script>
 
 <script is:inline>

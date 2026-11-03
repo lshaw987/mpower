@@ -1,6 +1,6 @@
 ---
 title: "Control your interruptability"
-summary: "You don't have a time problem. You have an interruptability problem - and here's the checklist for the Great Switch Off."
+summary: "You don't have a time problem. You have an interruptability problem - and the checklist for the Great Switch Off."
 format: "Guide"
 theme: "Leading"
 source: "From Lisa's Tuesday Tactics series"
@@ -17,7 +17,7 @@ Here's how to take part in what I call the Great Switch Off, and take back contr
 
 ## Every interruption has a cost
 
-You don't just "pick back up" where you left off. Every interruption makes you context-switch, and that's expensive. The figure I use is 27 minutes - what it takes to reclaim your focus, restart the thinking and rebuild the depth after one ping. And it's never quite the same.
+You don't just "pick back up" where you left off. Every interruption makes you context-switch, and that's expensive. The research most people quote (Gloria Mark, University of California Irvine) puts it at around 23 minutes - what it takes to reclaim your focus, restart the thinking and rebuild the depth after one ping. And it's never quite the same.
 
 Count the pings in an average morning and do the maths. It gets uncomfortable fast.
 
