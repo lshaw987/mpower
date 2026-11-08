@@ -91,6 +91,16 @@
   --ease-in-out: cubic-bezier(.6,.05,.4,1);
 }
 
+/* Narrow phones (iPhone 12-15 at 390px and smaller). The display floor of 72px
+   lets "Knowledge." run past a 350px content box; the h1 floor of 56px is tight
+   on "Communities". Step both down - vw-led so they still scale. */
+@media (max-width: 480px) {
+  :root {
+    --t-display: clamp(48px, 14vw, 72px);
+    --t-h1:      clamp(42px, 12vw, 56px);
+  }
+}
+
 /* Honour reduced-motion. The site is mostly static anyway - kill the few
    transitions that exist. */
 @media (prefers-reduced-motion: reduce) {
