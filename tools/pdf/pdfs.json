@@ -1,0 +1,10 @@
+[
+  { "slug": "audit-your-calendar", "title": "Calendar culture audit - MPower", "tag": "Template · Your week", "pages": 1 },
+  { "slug": "how-i-need-to-spend-my-week", "title": "How I need to spend my week - MPower", "tag": "Template · Your week", "pages": 2 },
+  { "slug": "read-with-me-a-minute-to-think", "title": "Read with me: A Minute to Think - MPower", "tag": "Review · Self care", "content_class": "review", "pages": 1 },
+  { "slug": "read-with-me-getting-things-done", "title": "Read with me: Getting Things Done - MPower", "tag": "Review · Your week", "content_class": "review", "pages": 2 },
+  { "slug": "read-with-me-playing-big", "title": "Read with me: Playing Big - MPower", "tag": "Review · Growth", "content_class": "review", "pages": 2 },
+  { "slug": "self-care-menu", "title": "My Self-Care Menu - MPower", "layout": "bare", "page_class": "land", "pages": 1 },
+  { "slug": "the-great-switch-off", "title": "The Great Switch Off - MPower", "tag": "Guide · Leading", "pages": 1 },
+  { "slug": "circles-of-control", "title": "Circles of control - MPower", "tag": "Template · Self care", "pages": 1 }
+]

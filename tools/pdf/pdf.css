@@ -1,0 +1,190 @@
+/* MPower free-resource PDFs - shared print stylesheet.
+   Colours mirror src/styles/tokens.css (Spring green on white paper, Deep Sea ink, Fog labels).
+   Units are pt on purpose: the pages are fixed A4 sheets, measured against the 4 Nov 2026 originals. */
+
+/* Static weights (not the variable font): Edge embeds variable fonts as nameless Type 3 glyphs. */
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('fonts/PlusJakartaSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('fonts/PlusJakartaSans-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('fonts/PlusJakartaSans-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; }
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('fonts/PlusJakartaSans-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'Plus Jakarta Sans'; src: url('fonts/PlusJakartaSans-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; }
+
+:root {
+  --ink: #0F1922;      /* --c-deep-sea */
+  --fog: #8B9AAB;      /* --c-fog */
+  --spring: #4ADE80;   /* --c-spring */
+  --line: #C4CFD9;     /* writing lines + soft rules */
+  --m: 51pt;           /* side margin (18mm) */
+}
+
+@page { size: A4; margin: 0; }
+@page land { size: A4 landscape; margin: 0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11pt;
+  line-height: 16.5pt;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---- the sheet ---------------------------------------------------------- */
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  break-after: page;
+  background: #fff;
+}
+.page:last-child { break-after: auto; }
+
+.hdr {
+  position: absolute; left: var(--m); right: var(--m); top: 30pt;
+  height: 20pt;
+}
+.brand {
+  position: absolute; left: 0; top: 0;
+  font-size: 15pt; line-height: 20pt; font-weight: 400; letter-spacing: -0.02em; color: var(--ink);
+}
+.brand b { font-weight: 800; color: var(--spring); }
+.tag {
+  position: absolute; right: 0; top: 2.2pt;
+  font-size: 8.5pt; line-height: 20pt; color: var(--fog);
+  letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+}
+.ftr {
+  position: absolute; left: var(--m); right: var(--m); top: 793.5pt;
+  border-top: 0.75pt solid var(--spring);
+  font-size: 8.5pt; line-height: 12pt; color: var(--fog);
+  padding-top: 6.6pt;
+  display: flex; justify-content: space-between;
+}
+.content {
+  position: absolute; left: var(--m); right: var(--m); top: 68.2pt;
+}
+
+/* ---- shared type -------------------------------------------------------- */
+.eyebrow {
+  font-size: 9pt; line-height: 12.2pt; font-weight: 800; color: var(--spring);
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+h1 {
+  font-size: 24pt; line-height: 28pt; font-weight: 800; letter-spacing: -0.03em;
+  margin-top: 7.4pt;
+}
+.byline { font-size: 12pt; line-height: 16pt; color: var(--fog); margin-top: 6.5pt; }
+.intro { font-size: 11.5pt; line-height: 17.25pt; margin-top: 8.4pt; }
+h2 { font-size: 13pt; line-height: 17pt; font-weight: 700; letter-spacing: -0.01em; margin-top: 14.4pt; margin-bottom: 6.1pt; }
+p { margin-bottom: 9.35pt; }
+.small { font-size: 9pt; line-height: 12.6pt; color: var(--fog); }
+.ask { font-weight: 700; }
+.source {
+  border-top: 0.75pt solid var(--line);
+  margin-top: 11pt; padding-top: 7.3pt;
+  font-size: 9.5pt; line-height: 13pt; font-style: italic; color: var(--fog);
+}
+
+/* ---- reviews (Read with me) -------------------------------------------- */
+.review .byline + p { margin-top: 15pt; }
+.review > h2:first-child { margin-top: 14pt; }
+blockquote {
+  border-left: 1.5pt solid var(--spring);
+  padding: 3pt 0 3pt 14.2pt; margin: 3pt 0 9.5pt;
+  font-style: italic;
+}
+blockquote p { margin-bottom: 7.5pt; }
+blockquote p:last-child { margin-bottom: 0; }
+ul.points { list-style: none; margin-top: 0.5pt; }
+ul.points li { position: relative; padding-left: 14.2pt; margin-bottom: 5.6pt; }
+ul.points li::before {
+  content: ''; position: absolute; left: 1.5pt; top: 6.7pt;
+  width: 3.75pt; height: 3.75pt; border-radius: 50%; background: var(--ink);
+}
+
+/* ---- audit cards -------------------------------------------------------- */
+.cards { display: grid; grid-template-columns: 237pt 237pt; column-gap: 19.5pt; margin-top: 15pt; }
+.card { border-top: 0.75pt solid var(--spring); position: relative; }
+.card.r1, .card.r2 { height: 211.1pt; }
+.card.r3 { height: 172pt; }
+.card .num { font-size: 15pt; line-height: 18pt; font-weight: 800; color: var(--spring); margin-top: 4.5pt; }
+.card h3 { font-size: 11.5pt; line-height: 15pt; font-weight: 700; letter-spacing: -0.01em; margin-top: -0.4pt; }
+.card p { font-size: 11pt; line-height: 15.25pt; margin-top: 5.5pt; margin-bottom: 0; }
+.wl { position: absolute; left: 0; right: 0; height: 0.75pt; background: var(--line); }
+
+/* ---- numbered steps (week page 1) -------------------------------------- */
+.steps { margin-top: 15pt; }
+.step { position: relative; padding-left: 34pt; margin-bottom: 9.4pt; font-size: 10.5pt; line-height: 14.9pt; }
+.step .num { position: absolute; left: 0; top: -0.5pt; font-size: 15pt; line-height: 18pt; font-weight: 800; color: var(--spring); }
+.step h3 { font-size: 10.5pt; line-height: 14.9pt; font-weight: 700; margin-bottom: 0.9pt; }
+.step p { margin: 0; }
+.steps + .small { margin-top: -0.2pt; }
+
+/* ---- week page 2: brain dump + matrix ---------------------------------- */
+.dump {
+  position: absolute; left: 0; right: 0; top: 20.3pt; height: 113.2pt;
+  border: 0.75pt solid var(--line); border-radius: 6pt;
+}
+.dump .lead { position: absolute; left: 11.6pt; top: 8.5pt; font-size: 10pt; line-height: 14pt; }
+.dump .lead b { font-weight: 700; }
+.dump .lead span { color: var(--fog); font-size: 9pt; margin-left: 3pt; }
+.matrix-wrap { position: absolute; left: 0; right: 0; top: 147pt; height: 460pt; }
+.matrix { position: absolute; left: 25.9pt; right: 0; top: 0; height: 405.7pt; border: 0.75pt solid var(--fog); }
+.matrix .h { position: absolute; left: 0; right: 0; top: 201.8pt; height: 0.75pt; background: var(--spring); }
+.matrix .v { position: absolute; top: 0; bottom: 0; left: 232.5pt; width: 0.75pt; background: var(--spring); }
+.q { position: absolute; font-size: 8pt; line-height: 9.8pt; color: var(--fog); }
+.q.tl { left: 7.1pt; top: 6pt; } .q.tr { right: 7.1pt; top: 6pt; text-align: right; }
+.q.bl { left: 7.1pt; bottom: 6pt; } .q.br { right: 7.1pt; bottom: 6pt; text-align: right; }
+.ax { position: absolute; font-size: 8pt; line-height: 10pt; color: var(--fog); }
+.axname { position: absolute; font-size: 9.5pt; line-height: 12pt; font-weight: 700; }
+.key { position: absolute; left: 25.5pt; top: 434.5pt; font-size: 9pt; line-height: 12pt; color: var(--fog); white-space: nowrap; }
+.key i { display: inline-block; width: 11.25pt; height: 11.25pt; border-radius: 3pt; vertical-align: -2.6pt; margin-right: 4.4pt; font-style: normal; }
+.key i.on { background: var(--spring); }
+.key i.off { border: 0.75pt solid var(--fog); margin-left: 17.3pt; margin-right: 4.8pt; }
+.key .tail { margin-left: 17pt; }
+.three {
+  position: absolute; left: 0; right: 0; top: 609pt;
+  border-top: 0.75pt solid var(--line); padding-top: 8.4pt;
+  display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 14pt;
+  font-size: 9pt; line-height: 12.5pt;
+}
+.three b { display: block; font-size: 10pt; line-height: 13pt; font-weight: 700; margin-bottom: 1.4pt; }
+
+/* ---- checklist (switch off) -------------------------------------------- */
+.checks h2 { margin-top: -0.2pt; margin-bottom: 5pt; }
+.checks h2:first-child { margin-top: 17.8pt; }
+.check { position: relative; min-height: 30.7pt; margin-bottom: 15pt; font-size: 10.5pt; line-height: 14.9pt; }
+.check .box { position: absolute; left: 0; top: 1.6pt; width: 15.75pt; height: 15.75pt; border: 0.75pt solid var(--spring); border-radius: 3.5pt; }
+.check .txt { margin-left: 25.5pt; width: 299.3pt; } /* this width sets the line breaks - measured from the original */
+.check .chg { position: absolute; left: 334.5pt; right: 0; top: 0; height: 29.3pt; border-bottom: 0.75pt solid var(--line); font-size: 10pt; line-height: 14.9pt; letter-spacing: 0.02em; }
+.checks + .small { margin-top: -1pt; }
+.small + .ask { margin-top: 9.8pt; }
+
+/* ---- circles of control ------------------------------------------------- */
+.circles { position: absolute; left: 0; right: 0; top: 135pt; height: 430pt; }
+.circles svg { display: block; width: 430pt; height: 430pt; margin: 0 auto; }
+.ring-label { position: absolute; left: 0; right: 0; text-align: center; font-size: 9.5pt; line-height: 12pt; font-weight: 700; }
+.ring-label span { display: block; font-weight: 400; font-size: 8pt; line-height: 10pt; color: var(--fog); }
+.circle-notes { top: 578pt; }
+.circle-ask { position: absolute; left: 0; right: 0; top: 688pt; }
+
+/* ---- self-care menu (landscape, its own layout) ------------------------- */
+.page.land { page: land; width: 297mm; height: 210mm; }
+.land h1 { position: absolute; left: 36.8pt; top: 29.5pt; font-size: 27pt; line-height: 34pt; margin: 0; letter-spacing: -0.035em; }
+.land .lede { position: absolute; left: 36.8pt; top: 69pt; width: 410pt; font-size: 10.2pt; line-height: 15.2pt; }
+.land .brand { left: auto; right: 37.5pt; top: 31pt; font-size: 17pt; line-height: 22pt; }
+.land .foot { position: absolute; right: 37.5pt; top: 564.5pt; font-size: 8.5pt; line-height: 12pt; color: var(--fog); }
+.sbox { position: absolute; border: 0.75pt solid var(--ink); border-radius: 12pt; }
+.sbox .lbl {
+  position: absolute; left: 14.3pt; top: -6.8pt; height: 9.8pt; padding: 0 4.6pt 0 7.5pt;
+  background: #fff; white-space: nowrap;
+  font-size: 7.5pt; line-height: 9.8pt; font-weight: 700; letter-spacing: 0.182em; text-transform: uppercase;
+}
+.sbox .lbl svg { width: 8.6pt; height: 8.6pt; vertical-align: -1.6pt; margin-left: -1.6pt; margin-right: 4.7pt; }
+.sbox .lbl .dot { display: inline-block; width: 4pt; height: 4pt; border-radius: 50%; background: var(--spring); vertical-align: 1pt; margin-right: 8pt; }
+.sbox .sl { position: absolute; left: 14.3pt; right: 14.3pt; height: 0.75pt; background: var(--fog); opacity: 0.6; }
+.prompts ol { position: absolute; left: 28.6pt; right: 18pt; top: 11pt; font-size: 9.6pt; line-height: 14.4pt; }
+.prompts li { margin-bottom: 6pt; padding-left: 2.9pt; }

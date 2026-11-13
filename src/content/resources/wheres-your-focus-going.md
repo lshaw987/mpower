@@ -4,6 +4,7 @@ summary: "Control what you can, let go of what you can't - three circles to sort
 format: "Read"
 theme: "Self care"
 source: "First shared on radicalhr.nz, February 2025"
+pdf: "/resources/pdf/circles-of-control.pdf"
 readingTime: 2
 image: "/images/resources/wheres-your-focus-going.jpg"
 imageAlt: "A paper diary open to the week, with a pen and a sprig of greenery."
