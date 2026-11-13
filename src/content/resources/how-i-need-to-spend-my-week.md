@@ -5,6 +5,7 @@ format: "Template"
 theme: "Your week"
 source: "From a leadership session Lisa ran in 2026"
 pdf: "/resources/pdf/how-i-need-to-spend-my-week.pdf"
+image: "/images/resources/how-i-need-to-spend-my-week.jpg"
 readingTime: 5
 order: 2
 ---

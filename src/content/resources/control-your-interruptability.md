@@ -5,6 +5,7 @@ format: "Guide"
 theme: "Leading"
 source: "From Lisa's Tuesday Tactics series"
 pdf: "/resources/pdf/the-great-switch-off.pdf"
+image: "/images/resources/control-your-interruptability.jpg"
 readingTime: 3
 order: 5
 ---
