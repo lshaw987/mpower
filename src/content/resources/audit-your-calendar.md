@@ -1,5 +1,5 @@
 ---
-title: "Audit your calendar"
+title: "Calendar culture audit"
 summary: "Six prompts to read your calendar as the real record of what matters - and a page to write the answers on."
 format: "Template"
 theme: "Your week"
@@ -17,7 +17,7 @@ If culture is "what we do around here", then your calendar is a living record of
 
 These are the six prompts I use. Open the last four weeks of your calendar beside you and answer honestly - a line or two under each is plenty. The PDF has the same six with room to write.
 
-## 1. What's missing?
+## 1. Where is your white space?
 
 Where are the white spaces for thinking, strategy or recovery? Are the most important things getting squeezed out by the most urgent?
 
@@ -45,7 +45,7 @@ If someone looked at your calendar, would they see your values in action? Would 
 
 | Prompt | What I see in my calendar | One change I'll make |
 |---|---|---|
-| 1. What's missing? | | |
+| 1. Where is my white space? | | |
 | 2. Where are my people? | | |
 | 3. Where's the impact? | | |
 | 4. What am I protecting? | | |

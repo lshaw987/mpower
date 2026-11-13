@@ -17,7 +17,7 @@ import GreenBlock from '../components/GreenBlock.astro';
     <div class="container">
       <figure class="media">
         <div class="media-frame"><img src="/images/resources/is-your-week-running-you.jpg" alt="A desk by the window - pens, sticky notes and an open notebook." width="1200" height="750" loading="lazy" decoding="async" /></div>
-        <figcaption class="mono">§ Fig. 04 · In the moment you need it · Kitchen table, ute, staffroom</figcaption>
+        <figcaption class="mono">§ Learning that fits around real life</figcaption>
       </figure>
     </div>
   </section>
@@ -25,16 +25,16 @@ import GreenBlock from '../components/GreenBlock.astro';
   <section class="section-tight">
     <div class="container">
       {[
-        {n:'§ 01', t:'Find us free on social.', b:'The genuinely useful stuff lives out in the open - no paywall, no sign-up, nobody locked out. That is the front door, and it stays open.'},
+        {n:'§ 01', t:'Find us free on social.', b:'The genuinely useful stuff lives out in the open - no paywall, no sign-up, nobody locked out. Find us on social, or check out our <a href="/resources" style="color: var(--c-spring); text-decoration: underline; text-underline-offset: 3px;">free resources here</a>. That is the front door, and it stays open.'},
         {n:'§ 02', t:'Come inside when you\'re ready.', b:'Join your community on a 30-day trial. The full resource library in plain language, the events, and the people doing exactly what you\'re doing.'},
-        {n:'§ 03', t:'Grow until you don\'t need us.', b:'Use it, make it yours, pass it on. We measure success by the day you can answer for yourself - and you stay anyway, because you love the community.'},
+        {n:'§ 03', t:'Keep finding reasons to stay.', b:'Use it, make it yours, pass it on. You get to where you can answer for yourself - and you keep finding more reasons to stay, because the community keeps growing with you.'},
       ].map((s) => (
         <article class="step">
           <div>
             <span class="mono accent">{s.n}</span>
             <h3 class="display step-title">{s.t}</h3>
           </div>
-          <p class="body-lg step-body">{s.b}</p>
+          <p class="body-lg step-body" set:html={s.b} />
         </article>
       ))}
     </div>
@@ -52,7 +52,7 @@ import GreenBlock from '../components/GreenBlock.astro';
         {[
           ['Plain, not simple',  'Strip the jargon, keep the intelligence. No buzzwords, no one talking down to you.'],
           ['Async and self-paced', 'Recorded, downloadable, on your time. Watch it at 5am or 11pm - your call, your rhythm.'],
-          ['Ask without the cringe', 'An anonymous-question option, because nobody should feel like an idiot for not knowing.'],
+          ['A safe place to ask', 'We want this to be a space of trust, where it is OK to say you don\'t know. And for the times you would rather be a wee bit anonymous, you can ask that way too.'],
           ['Nobody selling you anything', 'No upsell, no affiliate links, no sponsor in your ear. Just the answer you came for.'],
         ].map(([t, b]) => (
           <div class="principle">
