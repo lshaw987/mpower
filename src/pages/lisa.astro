@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+import GreenBlock from '../components/GreenBlock.astro';
+
+// Lisa's other companies. Only ones with a public site carry a link.
+const companies = [
+  {
+    name: 'Radical HR', accent: 'var(--c-spring)', url: 'https://radicalhr.nz', host: 'radicalhr.nz',
+    line: 'The practice behind MPower.',
+    body: 'A Humans First consultancy. We help organisations attract, align, lead and retain extraordinary people - coaching, workshops, leadership programmes, facilitation and consulting.',
+  },
+  {
+    name: 'Planning Room', accent: 'var(--c-indigo)', url: 'https://planningroom.nz', host: 'planningroom.nz',
+    line: 'For schools and boards.',
+    body: 'Turn big ideas into work that actually gets done, without burning out your people. A planning tool built from years in the room with principals and boards.',
+  },
+  {
+    name: 'Umpire Room', accent: 'var(--c-cyan)', url: 'https://umpireroom.nz', host: 'umpireroom.nz',
+    line: 'For the people who run officiating.',
+    body: 'Umpire management, built by an umpire.',
+  },
+  {
+    name: 'Workshop Dashboard', accent: 'var(--c-bronze)', url: '', host: 'In pilot',
+    line: 'For multi-branch workshops.',
+    body: 'The day-to-day running of a workshop on one screen - the jobs, the people and the numbers.',
+  },
+];
+---
+<Base title="Lisa Shaw" current="About" description="Lisa Shaw, founder of MPower - a recovering accountant who learned most of what she knows the hard way, and built MPower so other people don't have to.">
+
+  <section class="section">
+    <div class="container lisa-hero">
+      <div>
+        <div class="mono kicker">§ The founder</div>
+        <h1 class="display lisa-h1">Hi, I'm <span class="i-accent">Lisa.</span></h1>
+        <p class="body-lg lisa-lede">
+          Founder and Chief Empowerment Officer of MPower. A recovering accountant who learned most of what I know the hard way.
+        </p>
+        <div class="lisa-links">
+          <a class="btn btn-ghost" href="https://nz.linkedin.com/in/lisajshaw" target="_blank" rel="noopener">LinkedIn <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/lisa.jshaw/" target="_blank" rel="noopener">Instagram <span class="arr">→</span></a>
+        </div>
+      </div>
+      <figure class="media">
+        <div class="media-frame"><img src="/images/lisa.jpg" alt="Lisa Shaw, Founder of MPower." loading="eager" /></div>
+        <figcaption class="mono">§ Lisa Shaw · Aotearoa New Zealand</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" />
+      <div class="lisa-grid">
+        <div>
+          <span class="mono accent">§ 01 · My why</span>
+          <h2 class="heading lisa-col-title">Why I do any of this.</h2>
+        </div>
+        <div class="prose">
+          <p class="display lisa-why">To empower individuals, organisations and communities so they <span class="i-accent">grow, thrive and flourish.</span></p>
+          <p>That line sits under everything I build. My whole working life has come down to one question - how do we equip people so they're genuinely empowered, then get out of their way?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" />
+      <div class="lisa-grid">
+        <div>
+          <span class="mono accent">§ 02 · The story</span>
+          <h2 class="heading lisa-col-title">I learned it the hard way.</h2>
+        </div>
+        <div class="prose">
+          <p>I figured it out as I went. Made mistakes I never needed to make, because nobody took the time to teach me, and the people who could have held their knowledge tight. I wanted to change that.</p>
+          <p>I started out as an accountant (Fonterra, then years running the finance and operations side of other people's organisations - a not-for-profit, a training company, a private group of twenty companies, two recruitment social enterprises). Somewhere in there I worked out the numbers were never the hard part. The people were.</p>
+          <p>So I've run businesses. I've made payroll with no cash in the bank. I've sat on boards, chaired one, and sat at kitchen tables with farming families trying to make the numbers, the people and the succession all work at once. I own a dairy farm in Pirongia, so the kitchen table is not a metaphor.</p>
+          <p>Different rooms, same thing every time. The expertise existed somewhere. It never reached the person who needed it, in their language, in the moment it mattered. We promote people because they're good at the job, and then never teach them how to lead.</p>
+          <p>MPower is my answer to that.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <hr class="rule" />
+      <div class="lisa-grid">
+        <div>
+          <span class="mono accent">§ 03 · The work</span>
+          <h2 class="heading lisa-col-title">Where I spend my time.</h2>
+        </div>
+        <div class="prose">
+          <ul class="lisa-list">
+            <li><strong>Founder, Radical HR</strong> - since 2022. People, leadership and systems work with leaders, teams, boards and whole organisations across Aotearoa.</li>
+            <li><strong>Facilitator, Springboard Trust (Te Uru Amokura)</strong> - since 2023. The Strategic Leadership for Principals Programme, and annual planning with school leaders.</li>
+            <li><strong>Trustee, Big Chats</strong> - a youth mental-health not-for-profit, normalising the conversation and supporting the supporters.</li>
+            <li><strong>Speaker and facilitator</strong> - principals' associations, food and fibre events, founder forums. Plain language, real stories.</li>
+            <li><strong>AWDT Escalator graduate, 2023</strong> - and a netball umpire.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <hr class="rule" style="margin-bottom: 48px;" />
+      <span class="mono accent">§ 04 · What else I'm building</span>
+      <h2 class="display lisa-h2">Same question. <span class="i-accent">Different rooms.</span></h2>
+      <div class="co-grid">
+        {companies.map((c) => {
+          const Tag = c.url ? 'a' : 'div';
+          return (
+            <Tag class="co" href={c.url || undefined} target={c.url ? '_blank' : undefined} rel={c.url ? 'noopener' : undefined} style={`--co-accent: ${c.accent};`}>
+              <div class="co-head">
+                <span class="mono co-line">{c.line}</span>
+                <span class="mono co-host">{c.host}</span>
+              </div>
+              <h3 class="display co-name">{c.name}</h3>
+              <p class="body co-body">{c.body}</p>
+              {c.url && <div class="co-arrow">Visit <span class="arr">→</span></div>}
+            </Tag>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <GreenBlock kicker="§ Closer" cta={{ href: '/contact', label: 'Get in touch' }}>
+    <h2>You were always capable. <em>Now you're equipped.</em></h2>
+  </GreenBlock>
+
+</Base>
+
+<style>
+  .kicker { color: var(--c-spring); margin-bottom: 36px; }
+  .lisa-hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+  .lisa-h1 { font-size: var(--t-h1); line-height: 1.0; }
+  .lisa-lede { margin-top: 28px; max-width: 46ch; opacity: .92; }
+  .lisa-links { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
+  .media { margin: 0; }
+  .media-frame { border-radius: 4px; overflow: hidden; border: 1px solid var(--c-rule-soft); }
+  .media-frame img { display: block; width: 100%; height: auto; }
+  .media figcaption { font-family: var(--f-mono); font-size: var(--t-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--c-fog); padding-top: 12px; }
+
+  .lisa-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-top: 48px; }
+  .lisa-col-title { font-size: var(--t-h4); margin-top: 14px; max-width: 16ch; }
+  .prose { max-width: 62ch; }
+  .prose p { margin-top: 18px; font-size: var(--t-body-lg); line-height: 1.55; opacity: .9; }
+  .prose p:first-child { margin-top: 0; }
+  .lisa-why { font-size: var(--t-h3) !important; line-height: 1.12 !important; opacity: 1 !important; max-width: 20ch; }
+  .lisa-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .lisa-list li { padding: 18px 0; border-top: 1px solid var(--c-rule); font-size: var(--t-body-lg); line-height: 1.5; opacity: .9; }
+  .lisa-list li:first-child { border-top: 0; padding-top: 0; }
+  .lisa-list strong { color: var(--c-spring); font-weight: 600; }
+
+  .lisa-h2 { font-size: var(--t-h2); margin-top: 16px; max-width: 20ch; line-height: 1.05; }
+  .co-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .co {
+    display: flex; flex-direction: column; gap: 12px;
+    background: var(--c-steel); border: 1px solid var(--c-rule-soft); border-radius: 4px;
+    padding: clamp(24px, 2.6vw, 36px); color: var(--c-mist); text-decoration: none;
+    position: relative; overflow: hidden;
+    transition: transform .18s var(--ease-out), border-color .18s var(--ease-out);
+  }
+  .co::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--co-accent); }
+  a.co:hover { transform: translateY(-3px); border-color: var(--co-accent); }
+  .co-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .co-line { color: var(--co-accent); }
+  .co-host { color: var(--c-fog); }
+  .co-name { font-size: clamp(30px, 2.8vw, 42px); line-height: 1; letter-spacing: -0.035em; }
+  .co-body { opacity: .84; max-width: 50ch; }
+  .co-arrow {
+    margin-top: auto; padding-top: 8px;
+    font-family: var(--f-mono); font-size: var(--t-mono); text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--co-accent); display: inline-flex; gap: 8px; align-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .lisa-hero { grid-template-columns: 1fr; gap: 32px; }
+    .lisa-grid { grid-template-columns: 1fr; gap: 20px; }
+    .co-grid { grid-template-columns: 1fr; }
+  }
+</style>

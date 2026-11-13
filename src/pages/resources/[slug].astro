@@ -114,12 +114,8 @@ const heroIsCover = Boolean(d.book);
 <style>
   .narrow { max-width: 820px; }
 
-  /* Theme colour pops (Lisa 14 Nov 2026) - same four inks as the Resources cards */
+  /* Highlight colour inside the articles is brand green (Lisa 14 Nov 2026) */
   .art { --pop: var(--c-spring); }
-  .art[data-theme="Self care"] { --pop: var(--c-lilac); }
-  .art[data-theme="Your week"] { --pop: var(--c-gold); }
-  .art[data-theme="Leading"] { --pop: var(--c-mint); }
-  .art[data-theme="Growth"] { --pop: var(--c-wheat); }
 
   .crumb { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--c-fog); }
   .crumb a { color: var(--c-spring); }
@@ -138,7 +134,7 @@ const heroIsCover = Boolean(d.book);
     transition: border-color .15s var(--ease-out), color .15s var(--ease-out);
   }
   .pill-format { color: var(--c-spring); border-color: rgba(74, 222, 128, 0.35); }
-  .pill-theme { color: var(--pop); border-color: color-mix(in srgb, var(--pop) 45%, transparent); }
+  .pill-theme { color: var(--c-fog); }
   .pill:hover { border-color: var(--c-mist); color: var(--c-mist); }
 
   .art-h1 { font-size: var(--t-h2); margin-top: 24px; max-width: 18ch; line-height: 1.0; padding-bottom: 0.08em; overflow-wrap: anywhere; }

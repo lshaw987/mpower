@@ -38,6 +38,7 @@ import VerticalCard from '../components/VerticalCard.astro';
           <p class="body founder-graf">That's why I built MPower. Not another course library. A place where you get the knowledge, the power and the skills to <span class="i-accent">grow, thrive and flourish</span>, in plain language, with nobody gatekeeping the info, talking down to you, or making you feel like you're dumb.</p>
           <p class="body-lg">My whole working life has come down to one question: how do we <span class="i-accent">equip</span> people so they're genuinely <span class="i-accent">empowered</span>, then get out of their way? MPower is that question, built.</p>
           <p class="display founder-closer">You were always capable. Now you're <span class="i-accent">equipped.</span></p>
+          <p class="body"><a href="/lisa" style="color: var(--c-spring); font-weight: 600;">More about Lisa <span class="arr">→</span></a></p>
           <p class="mono founder-sign">Lisa Shaw · Founder and Chief Empowerment Officer, MPower · May 2026</p>
         </div>
       </div>
@@ -85,13 +86,23 @@ import VerticalCard from '../components/VerticalCard.astro';
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="mono">§ 02 · Our communities · Phase 1</span>
+        <span class="mono">§ 02 · Our communities</span>
         <h2 class="display" style="font-size: var(--t-h2); max-width: 18ch;">
-          One open now. <span class="i-accent">Two launching next.</span>
+          Two open now. <span class="i-accent">Two opening next.</span>
         </h2>
       </div>
 
-      <div style="margin-bottom: 24px;">
+      <div class="vert-grid" style="margin-bottom: 24px;">
+        <VerticalCard
+          name="Built"
+          badge="Available now · MPower Built"
+          tagline="The business side of the tools."
+          body="For the builders, sparkies, plumbers, painters and panel beaters who got good at the trade, then found themselves running a business. The quoting, the cash flow, the people. Nobody showed you that part. Open now, by arrangement."
+          url="mailto:askme@mpowerhq.nz?subject=MPower Built enquiry"
+          host="askme@mpowerhq.nz"
+          accent="var(--c-hivis)"
+          ink="var(--c-chalk)"
+        />
         <VerticalCard
           name="Teams"
           badge="Available now · MPower Teams"
@@ -146,14 +157,6 @@ import VerticalCard from '../components/VerticalCard.astro';
             body="Our next generation of leaders - giving them a headstart in the world, with the language and habits of leadership before they need them."
             accent="var(--c-cyan)"
             ink="var(--c-mint)"
-            coming={true}
-          />
-          <VerticalCard
-            name="Built"
-            tagline="The business side of the tools."
-            body="For the builders, sparkies, plumbers, painters and panel beaters who got good at the trade, then found themselves running a business. The quoting, the cash flow, the people. Nobody showed you that part."
-            accent="var(--c-hivis)"
-            ink="var(--c-chalk)"
             coming={true}
           />
         </div>
