@@ -10,8 +10,26 @@ import Base from '../layouts/Base.astro';
         Take what's <span class="i-accent">yours.</span>
       </h1>
       <p class="body-lg wl-lede">
-        MPower opens in stages. MPower Agri and MPower Ed launch first; MPower Teams is here now, by arrangement. Tell us who you are and we'll let you in when your community is ready.
+        Tell us who you are and which community is yours. You'll be first in when it opens - and you'll get something useful from us every week while you wait.
       </p>
+
+      <ol class="wl-steps">
+        <li>
+          <span class="wl-num">01</span>
+          <h2 class="heading wl-step-title">Pick your community.</h2>
+          <p class="body-sm wl-step-body">Agri and Ed open next. Leaders, Rising and Built follow. Teams is open now, by arrangement.</p>
+        </li>
+        <li>
+          <span class="wl-num">02</span>
+          <h2 class="heading wl-step-title">Get one useful thing a week.</h2>
+          <p class="body-sm wl-step-body">A tool, a template or an idea you can use that week. Short, plain, yours to keep.</p>
+        </li>
+        <li>
+          <span class="wl-num">03</span>
+          <h2 class="heading wl-step-title">Be first through the door.</h2>
+          <p class="body-sm wl-step-body">When your community opens, you hear before anyone else.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -38,6 +56,10 @@ import Base from '../layouts/Base.astro';
       <p class="body-sm wl-promise">
         We won't sell your address. We won't spam. We'll write once a week, one thing you can use, and if a week has nothing worth your time, you won't hear from us. Nobody is ever selling you anything in here, including us.
       </p>
+
+      <p class="body wl-now">
+        Don't want to wait? <a href="/resources">The free resources are open now <span class="arr">→</span></a>
+      </p>
     </div>
   </section>
 
@@ -47,7 +69,27 @@ import Base from '../layouts/Base.astro';
   .narrow { max-width: 920px; }
   .kicker { color: var(--c-spring); margin-bottom: 32px; }
   .wl-h1 { font-size: var(--t-h1); line-height: 1.04; padding-bottom: 0.12em; }
-  .wl-lede { margin-top: 48px; max-width: 60ch; opacity: .9; }
+  .wl-lede { margin-top: 32px; max-width: 60ch; opacity: .9; }
+
+  .wl-steps {
+    list-style: none; padding: 0; margin-top: 48px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  }
+  .wl-steps li {
+    padding: 24px 24px 8px 0;
+    border-top: 1px solid var(--c-rule);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .wl-num {
+    font-family: var(--f-display); font-weight: 800; color: var(--c-spring);
+    font-size: clamp(28px, 3vw, 40px); line-height: 1; letter-spacing: -0.04em;
+  }
+  .wl-step-title { font-size: var(--t-body-lg); }
+  .wl-step-body { opacity: .85; max-width: 30ch; }
+  @media (max-width: 720px) { .wl-steps { grid-template-columns: 1fr; } }
+
+  .wl-now { margin-top: 28px; }
+  .wl-now a { color: var(--c-spring); font-weight: 600; }
 
   .klaviyo-form-W2JdnP { margin-top: 8px; min-height: 120px; }
 
