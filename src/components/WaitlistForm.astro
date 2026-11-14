@@ -4,7 +4,7 @@
  * replacing the Klaviyo embed W2JdnP (Lisa: "they don't look pretty and
  * there's no space to put the community").
  *
- * One screen: first name, email, community. Posts straight to Klaviyo's
+ * One screen: first name, last name, email, community. Posts straight to Klaviyo's
  * public client subscriptions endpoint (company SKABCW - the public site
  * key, no secret) into the "MPower Waitlist" list (Usjwfm, single opt-in),
  * with the community saved on the profile as `community`. Joining the list
@@ -37,6 +37,10 @@ const uid = Math.random().toString(36).slice(2, 8);
       <input class="wlf-input" type="text" name="first_name" autocomplete="given-name" required />
     </label>
     <label class="wlf-field">
+      <span class="mono wlf-label">Last name</span>
+      <input class="wlf-input" type="text" name="last_name" autocomplete="family-name" required />
+    </label>
+    <label class="wlf-field wlf-wide">
       <span class="mono wlf-label">Email</span>
       <input class="wlf-input" type="email" name="email" autocomplete="email" inputmode="email" required />
     </label>
@@ -79,6 +83,7 @@ const uid = Math.random().toString(36).slice(2, 8);
   }
   .wlf[hidden] { display: none; }
   .wlf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .wlf-wide { grid-column: 1 / -1; }
   @media (max-width: 640px) { .wlf-row { grid-template-columns: 1fr; } }
 
   .wlf-field { display: flex; flex-direction: column; gap: 10px; }
@@ -155,14 +160,16 @@ const uid = Math.random().toString(36).slice(2, 8);
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var first = form.first_name.value.trim();
+        var last = form.last_name.value.trim();
         var email = form.email.value.trim();
         var picked = form.querySelector('.wlf-pill input:checked');
         form.first_name.setAttribute('aria-invalid', first ? 'false' : 'true');
+        form.last_name.setAttribute('aria-invalid', last ? 'false' : 'true');
         var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         form.email.setAttribute('aria-invalid', emailOk ? 'false' : 'true');
         if (!picked) fs.setAttribute('aria-invalid', 'true');
-        if (!first || !emailOk || !picked) {
-          say(!emailOk && email ? 'That email doesn’t look quite right.' : 'Pop in your first name, email and community.', true);
+        if (!first || !last || !emailOk || !picked) {
+          say(!emailOk && email ? 'That email doesn’t look quite right.' : 'Pop in your name, email and community.', true);
           return;
         }
         btn.disabled = true; btnText.textContent = 'Adding you…'; say('');
@@ -172,7 +179,7 @@ const uid = Math.random().toString(36).slice(2, 8);
           body: JSON.stringify({ data: { type: 'subscription', attributes: {
             custom_source: form.dataset.source,
             profile: { data: { type: 'profile', attributes: {
-              email: email, first_name: first, properties: { community: picked.value }
+              email: email, first_name: first, last_name: last, properties: { community: picked.value }
             } } }
           }, relationships: { list: { data: { type: 'list', id: LIST } } } } })
         }).then(function (r) {

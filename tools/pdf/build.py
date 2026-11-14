@@ -26,8 +26,8 @@ HERE = Path(__file__).resolve().parent
 OUT_DIR = HERE.parent.parent / "public" / "resources" / "pdf"
 WORK = Path(tempfile.gettempdir()) / "mpower-pdf-build"
 
-FOOTER_TEXT = "mpowerhq.nz · askme@mpowerhq.nz · free resource"
-EMAIL = "askme@mpowerhq.nz"
+FOOTER_TEXT = "mpowerhq.nz · hello@mpowerhq.nz · free resource"
+EMAIL = "hello@mpowerhq.nz"
 
 EDGE_CANDIDATES = [
     r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",

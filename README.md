@@ -83,7 +83,7 @@ InternetNZ reseller.
 ## Sub-domain verticals
 
 Phase 1: `agri.mpowerhq.nz` and `ed.mpowerhq.nz`. The homepage and Verticals
-page link to those directly. MPower Teams routes to `askme@mpowerhq.nz`
+page link to those directly. MPower Teams routes to `hello@mpowerhq.nz`
 (by arrangement, no subdomain). Leaders + Rising are coming soon (no
 subdomain yet - open decision). Recommendation: spin the live subdomains up
 as separate Astro projects sharing this `tokens.css` and components.

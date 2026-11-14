@@ -25,7 +25,7 @@ Use `python`, not `python3`. Needs Microsoft Edge (it does the printing) and, fo
 | `build.py` | Wraps each page in the shared header and footer, prints with headless Edge, checks, copies. |
 | `_originals/` | The seven PDFs as they stood on 4 Nov 2026, before this builder overwrote them. Reference only. |
 
-The header (MPower + tag) and the footer (`mpowerhq.nz · askme@mpowerhq.nz · free resource` + page number) are added by `build.py`, so they are the same on every page. To change the footer wording, edit `FOOTER_TEXT` at the top of `build.py` - one place, all PDFs. The self-care menu is landscape and draws its own header and footer; it takes the same footer text through `{{footer}}`.
+The header (MPower + tag) and the footer (`mpowerhq.nz · hello@mpowerhq.nz · free resource` + page number) are added by `build.py`, so they are the same on every page. To change the footer wording, edit `FOOTER_TEXT` at the top of `build.py` - one place, all PDFs. The self-care menu is landscape and draws its own header and footer; it takes the same footer text through `{{footer}}`.
 
 ## Adding a PDF
 
