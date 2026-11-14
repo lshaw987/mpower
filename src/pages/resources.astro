@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import WaitlistForm from '../components/WaitlistForm.astro';
 import { getCollection } from 'astro:content';
 import { jpegSize } from '../lib/image-size';
 
@@ -178,21 +179,7 @@ const locked = [
         New free pieces land here first. No wall, no spam - one email when there's something worth your time.
       </p>
 
-      {/* Same Klaviyo embedded form as /waitlist. Powered by the onsite
-          script + init in Base.astro (company SKABCW). */}
-      <div class="klaviyo-form-W2JdnP"></div>
-
-      <noscript>
-        <p class="body rs-fallback">
-          The form needs JavaScript. If it isn't loading, email
-          <a href="mailto:askme@mpowerhq.nz?subject=waitlist">askme@mpowerhq.nz</a> with 'waitlist' and we'll add you by hand.
-        </p>
-      </noscript>
-
-      <p class="body rs-fallback" data-kl-fallback hidden>
-        Can't see the form? Your browser may be blocking it - email
-        <a href="mailto:askme@mpowerhq.nz?subject=waitlist">askme@mpowerhq.nz</a> with 'waitlist' and we'll add you.
-      </p>
+      <WaitlistForm source="MPower website - resources" button="Keep me posted" />
     </div>
   </section>
 
@@ -346,10 +333,6 @@ const locked = [
   .rs-empty[hidden] { display: none; }
 
   /* Capture ----------------------------------------------------------- */
-  .klaviyo-form-W2JdnP { margin-top: 28px; min-height: 120px; }
-  .rs-fallback { margin-top: 24px; opacity: .9; }
-  .rs-fallback[hidden] { display: none; }
-  .rs-fallback a { color: var(--c-spring); }
 
   @media (max-width: 1000px) { .rs-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) {
@@ -428,21 +411,3 @@ const locked = [
   apply(false);
 </script>
 
-<script is:inline>
-  // Klaviyo fallback. If an ad-blocker stops klaviyo.js the form div stays
-  // empty; after 3s, show the plain-email line instead of a blank space.
-  // If the form turns up late (slow connection), hide the line again.
-  (function () {
-    var form = document.querySelector('.klaviyo-form-W2JdnP');
-    var fb = document.querySelector('[data-kl-fallback]');
-    if (!form || !fb) return;
-    var sync = function () {
-      if (form.children.length === 0) fb.removeAttribute('hidden');
-      else fb.setAttribute('hidden', '');
-    };
-    setTimeout(function () {
-      sync();
-      if ('MutationObserver' in window) new MutationObserver(sync).observe(form, { childList: true });
-    }, 3000);
-  })();
-</script>

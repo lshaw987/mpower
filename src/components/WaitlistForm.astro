@@ -1,0 +1,188 @@
+---
+/**
+ * The MPower waitlist form - built into the site (14 Nov 2026, card M3),
+ * replacing the Klaviyo embed W2JdnP (Lisa: "they don't look pretty and
+ * there's no space to put the community").
+ *
+ * One screen: first name, email, community. Posts straight to Klaviyo's
+ * public client subscriptions endpoint (company SKABCW - the public site
+ * key, no secret) into the "MPower Waitlist" list (Usjwfm, single opt-in),
+ * with the community saved on the profile as `community`. Joining the list
+ * triggers the welcome flow "MPower - Welcome (waitlist)".
+ *
+ * Props:
+ *   source - where the sign-up came from, saved as the profile's source
+ *            (e.g. "MPower website - waitlist", "MPower website - resources")
+ *   button - button label
+ */
+interface Props { source?: string; button?: string; }
+const { source = 'MPower website - waitlist', button = 'Put me on the list' } = Astro.props;
+
+const communities: [string, string, string][] = [
+  // value, label, accent colour (tokens.css)
+  ['Agri', 'Agri', 'var(--c-clay)'],
+  ['Ed', 'Ed', 'var(--c-indigo)'],
+  ['Built', 'Built', 'var(--c-hivis)'],
+  ['Teams', 'Teams', 'var(--c-bronze)'],
+  ['Leaders', 'Leaders', 'var(--c-violet)'],
+  ['Rising', 'Rising', 'var(--c-cyan)'],
+  ['Not sure yet', 'Not sure yet', 'var(--c-fog)'],
+];
+const uid = Math.random().toString(36).slice(2, 8);
+---
+<form class="wlf" data-wlf data-source={source} novalidate>
+  <div class="wlf-row">
+    <label class="wlf-field">
+      <span class="mono wlf-label">First name</span>
+      <input class="wlf-input" type="text" name="first_name" autocomplete="given-name" required />
+    </label>
+    <label class="wlf-field">
+      <span class="mono wlf-label">Email</span>
+      <input class="wlf-input" type="email" name="email" autocomplete="email" inputmode="email" required />
+    </label>
+  </div>
+
+  <fieldset class="wlf-communities">
+    <legend class="mono wlf-label">Which community is yours?</legend>
+    <div class="wlf-pills">
+      {communities.map(([value, label, colour]) => (
+        <label class="wlf-pill" style={`--pill: ${colour}`}>
+          <input type="radio" name={`community-${uid}`} value={value} required />
+          <span class="wlf-dot" aria-hidden="true"></span>
+          <span>{label}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <div class="wlf-actions">
+    <button class="btn btn-primary wlf-submit" type="submit">
+      <span class="wlf-btn-text">{button}</span> <span class="arr">→</span>
+    </button>
+    <p class="body-sm wlf-msg" role="status" aria-live="polite"></p>
+  </div>
+</form>
+
+<div class="wlf-done" data-wlf-done hidden>
+  <p class="heading wlf-done-h">You're in<span class="i-accent">.</span></p>
+  <p class="body wlf-done-p">Check your inbox - a note from Lisa is on its way. You'll hear from us before the doors open on 1 December.</p>
+</div>
+
+<style>
+  .wlf {
+    margin-top: 28px;
+    padding: clamp(24px, 3vw, 40px);
+    background: var(--c-steel);
+    border: 1px solid var(--c-rule-soft);
+    border-radius: 24px;
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .wlf[hidden] { display: none; }
+  .wlf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .wlf-row { grid-template-columns: 1fr; } }
+
+  .wlf-field { display: flex; flex-direction: column; gap: 10px; }
+  .wlf-label { color: var(--c-fog); font-size: var(--t-mono); letter-spacing: .08em; text-transform: uppercase; }
+  .wlf-input {
+    font: inherit; font-size: var(--t-body);
+    color: var(--c-mist);
+    background: var(--c-deep-sea);
+    border: 1px solid var(--c-rule);
+    border-radius: 14px;
+    padding: 14px 16px;
+    transition: border-color .15s var(--ease-out), box-shadow .15s var(--ease-out);
+  }
+  .wlf-input:focus { outline: none; border-color: var(--c-spring); box-shadow: 0 0 0 3px rgba(74, 222, 128, .18); }
+  .wlf-input[aria-invalid="true"] { border-color: var(--c-clay); }
+
+  .wlf-communities { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .wlf-communities legend { padding: 0; margin-bottom: 12px; }
+  .wlf-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .wlf-pill {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 11px 18px;
+    border: 1px solid var(--c-rule);
+    border-radius: 999px;
+    color: var(--c-mist);
+    font-weight: 600; font-size: var(--t-body-sm);
+    cursor: pointer;
+    transition: border-color .15s var(--ease-out), background .15s var(--ease-out);
+  }
+  .wlf-pill input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .wlf-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--pill); flex: none; }
+  .wlf-pill:hover { border-color: var(--pill); }
+  .wlf-pill:has(input:checked) {
+    border-color: var(--pill);
+    background: color-mix(in srgb, var(--pill) 18%, transparent);
+  }
+  .wlf-pill:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(232, 238, 244, .25); }
+  .wlf-communities[aria-invalid="true"] .wlf-pill { border-color: rgba(192, 75, 38, .6); }
+
+  .wlf-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .wlf-submit[disabled] { opacity: .6; cursor: wait; }
+  .wlf-msg { margin: 0; color: var(--c-fog); }
+  .wlf-msg.is-error { color: var(--c-wheat); }
+  .wlf-msg a { color: var(--c-spring); }
+
+  .wlf-done {
+    margin-top: 28px;
+    padding: clamp(24px, 3vw, 40px);
+    background: var(--c-steel);
+    border: 1px solid var(--c-spring);
+    border-radius: 24px;
+  }
+  .wlf-done[hidden] { display: none; }
+  .wlf-done-h { font-size: var(--t-h4); }
+  .wlf-done-p { margin-top: 10px; opacity: .9; max-width: 52ch; }
+</style>
+
+<script is:inline>
+  (function () {
+    var KLAVIYO = 'https://a.klaviyo.com/client/subscriptions/?company_id=SKABCW';
+    var LIST = 'Usjwfm'; // MPower Waitlist (single opt-in)
+    var FALLBACK = 'hello@mpowerhq.nz';
+    document.querySelectorAll('[data-wlf]').forEach(function (form) {
+      if (form.dataset.wired) return; form.dataset.wired = '1';
+      var done = form.nextElementSibling;
+      var msg = form.querySelector('.wlf-msg');
+      var btn = form.querySelector('.wlf-submit');
+      var btnText = form.querySelector('.wlf-btn-text');
+      var label = btnText.textContent;
+      var fs = form.querySelector('.wlf-communities');
+      function say(text, err) { msg.innerHTML = text; msg.classList.toggle('is-error', !!err); }
+      form.addEventListener('change', function () { fs.removeAttribute('aria-invalid'); });
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var first = form.first_name.value.trim();
+        var email = form.email.value.trim();
+        var picked = form.querySelector('.wlf-pill input:checked');
+        form.first_name.setAttribute('aria-invalid', first ? 'false' : 'true');
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        form.email.setAttribute('aria-invalid', emailOk ? 'false' : 'true');
+        if (!picked) fs.setAttribute('aria-invalid', 'true');
+        if (!first || !emailOk || !picked) {
+          say(!emailOk && email ? 'That email doesn’t look quite right.' : 'Pop in your first name, email and community.', true);
+          return;
+        }
+        btn.disabled = true; btnText.textContent = 'Adding you…'; say('');
+        fetch(KLAVIYO, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', 'revision': '2024-10-15' },
+          body: JSON.stringify({ data: { type: 'subscription', attributes: {
+            custom_source: form.dataset.source,
+            profile: { data: { type: 'profile', attributes: {
+              email: email, first_name: first, properties: { community: picked.value }
+            } } }
+          }, relationships: { list: { data: { type: 'list', id: LIST } } } } })
+        }).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          form.hidden = true; done.hidden = false;
+        }).catch(function () {
+          btn.disabled = false; btnText.textContent = label;
+          say('That didn’t go through. Try again, or email <a href="mailto:' + FALLBACK + '?subject=waitlist">' + FALLBACK + '</a> and we’ll add you.', true);
+        });
+      });
+    });
+  })();
+</script>

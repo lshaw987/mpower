@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import WaitlistForm from '../components/WaitlistForm.astro';
 ---
 <Base title="Waitlist" current="Waitlist" description="MPower opens on 1 December 2026. Join the waitlist. Knowledge. Power. Yours.">
 
@@ -33,25 +34,9 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <section class="section-tight">
+  <section class="section-tight wl-form-section">
     <div class="container narrow">
-      {/* Klaviyo embedded form. Powered by the onsite script + init in
-          Base.astro (company SKABCW). The form fields, validation, success
-          state and double opt-in are all managed in Klaviyo - this div is
-          the mount point. Per the 18 May 2026 spec. */}
-      <div class="klaviyo-form-W2JdnP"></div>
-
-      <noscript>
-        <p class="body wl-fallback">
-          The waitlist form needs JavaScript. If it isn't loading, email
-          <a href="mailto:askme@mpowerhq.nz">askme@mpowerhq.nz</a> and we'll add you by hand.
-        </p>
-      </noscript>
-
-      <p class="body wl-fallback" data-kl-fallback hidden>
-        Can't see the form? Your browser may be blocking it - email
-        <a href="mailto:askme@mpowerhq.nz?subject=waitlist">askme@mpowerhq.nz</a> with 'waitlist' and we'll add you.
-      </p>
+      <WaitlistForm source="MPower website - waitlist" />
 
       <p class="body-sm wl-promise">
         We won't sell your address. We won't spam. We'll write once a week, one thing you can use, and if a week has nothing worth your time, you won't hear from us. Nobody is ever selling you anything in here, including us.
@@ -88,14 +73,9 @@ import Base from '../layouts/Base.astro';
   .wl-step-body { opacity: .85; max-width: 30ch; }
   @media (max-width: 720px) { .wl-steps { grid-template-columns: 1fr; } }
 
+  .wl-form-section { padding-top: 0; margin-top: -64px; }
   .wl-now { margin-top: 28px; }
   .wl-now a { color: var(--c-spring); font-weight: 600; }
-
-  .klaviyo-form-W2JdnP { margin-top: 8px; min-height: 120px; }
-
-  .wl-fallback { margin-top: 24px; opacity: .9; }
-  .wl-fallback[hidden] { display: none; }
-  .wl-fallback a { color: var(--c-spring); }
 
   .wl-promise {
     margin-top: 36px;
@@ -106,22 +86,3 @@ import Base from '../layouts/Base.astro';
     opacity: .85;
   }
 </style>
-
-<script is:inline>
-  // Klaviyo fallback. If an ad-blocker stops klaviyo.js the form div stays
-  // empty; after 3s, show the plain-email line instead of a blank space.
-  // If the form turns up late (slow connection), hide the line again.
-  (function () {
-    var form = document.querySelector('.klaviyo-form-W2JdnP');
-    var fb = document.querySelector('[data-kl-fallback]');
-    if (!form || !fb) return;
-    var sync = function () {
-      if (form.children.length === 0) fb.removeAttribute('hidden');
-      else fb.setAttribute('hidden', '');
-    };
-    setTimeout(function () {
-      sync();
-      if ('MutationObserver' in window) new MutationObserver(sync).observe(form, { childList: true });
-    }, 3000);
-  })();
-</script>
