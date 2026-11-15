@@ -59,6 +59,8 @@ const uid = Math.random().toString(36).slice(2, 8);
     </div>
   </fieldset>
 
+  <div class="hp-trap" aria-hidden="true"><label>Leave this empty <input type="text" name="leave_blank" tabindex="-1" autocomplete="off"></label></div>
+
   <div class="wlf-actions">
     <button class="btn btn-primary wlf-submit" type="submit">
       <span class="wlf-btn-text">{button}</span> <span class="arr">→</span>
@@ -137,6 +139,7 @@ const uid = Math.random().toString(36).slice(2, 8);
     border: 1px solid var(--c-spring);
     border-radius: 24px;
   }
+  .hp-trap { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
   .wlf-done[hidden] { display: none; }
   .wlf-done-h { font-size: var(--t-h4); }
   .wlf-done-p { margin-top: 10px; opacity: .9; max-width: 52ch; }
@@ -150,6 +153,7 @@ const uid = Math.random().toString(36).slice(2, 8);
     document.querySelectorAll('[data-wlf]').forEach(function (form) {
       if (form.dataset.wired) return; form.dataset.wired = '1';
       var done = form.nextElementSibling;
+      var t0 = Date.now(); // bot guard: real people take longer than 3 seconds
       var msg = form.querySelector('.wlf-msg');
       var btn = form.querySelector('.wlf-submit');
       var btnText = form.querySelector('.wlf-btn-text');
@@ -172,6 +176,8 @@ const uid = Math.random().toString(36).slice(2, 8);
           say(!emailOk && email ? 'That email doesn’t look quite right.' : 'Pop in your name, email and community.', true);
           return;
         }
+        // Bot guard (15 Nov 2026): a filled hidden field or a sub-3-second submit shows the thank-you but sends nothing.
+        if (form.elements.leave_blank.value || Date.now() - t0 < 3000) { form.hidden = true; done.hidden = false; return; }
         btn.disabled = true; btnText.textContent = 'Adding you…'; say('');
         fetch(KLAVIYO, {
           method: 'POST',
